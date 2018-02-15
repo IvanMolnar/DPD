@@ -15,7 +15,7 @@ void StateCrouching::onEnter()
 	WRITE_LOG("StateCrouching::onEnter");
 }
 
-void StateCrouching::processState(Events event, Directions direction, GameObject* object, string& data)
+void StateCrouching::processState(Events event, Directions direction, GameObject* object, const string& data)
 {
 	WRITE_LOG("StateCrouching::processState");
 

@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class CCharacter;
 
 class FSM
@@ -15,7 +13,7 @@ public:
 	~FSM();
 
 	void changeState(State* state);
-	void processCurrentState(Events event, Directions direction, GameObject* object, string& data);
+	void processCurrentState(Events event, Directions direction, GameObject* object, const string& data);
 
 	States getCurrentState();
 	string getCurrentStateString();

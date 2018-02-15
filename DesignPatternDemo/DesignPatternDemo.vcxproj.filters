@@ -81,9 +81,6 @@
     <ClInclude Include="GameLogic.h">
       <Filter>src\GameLogic</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>src\Level</Filter>
-    </ClInclude>
     <ClInclude Include="GameLogicObjectInterface.h">
       <Filter>src\GameLogic</Filter>
     </ClInclude>
@@ -96,26 +93,11 @@
     <ClInclude Include="Enemy.h">
       <Filter>src\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="GameCommandScreen.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuScreen.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Container.h">
       <Filter>src\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverScreen.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="GameCommandScreenAlt.h">
-      <Filter>src\Screens</Filter>
     </ClInclude>
     <ClInclude Include="Door.h">
       <Filter>src\GameObject</Filter>
@@ -153,6 +135,39 @@
     <ClInclude Include="EquipSlot.h">
       <Filter>src\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="InputGameOver.h">
+      <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMainMenu.h">
+      <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCommand.h">
+      <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCommandAlt.h">
+      <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MyInputExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGameLogicExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapDataInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapArea.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -182,35 +197,14 @@
     <ClCompile Include="DesignPatternDemo.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>src\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="ConsoleLogger.cpp">
       <Filter>src\Level</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>src\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="GameCommandScreen.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="Container.cpp">
       <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOverScreen.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="GameCommandScreenAlt.cpp">
-      <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Door.cpp">
       <Filter>src\GameObject</Filter>
@@ -232,6 +226,39 @@
     </ClCompile>
     <ClCompile Include="EquipSlot.cpp">
       <Filter>src\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>src\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="InputGameOver.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMainMenu.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCommand.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCommandAlt.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MyInputExample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGameLogicExample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapArea.cpp">
+      <Filter>src\Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

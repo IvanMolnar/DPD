@@ -5,8 +5,6 @@
 
 #include <list>
 
-using namespace std;
-
 enum ObjectModifierType
 {
 	weapon = 1,

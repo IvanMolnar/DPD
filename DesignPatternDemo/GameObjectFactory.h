@@ -11,8 +11,6 @@
 
 #include <map>
 
-using namespace std;
-
 static GameLogicObjectInterface* _gameLogicObjectInterface;
 
 class GameObjectFactory

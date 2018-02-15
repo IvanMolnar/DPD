@@ -1,17 +1,13 @@
-#include "Level.h"
+#include "MapArea.h"
 #include <iostream>
 #include <fstream>
 
 #include "GameObjectFactory.h"
 
-using namespace std;
-
-Level::Level(GameLogicObjectInterface* gameLogicObjectInterface): _gameLogicObjectInterface(gameLogicObjectInterface)
+MapArea::MapArea()
 {
 	_player = nullptr;
-	_display = new CConsoleLoggerEx();
-	_display->Create("Display");
-	GameObjectFactory::init(gameLogicObjectInterface);
+	//GameObjectFactory::init(gameLogicObjectInterface);
 
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
@@ -22,7 +18,7 @@ Level::Level(GameLogicObjectInterface* gameLogicObjectInterface): _gameLogicObje
 	}
 }
 
-Level::~Level()
+MapArea::~MapArea()
 {
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
@@ -34,15 +30,12 @@ Level::~Level()
 			}
 		}
 	}
-
-	_display->Close();
-	delete _display;
 }
 
-void Level::loadLevel(string fileName)
+void MapArea::loadLevel(std::string fileName)
 {
-	string line;
-	ifstream infile;
+	std::string line;
+	std::ifstream infile;
 
 	int currentRow = 0;
 	int currentColumn = 0;
@@ -110,13 +103,13 @@ void Level::loadLevel(string fileName)
 			if (gameObject && gameObject->getType() == GameObjectTypes::typeEnemy)
 			{
 				gameObject->addItemToInventory(new Sword());
-				string s("01");
+				std::string s("01");
 				gameObject->sendEvent(Events::equip, Directions::None, s);
 
 				if (i == 1)
 				{
 					gameObject->addItemToInventory(new Sword());
-					string s("02");
+					std::string s("02");
 					gameObject->sendEvent(Events::equip, Directions::None, s);
 				}
 
@@ -134,16 +127,14 @@ void Level::loadLevel(string fileName)
 	}
 
 	infile.close();
-
-	drawMap();
 }
 
-GameObject* Level::getPlayer()
+GameObject* MapArea::getPlayer()
 {
 	return _player;
 }
 
-bool Level::canMove(GameObject* gameObject, Directions direction)
+bool MapArea::canMove(GameObject* gameObject, Directions direction)
 {
 	int column = -1;
 	int row = -1;
@@ -191,7 +182,7 @@ bool Level::canMove(GameObject* gameObject, Directions direction)
 	return false;
 }
 
-void Level::move(GameObject* gameObject, Directions direction)
+void MapArea::move(GameObject* gameObject, Directions direction)
 {
 	int previousColumn = -1;
 	int previousRow = -1;
@@ -238,15 +229,15 @@ void Level::move(GameObject* gameObject, Directions direction)
 
 }
 
-string Level::generateScreenData()
+std::string MapArea::generateScreenData()
 {
-	string result;
+	std::string result;
 
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
 		for (int y = 0; y < MaxLevelRows; y++)
 		{
-			string c(" ");
+			std::string c(" ");
 
 			if (_mapData[x][y])
 			{
@@ -261,10 +252,13 @@ string Level::generateScreenData()
 
 	return result;
 }
-
-void Level::drawMap()
+void MapArea::getLevelDisplayData()
 {
-	stringstream ss;
+}
+/*
+void MapArea::drawMap()
+{
+	std::stringstream ss;
 	ss << generateScreenData();
 	
 	if (_player)
@@ -275,9 +269,9 @@ void Level::drawMap()
 
 	_display->cls();
 	_display->cprintf(ss.str().c_str());
-}
+}*/
 
-GameObject* Level::getObjectNextTo(GameObject* gameObject, Directions direction)
+GameObject* MapArea::getObjectNextTo(GameObject* gameObject, Directions direction)
 {
 	GameObject* result = nullptr;
 
@@ -329,9 +323,9 @@ GameObject* Level::getObjectNextTo(GameObject* gameObject, Directions direction)
 	return result;
 }
 
-list<GameObject*> Level::getGameObjectByType(GameObjectTypes gameObjectType)
+std::list<GameObject*> MapArea::getGameObjectByType(GameObjectTypes gameObjectType)
 {
-	list<GameObject*> result;
+	std::list<GameObject*> result;
 
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
@@ -349,9 +343,9 @@ list<GameObject*> Level::getGameObjectByType(GameObjectTypes gameObjectType)
 	return result;
 }
 
-list<GameObject*> Level::getGameObjects()
+std::list<GameObject*> MapArea::getGameObjects()
 {
-	list<GameObject*> result;
+	std::list<GameObject*> result;
 
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
@@ -369,7 +363,7 @@ list<GameObject*> Level::getGameObjects()
 	return result;
 }
 
-void Level::remove(GameObject* gameObject)
+void MapArea::remove(GameObject* gameObject)
 {
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{

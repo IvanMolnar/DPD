@@ -12,7 +12,7 @@ GameObject::GameObject(GameObjectTypes type)
 	_FSM = new FSM(new StateUp(this));
 	_stats = new GameObjectStats(this);
 	
-	string strType = getTypeString();
+	std::string strType = getTypeString();
 
 	if (_type != GameObjectTypes::typeObstacle)
 	{
@@ -45,7 +45,7 @@ GameObject::~GameObject()
 	}
 }
 
-void GameObject::sendEvent(Events event, Directions direction, string& data, GameObject* object)
+void GameObject::sendEvent(Events event, Directions direction, const std::string& data, GameObject* object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }
@@ -66,7 +66,7 @@ void GameObject::changeState(States state)
 		newState = new StateDead(this);
 		break;
 	default:
-		stringstream ss;
+		std::stringstream ss;
 		ss << "State " << state << " does not exist";
 		WRITE_LOG_WARNING(ss.str());
 		break;
@@ -80,7 +80,7 @@ GameObjectTypes GameObject::getType()
 	return _type;
 }
 
-string GameObject::getTypeString()
+std::string GameObject::getTypeString()
 {
 	switch (_type)
 	{
@@ -102,12 +102,12 @@ States GameObject::getState()
 	return _FSM->getCurrentState();
 }
 
-string GameObject::getStateString()
+std::string GameObject::getStateString()
 {
 	return _FSM->getCurrentStateString();
 }
 
-string GameObject::getInfo()
+std::string GameObject::getInfo()
 {
 	return _stats->getInfo();
 }
@@ -127,36 +127,36 @@ bool GameObject::acceptModifierSelf(ObjectModifier& objectModifier)
 	return objectModifier.applySelf(this, this->getModifiersPercent());
 }
 
-list<EquipSlot*> GameObject::getEquipSlots()
+std::list<EquipSlot*> GameObject::getEquipSlots()
 {
 	return _equipSlots;
 }
 
-list<ObjectModifier*> GameObject::getInventoryItems()
+std::list<ObjectModifier*> GameObject::getInventoryItems()
 {
 	return _inventoryItems;
 }
 
-string GameObject::getEquipItemsString()
+std::string GameObject::getEquipItemsString()
 {
-	stringstream result;
+	std::stringstream result;
 
 	for each (EquipSlot* slot in _equipSlots)
 	{
-		result << slot->getInfo() << endl;
+		result << slot->getInfo() << std::endl;
 	}
 
 	return result.str();
 }
 
-string GameObject::getInventoryItemsString()
+std::string GameObject::getInventoryItemsString()
 {
-	stringstream result;
+	std::stringstream result;
 	int index = 0;
 
 	for each (ObjectModifier* item in _inventoryItems)
 	{
-		result << index << ": " << item->getTypeString() << endl;
+		result << index << ": " << item->getTypeString() << std::endl;
 		++index;
 	}
 
@@ -173,10 +173,10 @@ void GameObject::removeItemFromInventory(ObjectModifier* item)
 	_inventoryItems.remove(item);
 }
 
-array<float, 3> GameObject::getModifiersPercent()
+std::array<float, 3> GameObject::getModifiersPercent()
 {
 	//damage, stamina, mana
-	array<float, 3> result = {1, 1, 1};
+	std::array<float, 3> result = {1, 1, 1};
 	
 	if (getState() == States::sneaking)
 	{
@@ -189,7 +189,7 @@ array<float, 3> GameObject::getModifiersPercent()
 
 void GameObject::attack(GameObject* gameObject)
 {
-	for (list<EquipSlot*>::iterator it = _equipSlots.begin(); it != _equipSlots.end(); it++)
+	for (std::list<EquipSlot*>::iterator it = _equipSlots.begin(); it != _equipSlots.end(); it++)
 	{
 		EquipSlot* slot = *it;
 
@@ -201,7 +201,7 @@ void GameObject::attack(GameObject* gameObject)
 			// check if we can attack
 			if (item->applySelf(this, this->getModifiersPercent()))
 			{
-				stringstream ss;
+				std::stringstream ss;
 
 				if (this->getType() == GameObjectTypes::typePlayer)
 				{
@@ -227,7 +227,7 @@ void GameObject::attack(GameObject* gameObject)
 	// if player attacks enemy then enemy retaliate
 	if (this->getType() == GameObjectTypes::typePlayer)
 	{
-		string s;
+		std::string s;
 		gameObject->sendEvent(Events::attack, Directions::None, s, this);
 	}
 }
@@ -247,7 +247,7 @@ void GameObject::equip(unsigned int inventorySlot, unsigned int equipSlot)
 	int inventoryIndex = 0;
 	ObjectModifier* inventoryItem = nullptr;
 
-	for (list<ObjectModifier*>::iterator it = _inventoryItems.begin(); it != _inventoryItems.end(); it++)
+	for (std::list<ObjectModifier*>::iterator it = _inventoryItems.begin(); it != _inventoryItems.end(); it++)
 	{
 		if (inventoryIndex == inventorySlot)
 		{

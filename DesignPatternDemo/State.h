@@ -6,8 +6,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class GameObject;
 
 class State
@@ -16,7 +14,7 @@ public:
 	State(ObjectCommandInterface* commandInterface, States state);
 	virtual ~State();
 
-	string getIdString();
+	std::string getIdString();
 	States getId();
 
 	virtual void onEnter() = 0;

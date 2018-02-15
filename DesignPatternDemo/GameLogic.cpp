@@ -4,24 +4,12 @@
 
 GameLogic::GameLogic()
 {
-	_level = nullptr;
-	_currentScreen = nullptr;
 	_gameRunning = true;
 	_alternativeControls = false;
 }
 
 GameLogic::~GameLogic()
 {
-	if (_currentScreen)
-	{
-		delete _currentScreen;
-	}
-
-	if (_level)
-	{
-		delete _level;
-	}
-
 	CLOSE_LOG_WINDOW;
 }
 
@@ -37,7 +25,7 @@ void GameLogic::startGame()
 	processState(GameStates::GameRunning);
 }
 
-void GameLogic::loadLevel(string levelPath)
+void GameLogic::loadLevel(const std::string& levelPath)
 {
 	WRITE_LOG("loading level...");
 
@@ -47,7 +35,7 @@ void GameLogic::loadLevel(string levelPath)
 	}
 	else
 	{
-		_level = new Level(this);
+		_level = std::unique_ptr<MapArea>(new MapArea(this));
 		_level->loadLevel(levelPath);
 	}
 
@@ -58,25 +46,24 @@ void GameLogic::processInput()
 {
 	while (_gameRunning)
 	{
-		resultAction action = _currentScreen->draw();
+		resultAction action = _currentScreen->handleInput();//draw();
 
-		if (_level && action._gameState != GameStates::MainMenu && action._gameState != GameStates::GameOver)
+	    processAction(action);
+
+		_display->draw();
+
+		bool handledEvent = false;
+		
+		if (action._gameState != GameStates::Unchanged && _currentState != action._gameState)
 		{
-			GameObject* gameObject = _level->getObjectNextTo(_level->getPlayer(), action._direction);
-
-			// send event
-			_level->getPlayer()->sendEvent(action._event, action._direction, action._data, gameObject);
-
-			if (!_level->getPlayer())
-			{
-				processState(GameStates::GameOver);
-				continue;
-			}
-
-			_level->drawMap();
+			handledEvent = processState(action._gameState);
 		}
-
-		processState(action._gameState);
+		
+		if (!handledEvent)
+		{
+			internalProcessState(action._gameState);
+		}
+		
 	}
 }
 
@@ -86,7 +73,7 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 	{
 		_level->move(gameObject, direction);
 
-		list<GameObject*> enemies = _level->getGameObjectByType(GameObjectTypes::typeEnemy);
+		std::list<GameObject*> enemies = _level->getGameObjectByType(GameObjectTypes::typeEnemy);
 
 		for each (GameObject* enemy in enemies)
 		{
@@ -97,7 +84,7 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 	}
 }
 
-void GameLogic::processState(GameStates gameState)
+void GameLogic::internalProcessState(GameStates gameState)
 {
 	if (_currentState == gameState)
 	{
@@ -143,7 +130,7 @@ void GameLogic::processState(GameStates gameState)
 
 void GameLogic::changeScreen(screenType type)
 {
-	Screen* newScreen = nullptr;
+	std::unique_ptr<Input> newScreen;
 
 	switch (type)
 	{
@@ -151,7 +138,7 @@ void GameLogic::changeScreen(screenType type)
 		newScreen = new MainMenuScreen();
 		break;
 	case gameCommand:
-		newScreen = new GameCommandScreen();
+		newScreen = new InputCommandScreen();
 		break;
 	case gameCommandAlt:
 		newScreen = new GameCommandScreenAlt();
@@ -161,25 +148,25 @@ void GameLogic::changeScreen(screenType type)
 		break;
 	}
 
+	
+
 	if (newScreen)
 	{
-		if (_currentScreen)
-		{
-			delete _currentScreen;
-		}
+		beforeChangeScreen(_currentScreen, newScreen);
 
-		_currentScreen = newScreen;
+		_currentScreen.reset();
+		_currentScreen = std::move(newScreen);
 
 		if (type == mainMenu)
 		{
 			if (_level)
 			{
-				delete _level;
-				_level = nullptr;
-
+				_level.reset();
 				CLOSE_LOG_WINDOW;
 			}
 		}
+
+		afterChangeScreen(_currentScreen, newScreen);
 	}
 }
 
@@ -191,13 +178,15 @@ void GameLogic::dead(GameObject* gameObject)
 void GameLogic::enterDoor(GameObject* gameObject)
 {
 	Door* door = dynamic_cast<Door*>(gameObject);
-	string nextMap = door->getMapName();
+	std::string nextMap = door->getMapName();
 
 	loadLevel(nextMap);
 }
 
 void GameLogic::run()
 {
+	_display = std::unique_ptr<Display>(new Display(_level.get()));
+	_display->start();
 	processState(GameStates::MainMenu);
 	processInput();
 }
