@@ -35,7 +35,7 @@ void GameLogic::loadLevel(const std::string& levelPath)
 	}
 	else
 	{
-		_level = std::unique_ptr<MapArea>(new MapArea(this));
+		_level = std::unique_ptr<MapArea>(new MapArea());
 		_level->loadLevel(levelPath);
 	}
 

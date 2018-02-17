@@ -3,13 +3,13 @@
 #include "GameObject.h"
 #include "GameLogicObjectInterface.h"
 #include "ConsoleLogger.h"
-#include "MapDataInterface.h"
+
 
 #define MaxLevelColumns 16
 #define MaxLevelRows 16
 
 
-class MapArea : public MapDataInterface
+class MapArea
 {
 public:
 	MapArea();
@@ -25,14 +25,12 @@ public:
 	std::list<GameObject*> getGameObjects();
 	void remove(GameObject* gameObject);
 
+	void getLevelDisplayData();
+
 private:
 	GameObject* _mapData[MaxLevelColumns][MaxLevelRows];
 	GameObject* _player;
 
 	std::string generateScreenData();
-
-
-	void getLevelDisplayData();
-	
 };
 

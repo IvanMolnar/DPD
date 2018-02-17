@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Level.h"
+#include "MapArea.h"
 #include "GameLogicObjectInterface.h"
 #include "InputCommand.h"
 #include "InputMainMenu.h"
@@ -37,7 +37,7 @@ protected:
 	virtual bool processState(GameStates gameEvent) = 0;
 
 	// events
-	virtual void beforeChangeScreen();
-	virtual void afterChangeScreen();
+	virtual void beforeChangeScreen(const std::shared_ptr<Screen>& currentScreen, const std::shared_ptr<Screen>& newScreen) = 0;
+	virtual void afterChangeScreen(const std::shared_ptr<Screen>& oldScreen, const std::shared_ptr<Screen>& newScreen) = 0;
 };
 

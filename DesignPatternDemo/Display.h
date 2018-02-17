@@ -1,20 +1,21 @@
 #pragma once
 
-#include "LevelDataInterface.h"
+#include "Screen.h"
 #include <memory>
 
 class Display
 {
 public:
-	Display(MapDataInterface* levelDataInterface);
+	Display();
 	virtual ~Display();
 
 	void getDisplayData();
+	void setActiveScreen(std::shared_ptr<Screen> activeScreen);
 
 	virtual void start() = 0;
 	virtual void draw() = 0;
 
 private:
-	std::unique_ptr<MapDataInterface> _levelDataInterface;
+	std::shared_ptr<Screen> _activeScreen;
 };
 

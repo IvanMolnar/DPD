@@ -167,7 +167,6 @@
     <ClInclude Include="InputGameOver.h" />
     <ClInclude Include="InputMainMenu.h" />
     <ClInclude Include="MapArea.h" />
-    <ClInclude Include="MapDataInterface.h" />
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
@@ -177,7 +176,6 @@
     <ClInclude Include="ObjectModifierVisitor.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Screen.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateCrouching.h" />
     <ClInclude Include="StateDead.h" />
@@ -211,7 +209,6 @@
     <ClCompile Include="ObjectModifier.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateCrouching.cpp" />
     <ClCompile Include="StateDead.cpp" />
