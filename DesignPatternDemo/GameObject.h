@@ -14,7 +14,7 @@ public:
 	GameObject(GameObjectTypes type);
 	virtual ~GameObject();
 
-	virtual void sendEvent(Events event, Directions direction, std::string& data, GameObject* object = nullptr);
+	virtual void sendEvent(Events event, Directions direction, const std::string& data, GameObject* object = nullptr);
 	virtual void changeState(States state);
 	GameObjectTypes getType();
 	std::string getTypeString();
