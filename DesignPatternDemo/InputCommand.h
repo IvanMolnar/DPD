@@ -7,5 +7,7 @@ class InputCommand : public Input
 public:
 	InputCommand();
 	~InputCommand();
+
+	unsigned int waitForInput();
 };
 

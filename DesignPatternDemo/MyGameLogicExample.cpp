@@ -1,9 +1,13 @@
 #include "MyGameLogicExample.h"
 
 
+//test
+#include "InputCommand.h"
+
 MyGameLogicExample::MyGameLogicExample(const std::shared_ptr<Display>& display) :
 	GameLogic(display)
 {
+	setInput(std::shared_ptr<Input>(new InputCommand()));
 }
 
 
@@ -30,4 +34,9 @@ void MyGameLogicExample::processAction(const resultAction& action)
 bool MyGameLogicExample::processState(GameStates gameState)
 {
 	return false;
+}
+
+void MyGameLogicExample::setInput(const std::shared_ptr<Input> newInput)
+{
+	_currentInput = newInput;
 }

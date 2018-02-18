@@ -20,7 +20,7 @@ public:
 
 protected:
 	std::unique_ptr<MapArea> _level;
-	std::unique_ptr<Input> _currentScreen;
+	std::shared_ptr<Input> _currentInput;
 	std::shared_ptr<Display> _display;
 	GameStates _currentState;
 	bool _gameRunning;
@@ -35,6 +35,7 @@ protected:
 	void enterDoor(GameObject* gameObject);
 	virtual void processAction(const resultAction& action) = 0;
 	virtual bool processState(GameStates gameEvent) = 0;
+	virtual void setInput(const std::shared_ptr<Input> newInput) = 0;
 
 
 

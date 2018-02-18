@@ -11,5 +11,6 @@ public:
 private:
 	void processAction(const resultAction& action);
 	bool processState(GameStates gameState);
+	void setInput(const std::shared_ptr<Input> newInput);
 };
 

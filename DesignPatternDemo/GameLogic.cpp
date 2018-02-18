@@ -47,8 +47,7 @@ void GameLogic::processInput()
 {
 	while (_gameRunning)
 	{
-		TODO current input
-		resultAction action = _currentScreen->handleInput();//draw();
+		resultAction action = _currentInput->handleInput();//draw();
 
 	    processAction(action);
 
