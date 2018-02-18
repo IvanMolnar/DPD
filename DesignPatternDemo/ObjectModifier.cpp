@@ -11,7 +11,7 @@ ObjectModifier::~ObjectModifier()
 {
 }
 
-bool ObjectModifier::applySelf(ObjectModifierInterface* objectModifierInterface, array<float, 3> modifiers)
+bool ObjectModifier::applySelf(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers)
 {
 	GameObjectStats* gameObjectStats = objectModifierInterface->getStats();
 
@@ -55,9 +55,9 @@ ObjectModifierType ObjectModifier::getType()
 	return _type;
 }
 
-string ObjectModifier::getTypeString()
+std::string ObjectModifier::getTypeString()
 {
-	stringstream ss;
+	std::stringstream ss;
 
 	switch (_type)
 	{
@@ -77,11 +77,11 @@ string ObjectModifier::getTypeString()
 
 	if (_type != armor)
 	{
-		ss << "damage: " << _stats.damageMin << " - " << _stats.damageMax << " stamina usage: " << _stats.staminaUsage << " mana usage: " << _stats.manaUsage << " range: " << _stats.range << endl;
+		ss << "damage: " << _stats.damageMin << " - " << _stats.damageMax << " stamina usage: " << _stats.staminaUsage << " mana usage: " << _stats.manaUsage << " range: " << _stats.range << std::endl;
 	}
 	else
 	{
-		ss << "protection: " << _stats.protectionMin << " - " << _stats.protectionMax << endl;
+		ss << "protection: " << _stats.protectionMin << " - " << _stats.protectionMax << std::endl;
 	}
 
 	return ss.str();

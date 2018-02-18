@@ -14,9 +14,9 @@ Sword::~Sword()
 {
 }
 
-bool Sword::apply(ObjectModifierInterface* objectModifierInterface, array<float, 3> modifiers)
+bool Sword::apply(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers)
 {
-	list<EquipSlot*> enemySlots = objectModifierInterface->getEquipSlots();
+	std::list<EquipSlot*> enemySlots = objectModifierInterface->getEquipSlots();
 
 	int enemyArmorProtection = 0;
 
@@ -38,7 +38,7 @@ bool Sword::apply(ObjectModifierInterface* objectModifierInterface, array<float,
 
 		bool dead = stats->addHealth(-damageTotal);
 
-		stringstream ss;
+		std::stringstream ss;
 
 		ss << damageTotal << " damage";
 
@@ -47,7 +47,7 @@ bool Sword::apply(ObjectModifierInterface* objectModifierInterface, array<float,
 			ss << " and kills";
 		}
 
-		ss << endl;
+		ss << std::endl;
 
 		WRITE_LOG_GAME(ss.str());
 
@@ -57,7 +57,7 @@ bool Sword::apply(ObjectModifierInterface* objectModifierInterface, array<float,
 	return false;
 }
 
-bool Sword::applySelf(ObjectModifierInterface* objectModifierInterface, array<float, 3> modifiers)
+bool Sword::applySelf(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers)
 {
 	if (ObjectModifier::applySelf(objectModifierInterface, modifiers))
 	{

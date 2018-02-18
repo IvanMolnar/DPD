@@ -5,7 +5,7 @@
 class MyGameLogicExample : public GameLogic
 {
 public:
-	MyGameLogicExample();
+	MyGameLogicExample(const std::shared_ptr<Display>& display);
 	~MyGameLogicExample();
 
 private:

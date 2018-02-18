@@ -45,7 +45,7 @@ GameObject::~GameObject()
 	}
 }
 
-void GameObject::sendEvent(Events event, Directions direction, const std::string& data, GameObject* object)
+void GameObject::sendEvent(Events event, Directions direction, std::string& data, GameObject* object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }

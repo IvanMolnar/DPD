@@ -34,17 +34,15 @@ struct inputAction
 class Input
 {
 public:
-	Input(screenType st);
+	Input();
 	virtual ~Input();
 
 	resultAction handleInput();
-	screenType getType();
 
 protected:
 	void addInputAction(inputAction action);
 
 private:
-	screenType _screenType;
 	std::list<inputAction> _inputActions;
 	int _screenLevel;
 	std::list<char> _multiInputActions;

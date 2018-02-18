@@ -2,7 +2,7 @@
 
 // example of keyboard input handling
 
-InputGameOver::InputGameOver() : Input(screenType::gameOver)
+InputGameOver::InputGameOver() : Input()
 {/*
 	Input::addText("  _____                         ____                 ", 0);
 	Input::addText(" / ____|                       / __ \\                ", 0);

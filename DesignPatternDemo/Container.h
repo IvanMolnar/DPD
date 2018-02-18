@@ -11,7 +11,7 @@ public:
 
 	void move(Directions direction);
 	void inspect(GameObject* gameObject);
-	string getInfo();
+	std::string getInfo();
 
 	// singnals death
 	void dead();

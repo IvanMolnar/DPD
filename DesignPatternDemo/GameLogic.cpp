@@ -2,7 +2,8 @@
 #include "Global.h"
 #include "GameObjectFactory.h"
 
-GameLogic::GameLogic()
+GameLogic::GameLogic(const std::shared_ptr<Display>& display) :
+	_display(display)
 {
 	_gameRunning = true;
 	_alternativeControls = false;
@@ -52,18 +53,7 @@ void GameLogic::processInput()
 
 		_display->draw();
 
-		bool handledEvent = false;
-		
-		if (action._gameState != GameStates::Unchanged && _currentState != action._gameState)
-		{
-			handledEvent = processState(action._gameState);
-		}
-		
-		if (!handledEvent)
-		{
-			internalProcessState(action._gameState);
-		}
-		
+		internalProcessState(action._gameState);	
 	}
 }
 
@@ -86,7 +76,14 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 
 void GameLogic::internalProcessState(GameStates gameState)
 {
-	if (_currentState == gameState)
+	if (_currentState == gameState || _currentState == GameStates::Unchanged)
+	{
+		return;
+	}
+
+	bool handledEvent = processState(gameState);
+
+	if (handledEvent)
 	{
 		return;
 	}
@@ -96,77 +93,21 @@ void GameLogic::internalProcessState(GameStates gameState)
 	switch (_currentState)
 	{
 	case MainMenu:
-		changeScreen(screenType::mainMenu);
 		break;
 	case NewGame:
-		startGame();
-		break;
-	case NewGameAlt:
-		_alternativeControls = true;
 		startGame();
 		break;
 	case Loading:
 		break;
 	case GameRunning:
-		if (!_alternativeControls)
-		{
-			changeScreen(screenType::gameCommand);
-		}
-		else
-		{
-			changeScreen(screenType::gameCommandAlt);
-		}
 		break;
 	case GameOver:
-		changeScreen(screenType::gameOver);
 		break;
 	case ExitGame:
 		_gameRunning = false;
 		break;
 	default:
 		break;
-	}
-}
-
-void GameLogic::changeScreen(screenType type)
-{
-	std::unique_ptr<Input> newScreen;
-
-	switch (type)
-	{
-	case mainMenu:
-		newScreen = new MainMenuScreen();
-		break;
-	case gameCommand:
-		newScreen = new InputCommandScreen();
-		break;
-	case gameCommandAlt:
-		newScreen = new GameCommandScreenAlt();
-		break;
-	case gameOver:
-		newScreen = new GameOverScreen();
-		break;
-	}
-
-	
-
-	if (newScreen)
-	{
-		beforeChangeScreen(_currentScreen, newScreen);
-
-		_currentScreen.reset();
-		_currentScreen = std::move(newScreen);
-
-		if (type == mainMenu)
-		{
-			if (_level)
-			{
-				_level.reset();
-				CLOSE_LOG_WINDOW;
-			}
-		}
-
-		afterChangeScreen(_currentScreen, newScreen);
 	}
 }
 
@@ -183,10 +124,15 @@ void GameLogic::enterDoor(GameObject* gameObject)
 	loadLevel(nextMap);
 }
 
+std::string GameLogic::getDisplayData()
+{
+	return std::string();
+}
+
 void GameLogic::run()
 {
-	_display = std::unique_ptr<Display>(new Display(_level.get()));
+	_display->init(this);
 	_display->start();
-	processState(GameStates::MainMenu);
+	internalProcessState(GameStates::MainMenu);
 	processInput();
 }

@@ -2,7 +2,7 @@
 
 
 
-MyInputExample::MyInputExample(screenType st) : Input (st)
+MyInputExample::MyInputExample() : Input ()
 {
 }
 

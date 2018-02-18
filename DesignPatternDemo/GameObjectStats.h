@@ -11,11 +11,11 @@ public:
 	GameObjectStats(ObjectEventInterface* eventInterface) : _eventInterface(eventInterface), _health(100), _stamina(100), _mana(100), _healthMax(100), _staminaMax(100), _manaMax(100) {};
 	~GameObjectStats() {};
 
-	string getInfo()
+	std::string getInfo()
 	{
-		stringstream ss;
+		std::stringstream ss;
 
-		ss << "Health " << _healthMax << "\\" << _health << "    Stamina " << _staminaMax << "\\" << _stamina << "    Mana " << _manaMax << "\\" << _mana << endl;
+		ss << "Health " << _healthMax << "\\" << _health << "    Stamina " << _staminaMax << "\\" << _stamina << "    Mana " << _manaMax << "\\" << _mana << std::endl;
 
 		return ss.str();
 	}

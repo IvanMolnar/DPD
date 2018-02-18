@@ -44,21 +44,12 @@ enum GameStates
 	Unchanged,
 	MainMenu,
 	NewGame,
-	NewGameAlt,
 	Loading,
 	GameRunning,
 	GameOver,
 	ExitGame
 };
 
-
-enum screenType
-{
-	mainMenu,
-	gameCommand,
-	gameCommandAlt,
-	gameOver
-};
 
 class Logger
 {

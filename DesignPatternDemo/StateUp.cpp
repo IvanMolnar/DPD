@@ -14,7 +14,7 @@ void StateUp::onEnter()
 	WRITE_LOG("StateUp::onEnter");
 }
 
-void StateUp::processState(Events event, Directions direction, GameObject* object, string& data)
+void StateUp::processState(Events event, Directions direction, GameObject* object, std::string& data)
 {
 	WRITE_LOG("StateUp::processState");
 

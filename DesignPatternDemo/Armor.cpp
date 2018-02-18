@@ -12,12 +12,12 @@ Armor::~Armor()
 {
 }
 
-bool Armor::apply(ObjectModifierInterface * objectModifierInterface, array<float, 3> modifiers)
+bool Armor::apply(ObjectModifierInterface * objectModifierInterface, std::array<float, 3> modifiers)
 {
 	return false;
 }
 
-bool Armor::applySelf(ObjectModifierInterface * objectModifierInterface, array<float, 3> modifiers)
+bool Armor::applySelf(ObjectModifierInterface * objectModifierInterface, std::array<float, 3> modifiers)
 {
 	return false;
 }

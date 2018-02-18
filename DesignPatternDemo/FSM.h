@@ -13,10 +13,10 @@ public:
 	~FSM();
 
 	void changeState(State* state);
-	void processCurrentState(Events event, Directions direction, GameObject* object, const string& data);
+	void processCurrentState(Events event, Directions direction, GameObject* object, std::string& data);
 
 	States getCurrentState();
-	string getCurrentStateString();
+	std::string getCurrentStateString();
 
 private:
 	State* _currentState;

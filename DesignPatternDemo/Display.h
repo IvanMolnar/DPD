@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Screen.h"
+#include "MapAreaInterface.h"
 #include <memory>
 
 class Display
@@ -9,13 +9,14 @@ public:
 	Display();
 	virtual ~Display();
 
-	void getDisplayData();
-	void setActiveScreen(std::shared_ptr<Screen> activeScreen);
+	std::string getDisplayData();
+
+	void init(MapAreaInterface* const mapAreaInterface);
 
 	virtual void start() = 0;
 	virtual void draw() = 0;
 
 private:
-	std::shared_ptr<Screen> _activeScreen;
+	MapAreaInterface* _mapAreaInterface;
 };
 

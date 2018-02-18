@@ -12,7 +12,7 @@ public:
 
 	void move(Directions direction);
 	void inspect(GameObject* gameObject);
-	string getInfo();
+	std::string getInfo();
 
 	// opening chest
 	void open(GameObject* gameObject);

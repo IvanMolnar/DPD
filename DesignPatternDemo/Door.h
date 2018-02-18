@@ -13,7 +13,7 @@ public:
 	void open(GameObject* gameObject);
 	void dead();
 
-	string getMapName();
+	std::string getMapName();
 
-	string getInfo();
+	std::string getInfo();
 };

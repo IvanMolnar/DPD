@@ -19,7 +19,7 @@ void Container::inspect(GameObject* gameObject)
 	return;
 }
 
-string Container::getInfo()
+std::string Container::getInfo()
 {
 	return "Looks like ordinary chest";
 }

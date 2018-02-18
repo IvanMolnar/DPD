@@ -167,6 +167,8 @@
     <ClInclude Include="InputGameOver.h" />
     <ClInclude Include="InputMainMenu.h" />
     <ClInclude Include="MapArea.h" />
+    <ClInclude Include="MapAreaInterface.h" />
+    <ClInclude Include="MyDisplayExample.h" />
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
@@ -204,6 +206,7 @@
     <ClCompile Include="InputGameOver.cpp" />
     <ClCompile Include="InputMainMenu.cpp" />
     <ClCompile Include="MapArea.cpp" />
+    <ClCompile Include="MyDisplayExample.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />
     <ClCompile Include="MyInputExample.cpp" />
     <ClCompile Include="ObjectModifier.cpp" />

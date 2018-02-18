@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 
-Input::Input(screenType st) : _screenType(st)
+Input::Input()
 {
 	_screenLevel = 0;
 }
@@ -45,9 +45,4 @@ void Input::addInputAction(inputAction action)
 	{
 		_multiInputActions.push_back(action._c);
 	}
-}
-
-screenType Input::getType()
-{
-	return _screenType;
 }

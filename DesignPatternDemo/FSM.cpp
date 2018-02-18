@@ -35,7 +35,7 @@ void FSM::changeState(State* state)
 	}
 }
 
-void FSM::processCurrentState(Events event, Directions direction, GameObject* object, const string& data)
+void FSM::processCurrentState(Events event, Directions direction, GameObject* object, std::string& data)
 {
 	WRITE_LOG("processing state for " + _currentState->getIdString() + " state");
 	_currentState->processState(event, direction, object, data);
@@ -46,7 +46,7 @@ States FSM::getCurrentState()
 	return _currentState->getId();
 }
 
-string FSM::getCurrentStateString()
+std::string FSM::getCurrentStateString()
 {
 	return _currentState->getIdString();
 }

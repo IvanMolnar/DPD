@@ -2,7 +2,7 @@
 
 // example of keyboard input handling
 
-InputCommandAlt::InputCommandAlt() : Input(screenType::gameCommand)
+InputCommandAlt::InputCommandAlt() : Input()
 {
 //	Input::addText("----------- Select option -----------", 0);
 	Input::addInputAction(inputAction('`', "Main Menu", Events::none, Directions::None, GameStates::MainMenu, 0, 0));

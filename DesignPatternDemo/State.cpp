@@ -11,7 +11,7 @@ State::~State()
 {
 }
 
-string State::getIdString()
+std::string State::getIdString()
 {
 	switch (_stateID)
 	{

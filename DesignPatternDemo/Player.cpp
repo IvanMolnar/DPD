@@ -19,9 +19,9 @@ void Player::inspect(GameObject* gameObject)
 	WRITE_LOG_GAME(gameObject->getInfo());
 }
 
-string Player::getInfo()
+std::string Player::getInfo()
 {
-	string info = GameObject::getInfo();
+	std::string info = GameObject::getInfo();
 
 	info += GameObject::getEquipItemsString();
 	info += GameObject::getInventoryItemsString();
@@ -33,7 +33,7 @@ void Player::open(GameObject* gameObject)
 {
 	if (gameObject->getType() == GameObjectTypes::typeContainer)
 	{
-		list<ObjectModifier*> items = gameObject->getInventoryItems();
+		std::list<ObjectModifier*> items = gameObject->getInventoryItems();
 
 		for each (ObjectModifier* item in items)
 		{

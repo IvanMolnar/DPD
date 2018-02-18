@@ -6,7 +6,7 @@ public:
 	Obstacle();
 	~Obstacle();
 
-	void sendEvent(Events event, Directions direction, string& data, GameObject* object);
+	void sendEvent(Events event, Directions direction, std::string& data, GameObject* object);
 
 	void move(Directions direction);
 	void inspect(GameObject* gameObject);
@@ -15,6 +15,6 @@ public:
 	// singnals death
 	void dead();
 
-	string getInfo();
+	std::string getInfo();
 };
 

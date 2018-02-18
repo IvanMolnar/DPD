@@ -21,7 +21,7 @@ void Enemy::inspect(GameObject* gameObject)
 	return;
 }
 
-string Enemy::getInfo()
+std::string Enemy::getInfo()
 {
 	return "Enemy info\n" + GameObject::getInfo();
 }

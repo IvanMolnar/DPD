@@ -29,12 +29,12 @@ void Door::dead()
 	return;
 }
 
-string Door::getMapName()
+std::string Door::getMapName()
 {
 	return "testmap2.txt";
 }
 
-string Door::getInfo()
+std::string Door::getInfo()
 {
 	return "A door, how exciting!";
 }

@@ -2,7 +2,7 @@
 
 #include "GameObjectFactory.h"
 
-static map<GameObjectTypes, char> _charTypeMap;
+static std::map<GameObjectTypes, char> _charTypeMap;
 
 void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 {
@@ -17,7 +17,7 @@ char GameObjectFactory::getCharIdFromType(GameObjectTypes gameObjectType)
 GameObject* GameObjectFactory::createGameObject(char c)
 {
 	GameObject* result = nullptr;
-
+/*
 	switch (c)
 	{
 	case '#':
@@ -35,7 +35,7 @@ GameObject* GameObjectFactory::createGameObject(char c)
 	case 'd':
 		result = new Door();
 		break;
-	}
+	}*/
 
 	if (result)
 	{

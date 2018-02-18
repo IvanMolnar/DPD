@@ -9,7 +9,7 @@ public:
 	~StateCrouching();
 
 	void onEnter();
-	void processState(Events event, Directions direction, GameObject* object, const string& data);
+	void processState(Events event, Directions direction, GameObject* object, std::string& data);
 	void onExit();
 	bool canChangeState(State* nextState);
 };

@@ -5,7 +5,7 @@
 class MyInputExample : public Input
 {
 public:
-	MyInputExample(screenType st);
+	MyInputExample();
 	~MyInputExample();
 
 private:

@@ -9,7 +9,7 @@ Obstacle::~Obstacle()
 {
 }
 
-void Obstacle::sendEvent(Events event, Directions direction, string& data, GameObject* object)
+void Obstacle::sendEvent(Events event, Directions direction, std::string& data, GameObject* object)
 {
 	// obstacle don't have events
 	return;
@@ -35,7 +35,7 @@ void Obstacle::dead()
 	return;
 }
 
-string Obstacle::getInfo()
+std::string Obstacle::getInfo()
 {
 	return "A wall";
 }

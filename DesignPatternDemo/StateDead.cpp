@@ -16,7 +16,7 @@ void StateDead::onEnter()
 	_owner->dead();
 }
 
-void StateDead::processState(Events event, Directions direction, GameObject* object, string& data)
+void StateDead::processState(Events event, Directions direction, GameObject* object, std::string& data)
 {
 	WRITE_LOG("StateDead::processState");
 }

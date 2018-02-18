@@ -3,11 +3,16 @@
 
 #include "stdafx.h"
 
-#include "GameLogic.h"
+#include "MyGameLogicExample.h"
+
+
+//test
+#include "MyDisplayExample.h"
 
 int main()
 {
-	GameLogic l;
+	std::shared_ptr<MyDisplayExample> display = std::shared_ptr<MyDisplayExample>(new MyDisplayExample());
+	MyGameLogicExample l(display);
 	l.run();
 
     return 0;

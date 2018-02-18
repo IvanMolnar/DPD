@@ -3,6 +3,7 @@
 
 Display::Display()
 {
+	_mapAreaInterface = nullptr;
 }
 
 
@@ -10,12 +11,12 @@ Display::~Display()
 {
 }
 
-void Display::getDisplayData()
+std::string Display::getDisplayData()
 {
-//	return _activeScreen->getLevelDisplayData();
+	return _mapAreaInterface->getDisplayData();
 }
 
-void Display::setActiveScreen(std::shared_ptr<Screen> activeScreen)
+void Display::init(MapAreaInterface* const mapAreaInterface)
 {
-	_activeScreen = activeScreen;
+	_mapAreaInterface = mapAreaInterface;
 }

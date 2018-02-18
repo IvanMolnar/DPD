@@ -1,7 +1,8 @@
 #include "MyGameLogicExample.h"
 
 
-MyGameLogicExample::MyGameLogicExample()
+MyGameLogicExample::MyGameLogicExample(const std::shared_ptr<Display>& display) :
+	GameLogic(display)
 {
 }
 

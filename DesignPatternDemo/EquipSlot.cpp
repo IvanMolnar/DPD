@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-EquipSlot::EquipSlot(int type, string ownerName) : _type(type), _ownerName(ownerName)
+EquipSlot::EquipSlot(int type, std::string ownerName) : _type(type), _ownerName(ownerName)
 {
 	_modifier = nullptr;
 }
@@ -54,9 +54,9 @@ ObjectModifier* EquipSlot::getObjectModifier()
 	return _modifier;
 }
 
-list<ObjectModifierType> EquipSlot::getType()
+std::list<ObjectModifierType> EquipSlot::getType()
 {
-	list<ObjectModifierType> result;
+	std::list<ObjectModifierType> result;
 
 	if (_type & ObjectModifierType::weapon)
 	{
@@ -76,11 +76,11 @@ list<ObjectModifierType> EquipSlot::getType()
 	return result;
 }
 
-string EquipSlot::getTypeString()
+std::string EquipSlot::getTypeString()
 {
-	string result;
+	std::string result;
 
-	list<ObjectModifierType> supportedTypes = getType();
+	std::list<ObjectModifierType> supportedTypes = getType();
 
 	for each (ObjectModifierType supportedType in supportedTypes)
 	{
@@ -107,7 +107,7 @@ string EquipSlot::getTypeString()
 
 bool EquipSlot::doesSupportType(ObjectModifierType type)
 {
-	list<ObjectModifierType> types = getType();
+	std::list<ObjectModifierType> types = getType();
 
 	for each (ObjectModifierType ObjectType in types)
 	{
@@ -120,11 +120,11 @@ bool EquipSlot::doesSupportType(ObjectModifierType type)
 	return false;
 }
 
-string EquipSlot::getInfo()
+std::string EquipSlot::getInfo()
 {
-	stringstream ss;
+	std::stringstream ss;
 
-	ss << endl << "Can equip " << getTypeString() << endl << "Equiped: ";
+	ss << std::endl << "Can equip " << getTypeString() << std::endl << "Equiped: ";
 
 	if (_modifier)
 	{

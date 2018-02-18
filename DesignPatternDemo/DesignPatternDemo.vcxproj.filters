@@ -162,6 +162,12 @@
     <ClInclude Include="MapArea.h">
       <Filter>src\Level</Filter>
     </ClInclude>
+    <ClInclude Include="MapAreaInterface.h">
+      <Filter>src\GameObject\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDisplayExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -250,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="MapArea.cpp">
       <Filter>src\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDisplayExample.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
