@@ -22,11 +22,6 @@ void MyGameLogicExample::processAction(const resultAction& action)
 
 		// send event
 		_level->getPlayer()->sendEvent(action._event, action._direction, action._data, gameObject);
-
-		if (!_level->getPlayer())
-		{
-			processState(GameStates::GameOver);
-		}
 	}
 }
 

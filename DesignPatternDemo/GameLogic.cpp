@@ -7,7 +7,6 @@ GameLogic::GameLogic(std::unique_ptr<Display>& display, std::unique_ptr<MapManag
 	_mapManager(std::move(mapManager))
 {
 	_gameRunning = true;
-	_alternativeControls = false;
 }
 
 GameLogic::~GameLogic()
@@ -45,9 +44,9 @@ void GameLogic::processInput()
 
 	    processAction(action);
 
-		_display->draw();
+		internalProcessState(action._gameState);
 
-		internalProcessState(action._gameState);	
+		_display->draw();
 	}
 }
 
