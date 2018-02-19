@@ -10,7 +10,6 @@ MyGameLogicExample::MyGameLogicExample(const std::shared_ptr<Display>& display) 
 	setInput(std::shared_ptr<Input>(new InputCommand()));
 }
 
-
 MyGameLogicExample::~MyGameLogicExample()
 {
 }

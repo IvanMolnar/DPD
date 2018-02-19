@@ -221,7 +221,7 @@ protected:
 		// (so we can use the same helper-child-application for both loggers
 		DWORD cbWritten=0;
 		char *ptr="Extended-Console: TRUE\r\n";
-		WriteFile(m_hPipe,ptr,strlen(ptr),&cbWritten,NULL);
+		WriteFile(m_hPipe,ptr,(DWORD)strlen(ptr),&cbWritten,NULL);
 		return (cbWritten==strlen(ptr)) ? 0 : -1;
 	}
 	

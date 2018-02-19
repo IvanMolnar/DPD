@@ -22,7 +22,6 @@ protected:
 	GameStates _currentState;
 	bool _gameRunning;
 	bool _alternativeControls;
-	
 	void startGame();
 	void loadLevel(const std::string& levelPath);
 	void processInput();
