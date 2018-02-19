@@ -3,9 +3,9 @@
 #include <sstream>
 #include <iostream>
 
-Input::Input()
+Input::Input() :
+	_inputLevel(0)
 {
-	_screenLevel = 0;
 }
 
 Input::~Input()
@@ -22,9 +22,9 @@ resultAction Input::handleInput()
 	{
 		inputAction action = *it;
 
-		if ((action._drawScreenLevel == _screenLevel) && (action._c == input))
+		if ((action._inputLevel == _inputLevel) && (action._input == input))
 		{
-			_screenLevel = action._setScreenLevel;
+			_inputLevel = action._setInputLevel;
 
 			result._direction = action._direction;
 			result._event = action._event;
@@ -43,6 +43,6 @@ void Input::addInputAction(inputAction action)
 
 	if (action._multiInput)
 	{
-		_multiInputActions.push_back(action._c);
+		_multiInputActions.push_back(action._input);
 	}
 }

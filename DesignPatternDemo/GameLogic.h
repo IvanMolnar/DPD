@@ -2,10 +2,7 @@
 
 #include "MapArea.h"
 #include "GameLogicObjectInterface.h"
-#include "InputCommand.h"
-#include "InputMainMenu.h"
-#include "InputGameOver.h"
-#include "InputCommandAlt.h"
+#include "Input.h"
 #include "Display.h"
 #include "MapAreaInterface.h"
 #include <memory>

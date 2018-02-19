@@ -135,19 +135,10 @@
     <ClInclude Include="EquipSlot.h">
       <Filter>src\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="InputGameOver.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="InputMainMenu.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>src\Screens</Filter>
     </ClInclude>
     <ClInclude Include="InputCommand.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="InputCommandAlt.h">
       <Filter>src\Screens</Filter>
     </ClInclude>
     <ClInclude Include="MyInputExample.h">
@@ -230,19 +221,10 @@
     <ClCompile Include="Player.cpp">
       <Filter>src\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="InputGameOver.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="InputMainMenu.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="InputCommand.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="InputCommandAlt.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="MyInputExample.cpp">

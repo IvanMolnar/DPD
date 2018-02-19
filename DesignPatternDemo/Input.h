@@ -19,15 +19,15 @@ struct resultAction
 struct inputAction
 {
 	inputAction(char charId, std::string description, Events event = Events::none, Directions direction = Directions::None, GameStates gameEvent = GameStates::Unchanged, int setScreenLevel = 0, int drawScreenLevel = 0, bool multiInput = false)
-		: _c(charId), _description(description), _setScreenLevel(setScreenLevel), _drawScreenLevel(drawScreenLevel), _event(event), _direction(direction), _gameEvent(gameEvent), _multiInput(multiInput) {}
+		: _input(charId), _description(description), _setInputLevel(setScreenLevel), _inputLevel(drawScreenLevel), _event(event), _direction(direction), _gameEvent(gameEvent), _multiInput(multiInput) {}
 
-	unsigned int _c;
+	unsigned int _input;
 	std::string _description;
 	Events _event;
 	Directions _direction;
 	GameStates _gameEvent;
-	int _setScreenLevel;
-	int _drawScreenLevel;
+	int _setInputLevel;
+	int _inputLevel;
 	bool _multiInput;
 };
 
@@ -44,7 +44,7 @@ protected:
 
 private:
 	std::list<inputAction> _inputActions;
-	int _screenLevel;
+	int _inputLevel;
 	std::list<char> _multiInputActions;
 
 	virtual unsigned int waitForInput() = 0;
