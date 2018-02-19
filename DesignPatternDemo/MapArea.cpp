@@ -4,10 +4,10 @@
 
 #include "GameObjectFactory.h"
 
-MapArea::MapArea()
+MapArea::MapArea() :
+	_mapId(0)
 {
 	_player = nullptr;
-	//GameObjectFactory::init(gameLogicObjectInterface);
 
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
@@ -75,7 +75,7 @@ void MapArea::loadLevel(std::string fileName)
 
 		currentRow = 0;
 
-		for each (char c in line)
+		for (char c : line)
 		{
 			GameObject* gameObject = GameObjectFactory::createGameObject(c);
 
@@ -251,6 +251,10 @@ std::string MapArea::generateScreenData()
 	}
 
 	return result;
+}
+unsigned int MapArea::getMapId()
+{
+	return _mapId;
 }
 void MapArea::getLevelDisplayData()
 {

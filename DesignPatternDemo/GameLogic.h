@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MapArea.h"
+#include "MapManager.h"
 #include "GameLogicObjectInterface.h"
 #include "Input.h"
 #include "Display.h"
@@ -10,15 +10,15 @@
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
 {
 public:
-	GameLogic(const std::shared_ptr<Display>& display);
+	GameLogic(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager);
 	virtual ~GameLogic();
 
 	void run();
 
 protected:
-	std::unique_ptr<MapArea> _level;
 	std::shared_ptr<Input> _currentInput;
-	std::shared_ptr<Display> _display;
+	std::unique_ptr<Display> _display;
+	std::unique_ptr<MapManager> _mapManager;
 	GameStates _currentState;
 	bool _gameRunning;
 	bool _alternativeControls;

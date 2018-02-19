@@ -2,8 +2,9 @@
 #include "Global.h"
 #include "GameObjectFactory.h"
 
-GameLogic::GameLogic(const std::shared_ptr<Display>& display) :
-	_display(display)
+GameLogic::GameLogic(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager) :
+	_display(std::move(display)),
+	_mapManager(std::move(mapManager))
 {
 	_gameRunning = true;
 	_alternativeControls = false;
@@ -30,15 +31,8 @@ void GameLogic::loadLevel(const std::string& levelPath)
 {
 	WRITE_LOG("loading level...");
 
-	if (_level)
-	{
-		_level->loadLevel(levelPath);
-	}
-	else
-	{
-		_level = std::unique_ptr<MapArea>(new MapArea());
-		_level->loadLevel(levelPath);
-	}
+	_mapManager->loadArea(levelPath);
+	//_mapManager->setCurrentMapArea()
 
 	WRITE_LOG("level loaded");
 }
@@ -58,7 +52,7 @@ void GameLogic::processInput()
 }
 
 void GameLogic::moveObject(GameObject* gameObject, Directions direction)
-{
+{/*
 	if (_level->canMove(gameObject, direction))
 	{
 		_level->move(gameObject, direction);
@@ -71,7 +65,7 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 		}
 
 		_level->getPlayer()->getStats()->regenerate();
-	}
+	}*/
 }
 
 void GameLogic::internalProcessState(GameStates gameState)
@@ -113,7 +107,7 @@ void GameLogic::internalProcessState(GameStates gameState)
 
 void GameLogic::dead(GameObject* gameObject)
 {
-	_level->remove(gameObject);
+	//_level->remove(gameObject);
 }
 
 void GameLogic::enterDoor(GameObject* gameObject)

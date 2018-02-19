@@ -154,6 +154,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EquipSlot.h" />
+    <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FSM.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameLogicObjectInterface.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="InputCommand.h" />
     <ClInclude Include="MapArea.h" />
     <ClInclude Include="MapAreaInterface.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="MyDisplayExample.h" />
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
@@ -193,6 +195,7 @@
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EquipSlot.cpp" />
+    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -200,6 +203,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputCommand.cpp" />
     <ClCompile Include="MapArea.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="MyDisplayExample.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />
     <ClCompile Include="MyInputExample.cpp" />

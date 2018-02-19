@@ -25,12 +25,16 @@ public:
 	std::list<GameObject*> getGameObjects();
 	void remove(GameObject* gameObject);
 
+	unsigned int getMapId();
 	void getLevelDisplayData();
 
 private:
 	GameObject* _mapData[MaxLevelColumns][MaxLevelRows];
 	GameObject* _player;
 
+
+
+	unsigned int _mapId;
 	std::string generateScreenData();
 };
 
