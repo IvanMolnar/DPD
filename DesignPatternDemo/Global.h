@@ -50,6 +50,12 @@ enum GameStates
 	ExitGame
 };
 
+struct position2d
+{
+	int x;
+	int y;
+};
+
 
 class Logger
 {

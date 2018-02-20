@@ -7,8 +7,11 @@
 #include "ObjectCommandInterface.h"
 #include "ObjectModifierInterface.h"
 #include "ObjectModifier.h"
+#include "MyObjectDisplayData.h"
 
-class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface
+#include <memory>
+
+class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData
 {
 public:
 	GameObject(GameObjectTypes type);

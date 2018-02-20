@@ -1,17 +1,28 @@
 #include "MyGameLogicExample.h"
-
+#include "MyDisplayExample.h"
 
 //test
 #include "InputCommand.h"
 
-MyGameLogicExample::MyGameLogicExample(const std::shared_ptr<Display>& display) :
-	GameLogic(display)
+MyGameLogicExample::MyGameLogicExample()
 {
+	GameLogic::init(createDisplay(), createMapManager());
+
 	setInput(std::shared_ptr<Input>(new InputCommand()));
 }
 
 MyGameLogicExample::~MyGameLogicExample()
 {
+}
+
+std::unique_ptr<Display> MyGameLogicExample::createDisplay()
+{
+	return std::unique_ptr<Display>(new MyDisplayExample());
+}
+
+std::unique_ptr<MapManager> MyGameLogicExample::createMapManager()
+{
+	return std::unique_ptr<MapManager>(new MapManager());
 }
 
 void MyGameLogicExample::processAction(const resultAction& action)

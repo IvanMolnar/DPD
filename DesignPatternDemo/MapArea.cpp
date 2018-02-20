@@ -4,32 +4,20 @@
 
 #include "GameObjectFactory.h"
 
-MapArea::MapArea() :
-	_mapId(0)
+MapArea::MapArea(std::unique_ptr<std::string> mapLoadData) :
+	_mapId(0),
+	_mapLoadData(std::move(mapLoadData))
 {
-	_player = nullptr;
-
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			_mapData[x][y] = nullptr;
-		}
-	}
+	loadMapData();
 }
 
 MapArea::~MapArea()
 {
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			if (_mapData[x][y])
-			{
-				delete _mapData[x][y];
-			}
-		}
-	}
+}
+
+void MapArea::loadMapData()
+{
+	for ()
 }
 
 void MapArea::loadLevel(std::string fileName)

@@ -5,8 +5,11 @@
 class MyGameLogicExample : public GameLogic
 {
 public:
-	MyGameLogicExample(const std::shared_ptr<Display>& display);
+	MyGameLogicExample();
 	~MyGameLogicExample();
+
+	std::unique_ptr<Display> createDisplay();
+	std::unique_ptr<MapManager> createMapManager();
 
 private:
 	void processAction(const resultAction& action);

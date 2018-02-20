@@ -168,9 +168,11 @@
     <ClInclude Include="MapAreaInterface.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MyDisplayExample.h" />
+    <ClInclude Include="MyFileSystem.h" />
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
+    <ClInclude Include="MyObjectDisplayData.h" />
     <ClInclude Include="ObjectEventInterface.h" />
     <ClInclude Include="ObjectModifier.h" />
     <ClInclude Include="ObjectModifierInterface.h" />
@@ -205,6 +207,7 @@
     <ClCompile Include="MapArea.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="MyDisplayExample.cpp" />
+    <ClCompile Include="MyFileSystem.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />
     <ClCompile Include="MyInputExample.cpp" />
     <ClCompile Include="ObjectModifier.cpp" />

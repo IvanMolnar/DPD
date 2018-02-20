@@ -4,18 +4,18 @@
 #include "GameLogicObjectInterface.h"
 #include "ConsoleLogger.h"
 
-
-#define MaxLevelColumns 16
-#define MaxLevelRows 16
-
-
 class MapArea
 {
 public:
-	MapArea();
+	MapArea(std::unique_ptr<std::string> mapLoadData);
 	~MapArea();
 
+	
+
 	void loadLevel(std::string fileName);
+
+
+
 	GameObject* getPlayer();
 	bool canMove(GameObject* gameObject, Directions direction);
 	void move(GameObject* gameObject, Directions direction);
@@ -36,5 +36,10 @@ private:
 
 	unsigned int _mapId;
 	std::string generateScreenData();
+
+
+	std::unique_ptr<std::string> _mapLoadData;
+
+	void loadMapData();
 };
 

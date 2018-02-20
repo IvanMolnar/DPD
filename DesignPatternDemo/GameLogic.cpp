@@ -2,11 +2,15 @@
 #include "Global.h"
 #include "GameObjectFactory.h"
 
-GameLogic::GameLogic(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager) :
-	_display(std::move(display)),
-	_mapManager(std::move(mapManager))
+GameLogic::GameLogic()
 {
 	_gameRunning = true;
+}
+
+void GameLogic::init(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager)
+{
+	_display = std::move(display);
+	_mapManager = std::move(mapManager);
 }
 
 GameLogic::~GameLogic()

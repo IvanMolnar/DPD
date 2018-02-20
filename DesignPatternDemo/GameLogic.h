@@ -10,8 +10,10 @@
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
 {
 public:
-	GameLogic(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager);
+	GameLogic();
 	virtual ~GameLogic();
+
+	void init(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager);
 
 	void run();
 
@@ -31,7 +33,8 @@ protected:
 	virtual void processAction(const resultAction& action) = 0;
 	virtual bool processState(GameStates gameEvent) = 0;
 	virtual void setInput(const std::shared_ptr<Input> newInput) = 0;
-
+	virtual std::unique_ptr<Display> createDisplay() = 0;
+	virtual std::unique_ptr<MapManager> createMapManager() = 0;
 
 
 	std::string getDisplayData();
