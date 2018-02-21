@@ -167,6 +167,7 @@
     <ClInclude Include="MapArea.h" />
     <ClInclude Include="MapAreaInterface.h" />
     <ClInclude Include="MapManager.h" />
+    <ClInclude Include="MapLoader.h" />
     <ClInclude Include="MyDisplayExample.h" />
     <ClInclude Include="MyFileSystem.h" />
     <ClInclude Include="MyGameLogicExample.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="InputCommand.cpp" />
     <ClCompile Include="MapArea.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MapLoader.cpp" />
     <ClCompile Include="MyDisplayExample.cpp" />
     <ClCompile Include="MyFileSystem.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />

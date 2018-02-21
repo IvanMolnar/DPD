@@ -2,45 +2,26 @@
 
 #include "GameObjectFactory.h"
 
-static std::map<GameObjectTypes, char> _charTypeMap;
+static std::map<GameObjectTypes, std::unique_ptr<GameObject>(*)()> _registeredGameObjects;
 
 void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 {
 	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
 
-char GameObjectFactory::getCharIdFromType(GameObjectTypes gameObjectType)
+template<typename T>
+void GameObjectFactory::registerInstance(GameObjectTypes name)
 {
-	return _charTypeMap[gameObjectType];
+	_registeredGameObjects[name] = &createInstance<T>;
 }
 
-GameObject* GameObjectFactory::createGameObject(char c)
+std::unique_ptr<GameObject> GameObjectFactory::createGameObject(GameObjectTypes name)
 {
-	GameObject* result = nullptr;
-/*
-	switch (c)
-	{
-	case '#':
-		result = new Obstacle();
-		break;
-	case 'x':
-		result = new Player(_gameLogicObjectInterface);
-		break;
-	case 'e':
-		result = new Enemy(_gameLogicObjectInterface);
-		break;
-	case 'c':
-		result = new Container(_gameLogicObjectInterface);
-		break;
-	case 'd':
-		result = new Door();
-		break;
-	}*/
+	return _registeredGameObjects[name]();
+}
 
-	if (result)
-	{
-		_charTypeMap[result->getType()] = c;
-	}
-	
-	return result;
+template<typename T>
+std::unique_ptr<GameObject> GameObjectFactory::createInstance()
+{
+	return std::make_unique<T>();
 }
