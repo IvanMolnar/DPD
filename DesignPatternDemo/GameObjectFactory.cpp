@@ -4,9 +4,9 @@
 
 static std::map<GameObjectTypes, std::unique_ptr<GameObject>(*)()> _registeredGameObjects;
 
-void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
+void GameObjectFactory::init(std::unique_ptr<GameLogicObjectInterface> gameLogicObjectInterface)
 {
-	_gameLogicObjectInterface = gameLogicObjectInterface;
+	_gameLogicObjectInterface = std::move(gameLogicObjectInterface);
 }
 
 template<typename T>

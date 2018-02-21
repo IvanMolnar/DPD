@@ -7,8 +7,6 @@
 #include <memory>
 
 
-static GameLogicObjectInterface* _gameLogicObjectInterface;
-
 class GameObjectFactory
 {
 public:
@@ -21,7 +19,7 @@ public:
 		return instance;
 	}
 
-	static void init(GameLogicObjectInterface* gameLogicObjectInterface);
+	static void init(std::unique_ptr<GameLogicObjectInterface> gameLogicObjectInterface);
 
 	static std::unique_ptr<GameObject> createGameObject(GameObjectTypes name);
 
@@ -33,4 +31,6 @@ private:
 
 	template<typename T>
 	static std::unique_ptr<GameObject> createInstance();
+
+	static std::unique_ptr<GameLogicObjectInterface> _gameLogicObjectInterface;
 };
