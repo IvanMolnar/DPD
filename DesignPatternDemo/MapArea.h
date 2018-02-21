@@ -29,7 +29,7 @@ public:
 	void getLevelDisplayData();
 
 private:
-	GameObject* _mapData[MaxLevelColumns][MaxLevelRows];
+
 	GameObject* _player;
 
 

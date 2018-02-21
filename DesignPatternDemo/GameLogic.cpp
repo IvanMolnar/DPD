@@ -1,6 +1,5 @@
 #include "GameLogic.h"
 #include "Global.h"
-#include "GameObjectFactory.h"
 
 GameLogic::GameLogic()
 {
@@ -11,6 +10,9 @@ void GameLogic::init(std::unique_ptr<Display>& display, std::unique_ptr<MapManag
 {
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
+	
+	_gameObjectFactory = std::make_shared<GameObjectFactory>();
+	_gameObjectFactory->init(this);
 }
 
 GameLogic::~GameLogic()
@@ -115,10 +117,10 @@ void GameLogic::dead(GameObject* gameObject)
 
 void GameLogic::enterDoor(GameObject* gameObject)
 {
-	Door* door = dynamic_cast<Door*>(gameObject);
-	std::string nextMap = door->getMapName();
+//	Door* door = dynamic_cast<Door*>(gameObject);
+//	std::string nextMap = door->getMapName();
 
-	loadLevel(nextMap);
+//	loadLevel(nextMap);
 }
 
 std::string GameLogic::getDisplayData()

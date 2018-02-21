@@ -8,6 +8,7 @@
 #include "ObjectModifierInterface.h"
 #include "ObjectModifier.h"
 #include "MyObjectDisplayData.h"
+#include "GameLogicObjectInterface.h"
 
 #include <memory>
 
@@ -55,4 +56,6 @@ protected:
 	virtual void open(GameObject* gameObject);
 	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot);
 	virtual void dead() = 0;
+
+	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

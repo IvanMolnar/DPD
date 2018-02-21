@@ -1,8 +1,9 @@
 #include "Obstacle.h"
 
 
-Obstacle::Obstacle() : GameObject(GameObjectTypes::typeObstacle)
+Obstacle::Obstacle(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectTypes::typeObstacle)
 {
+	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
 
 Obstacle::~Obstacle()

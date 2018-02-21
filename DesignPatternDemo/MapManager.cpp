@@ -1,10 +1,9 @@
 #include "MapManager.h"
 
 
-MapManager::MapManager(std::shared_ptr<FileSystem>& fileSystem) :
+MapManager::MapManager(const std::shared_ptr<FileSystem>& fileSystem) :
 	_fileSystem(fileSystem)
 {
-	GameObjectFactory::init(gameLogicObjectInterface);
 }
 
 

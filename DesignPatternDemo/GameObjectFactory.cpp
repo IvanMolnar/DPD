@@ -2,26 +2,12 @@
 
 #include "GameObjectFactory.h"
 
-static std::map<GameObjectTypes, std::unique_ptr<GameObject>(*)()> _registeredGameObjects;
-
-void GameObjectFactory::init(std::unique_ptr<GameLogicObjectInterface> gameLogicObjectInterface)
+void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 {
-	_gameLogicObjectInterface = std::move(gameLogicObjectInterface);
-}
-
-template<typename T>
-void GameObjectFactory::registerInstance(GameObjectTypes name)
-{
-	_registeredGameObjects[name] = &createInstance<T>;
+	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
 
 std::unique_ptr<GameObject> GameObjectFactory::createGameObject(GameObjectTypes name)
 {
 	return _registeredGameObjects[name]();
-}
-
-template<typename T>
-std::unique_ptr<GameObject> GameObjectFactory::createInstance()
-{
-	return std::make_unique<T>();
 }

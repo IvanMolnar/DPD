@@ -17,11 +17,11 @@ MapArea::~MapArea()
 
 void MapArea::loadMapData()
 {
-	for ()
+//	for ()
 }
 
 void MapArea::loadLevel(std::string fileName)
-{
+{/*
 	std::string line;
 	std::ifstream infile;
 
@@ -114,7 +114,7 @@ void MapArea::loadLevel(std::string fileName)
 
 	}
 
-	infile.close();
+	infile.close();*/
 }
 
 GameObject* MapArea::getPlayer()
@@ -124,103 +124,19 @@ GameObject* MapArea::getPlayer()
 
 bool MapArea::canMove(GameObject* gameObject, Directions direction)
 {
-	int column = -1;
-	int row = -1;
-
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			if (_mapData[x][y] == gameObject)
-			{
-				column = x;
-				row = y;
-				x = MaxLevelColumns;
-				break;
-			}
-		}
-	}
-
-	switch (direction)
-	{
-	case North:
-		--column;
-		break;
-	case South:
-		++column;
-		break;
-	case West:
-		--row;
-		break;
-	case East:
-		++row;
-		break;
-	default:
-		break;
-	}
-
-	if ((column > 0 && column < MaxLevelColumns) && (row > 0 && row < MaxLevelRows))
-	{
-		if (!_mapData[column][row])
-		{
-			return true;
-		}
-	}
-
-	return false;
+	return true;
 }
 
 void MapArea::move(GameObject* gameObject, Directions direction)
 {
-	int previousColumn = -1;
-	int previousRow = -1;
-	int column = -1;
-	int row = -1;
-
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			if (_mapData[x][y] == gameObject)
-			{
-				column = x;
-				previousColumn = x;
-				row = y;
-				previousRow = y;
-			}
-		}
-	}
-
-	switch (direction)
-	{
-	case North:
-		--column;
-		break;
-	case South:
-		++column;
-		break;
-	case West:
-		--row;
-		break;
-	case East:
-		++row;
-		break;
-	default:
-		break;
-	}
-
-	if ((column > 0 && column < MaxLevelColumns) && (row > 0 && row < MaxLevelRows))
-	{
-		_mapData[column][row] = _mapData[previousColumn][previousRow];
-		_mapData[previousColumn][previousRow] = nullptr;
-	}
+	
 
 }
 
 std::string MapArea::generateScreenData()
 {
 	std::string result;
-
+	/*
 	for (int x = 0; x < MaxLevelColumns; x++)
 	{
 		for (int y = 0; y < MaxLevelRows; y++)
@@ -236,7 +152,7 @@ std::string MapArea::generateScreenData()
 		}
 
 		result += '\n';
-	}
+	}*/
 
 	return result;
 }
@@ -267,50 +183,7 @@ GameObject* MapArea::getObjectNextTo(GameObject* gameObject, Directions directio
 {
 	GameObject* result = nullptr;
 
-	if (direction == Directions::None)
-	{
-		return result;
-	}
-
-	int column = -1;
-	int row = -1;
-
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			if (_mapData[x][y] == gameObject)
-			{
-				column = x;
-				row = y;
-				x = MaxLevelColumns;
-				break;
-			}
-		}
-	}
-
-	if ((column > 0 && column < MaxLevelColumns) && (row > 0 && row < MaxLevelRows))
-	{
-		switch (direction)
-		{
-		case North:
-			--column;
-			break;
-		case South:
-			++column;
-			break;
-		case West:
-			--row;
-			break;
-		case East:
-			++row;
-			break;
-		default:
-			break;
-		}
-
-		result = _mapData[column][row];
-	}
+	
 
 	return result;
 }
@@ -319,18 +192,6 @@ std::list<GameObject*> MapArea::getGameObjectByType(GameObjectTypes gameObjectTy
 {
 	std::list<GameObject*> result;
 
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			GameObject* gameObject = _mapData[x][y];
-
-			if (gameObject && gameObject->getType() == gameObjectType)
-			{
-				result.push_back(gameObject);
-			}
-		}
-	}
 
 	return result;
 }
@@ -339,40 +200,11 @@ std::list<GameObject*> MapArea::getGameObjects()
 {
 	std::list<GameObject*> result;
 
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			GameObject* gameObject = _mapData[x][y];
-
-			if (gameObject)
-			{
-				result.push_back(gameObject);
-			}
-		}
-	}
 
 	return result;
 }
 
 void MapArea::remove(GameObject* gameObject)
 {
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			if (_mapData[x][y] == gameObject)
-			{
-				if (gameObject == _player)
-				{
-					_player = nullptr;
-				}
 
-				delete gameObject;
-				gameObject = nullptr;
-				_mapData[x][y] = nullptr;
-				return;
-			}
-		}
-	}
 }

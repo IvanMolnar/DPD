@@ -13,6 +13,6 @@ MapLoader::~MapLoader()
 
 std::unique_ptr<GameObject> MapLoader::createGameObject()
 {
-	GameObjectFactory::createGameObject()
+//	GameObjectFactory::createGameObject()
 	return std::unique_ptr<GameObject>();
 }

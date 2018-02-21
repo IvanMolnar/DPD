@@ -7,7 +7,7 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(GameLogicObjectInterface* gameLogicInterface);
+	Enemy(GameLogicObjectInterface* gameLogicObjectInterface);
 	~Enemy();
 
 	void move(Directions direction);

@@ -20,7 +20,5 @@ public:
 	// singnals death
 	void dead();
 
-private:
-	GameLogicObjectInterface* _gameLogicObjectInterface;
 };
 

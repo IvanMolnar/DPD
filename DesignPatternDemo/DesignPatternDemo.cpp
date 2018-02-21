@@ -11,8 +11,8 @@
 
 int main()
 {
-	std::shared_ptr<MyDisplayExample> display = std::shared_ptr<MyDisplayExample>(new MyDisplayExample());
-	MyGameLogicExample l(display);
+	//std::shared_ptr<MyDisplayExample> display = std::shared_ptr<MyDisplayExample>(new MyDisplayExample());
+	MyGameLogicExample l;
 	l.run();
 
     return 0;

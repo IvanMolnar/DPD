@@ -6,7 +6,7 @@
 class MapManager
 {
 public:
-	MapManager(std::shared_ptr<FileSystem>& fileSystem);
+	MapManager(const std::shared_ptr<FileSystem>& fileSystem);
 	virtual ~MapManager();
 
 

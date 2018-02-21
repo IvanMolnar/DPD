@@ -5,7 +5,7 @@
 class Door : public GameObject
 {
 public:
-	Door();
+	Door(GameLogicObjectInterface* gameLogicObjectInterface);
 	~Door();
 
 	void move(Directions direction);

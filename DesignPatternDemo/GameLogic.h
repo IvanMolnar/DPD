@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Display.h"
 #include "MapAreaInterface.h"
+#include "GameObjectFactory.h"
 #include <memory>
 
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
@@ -38,5 +39,7 @@ protected:
 
 
 	std::string getDisplayData();
+
+	std::shared_ptr<GameObjectFactory> _gameObjectFactory;
 };
 
