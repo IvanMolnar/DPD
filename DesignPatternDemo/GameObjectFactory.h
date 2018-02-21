@@ -10,8 +10,10 @@
 class GameObjectFactory
 {
 public:
-	GameObjectFactory(const GameObjectFactory &old) = delete;
-	const GameObjectFactory &operator=(const GameObjectFactory &old) = delete;
+	GameObjectFactory(GameObjectFactory const&) = delete;             // Copy construct
+	GameObjectFactory(GameObjectFactory&&) = delete;                  // Move construct
+	GameObjectFactory& operator=(GameObjectFactory const&) = delete;  // Copy assign
+	GameObjectFactory& operator=(GameObjectFactory &&) = delete;      // Move assign
 
 	static GameObjectFactory& getInstance()
 	{
