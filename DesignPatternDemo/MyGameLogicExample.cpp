@@ -1,8 +1,6 @@
 #include "MyGameLogicExample.h"
 #include "MyDisplayExample.h"
 
-#include "GameObjectFactory.h"
-
 
 #include "Container.h"
 #include "Door.h"
@@ -12,6 +10,7 @@
 
 
 #include "MyFileSystem.h"
+#include "MyMapLoader.h"
 
 //test
 #include "InputCommand.h"
@@ -40,7 +39,11 @@ std::unique_ptr<Display> MyGameLogicExample::createDisplay()
 
 std::unique_ptr<MapManager> MyGameLogicExample::createMapManager()
 {
-	return std::make_unique<MapManager>(std::make_shared<MyFileSystem>());
+	std::unique_ptr<MapLoader> mapLoader = std::unique_ptr<MyMapLoader>(new MyMapLoader(_gameObjectFactory));
+
+	std::shared_ptr<MyFileSystem> myFileSystem = std::make_shared<MyFileSystem>((std::move(mapLoader)));
+
+	return std::make_unique<MapManager>(myFileSystem);
 }
 
 void MyGameLogicExample::processAction(const resultAction& action)

@@ -46,7 +46,7 @@ void GameLogic::processInput()
 {
 	while (_gameRunning)
 	{
-		resultAction action = _currentInput->handleInput();//draw();
+		resultAction action = _currentInput->handleInput();
 
 	    processAction(action);
 
@@ -132,6 +132,6 @@ void GameLogic::run()
 {
 	_display->init(this);
 	_display->start();
-	internalProcessState(GameStates::MainMenu);
+	internalProcessState(GameStates::NewGame);
 	processInput();
 }

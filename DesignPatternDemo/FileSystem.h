@@ -1,5 +1,6 @@
 #pragma once
 
+#include "MapLoader.h"
 #include "MapArea.h"
 #include <memory>
 #include <iostream>
@@ -9,7 +10,7 @@
 class FileSystem
 {
 public:
-	FileSystem();
+	FileSystem(std::unique_ptr<MapLoader> mapLoader);
 	virtual ~FileSystem();
 
 
@@ -17,5 +18,8 @@ public:
 
 	std::unique_ptr<MapArea> loadMapArea(const std::string& areaName);
 	// load config, etc...
+
+private:
+	std::unique_ptr<MapLoader> _mapLoader;
 };
 

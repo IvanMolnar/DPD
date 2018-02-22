@@ -172,6 +172,7 @@
     <ClInclude Include="MyFileSystem.h" />
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
+    <ClInclude Include="MyMapLoader.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
     <ClInclude Include="MyObjectDisplayData.h" />
     <ClInclude Include="ObjectEventInterface.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="MyFileSystem.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />
     <ClCompile Include="MyInputExample.cpp" />
+    <ClCompile Include="MyMapLoader.cpp" />
     <ClCompile Include="ObjectModifier.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />

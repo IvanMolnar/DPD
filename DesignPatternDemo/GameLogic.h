@@ -1,12 +1,12 @@
 #pragma once
 
 #include "MapManager.h"
-#include "GameLogicObjectInterface.h"
 #include "Input.h"
 #include "Display.h"
 #include "MapAreaInterface.h"
 #include "GameObjectFactory.h"
 #include <memory>
+#include <map>
 
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
 {
@@ -42,4 +42,3 @@ protected:
 
 	std::shared_ptr<GameObjectFactory> _gameObjectFactory;
 };
-

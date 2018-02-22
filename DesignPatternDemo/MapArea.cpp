@@ -2,8 +2,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "GameObjectFactory.h"
-
 MapArea::MapArea(std::unique_ptr<std::string> mapLoadData) :
 	_mapId(0),
 	_mapLoadData(std::move(mapLoadData))
@@ -18,6 +16,7 @@ MapArea::~MapArea()
 void MapArea::loadMapData()
 {
 //	for ()
+
 }
 
 void MapArea::loadLevel(std::string fileName)

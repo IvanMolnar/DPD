@@ -2,8 +2,9 @@
 
 
 
-MapLoader::MapLoader()
+MapLoader::MapLoader(std::shared_ptr<GameObjectFactory> gameObjectFactory)
 {
+	_gameObjectFactory = gameObjectFactory;
 }
 
 
@@ -11,8 +12,7 @@ MapLoader::~MapLoader()
 {
 }
 
-std::unique_ptr<GameObject> MapLoader::createGameObject()
+std::unique_ptr<GameObject> MapLoader::createGameObject(GameObjectTypes type)
 {
-//	GameObjectFactory::createGameObject()
-	return std::unique_ptr<GameObject>();
+	return _gameObjectFactory->createGameObject(type);
 }

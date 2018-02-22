@@ -20,6 +20,9 @@ private:
 	std::vector<std::shared_ptr<MapArea>> _loadedMapAreas;
 	std::shared_ptr<MapArea> _currentMapArea;
 
+	std::vector<std::shared_ptr<GameObject>> _loadedGameObjects;
+	std::shared_ptr<GameObject> _player;
+
 	const std::shared_ptr<MapArea> getMapAreaFromIndex(const unsigned int mapId);
 };
 

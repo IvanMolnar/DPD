@@ -2,7 +2,8 @@
 
 
 
-MyFileSystem::MyFileSystem()
+MyFileSystem::MyFileSystem(std::unique_ptr<MapLoader> mapLoader) :
+	FileSystem(std::move(mapLoader))
 {
 }
 
