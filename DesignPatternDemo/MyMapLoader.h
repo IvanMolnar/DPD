@@ -5,7 +5,7 @@
 class MyMapLoader : public MapLoader
 {
 public:
-	MyMapLoader(std::shared_ptr<GameObjectFactory> gameObjectFactory);
+	MyMapLoader();
 	~MyMapLoader();
 
 	std::vector<std::unique_ptr<GameObject>> parse(std::unique_ptr<std::string>& data);

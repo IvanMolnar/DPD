@@ -2,6 +2,7 @@
 
 #include "GameObjectFactory.h"
 
+
 void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 {
 	_gameLogicObjectInterface = gameLogicObjectInterface;

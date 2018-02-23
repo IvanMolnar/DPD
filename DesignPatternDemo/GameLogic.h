@@ -39,6 +39,4 @@ protected:
 
 
 	std::string getDisplayData();
-
-	std::shared_ptr<GameObjectFactory> _gameObjectFactory;
 };

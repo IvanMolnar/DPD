@@ -11,8 +11,7 @@ void GameLogic::init(std::unique_ptr<Display>& display, std::unique_ptr<MapManag
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
 	
-	_gameObjectFactory = std::make_shared<GameObjectFactory>();
-	_gameObjectFactory->init(this);
+	GameObjectFactory::getInstance()->init(this);
 }
 
 GameLogic::~GameLogic()

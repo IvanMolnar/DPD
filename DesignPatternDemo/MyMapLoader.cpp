@@ -2,8 +2,7 @@
 
 
 
-MyMapLoader::MyMapLoader(std::shared_ptr<GameObjectFactory> gameObjectFactory) :
-	MapLoader(gameObjectFactory)
+MyMapLoader::MyMapLoader()
 {
 }
 

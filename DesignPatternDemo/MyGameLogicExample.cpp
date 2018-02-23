@@ -21,11 +21,11 @@ MyGameLogicExample::MyGameLogicExample()
 
 	setInput(std::shared_ptr<Input>(new InputCommand()));
 	
-	_gameObjectFactory->registerInstance<Container>(GameObjectTypes::typeContainer);
-	_gameObjectFactory->registerInstance<Door>(GameObjectTypes::typeDoor);
-	_gameObjectFactory->registerInstance<Enemy>(GameObjectTypes::typeEnemy);
-	_gameObjectFactory->registerInstance<Obstacle>(GameObjectTypes::typeObstacle);
-	_gameObjectFactory->registerInstance<Player>(GameObjectTypes::typePlayer);
+	GameObjectFactory::getInstance()->registerInstance<Container>(GameObjectTypes::typeContainer);
+	GameObjectFactory::getInstance()->registerInstance<Door>(GameObjectTypes::typeDoor);
+	GameObjectFactory::getInstance()->registerInstance<Enemy>(GameObjectTypes::typeEnemy);
+	GameObjectFactory::getInstance()->registerInstance<Obstacle>(GameObjectTypes::typeObstacle);
+	GameObjectFactory::getInstance()->registerInstance<Player>(GameObjectTypes::typePlayer);
 }
 
 MyGameLogicExample::~MyGameLogicExample()
@@ -39,7 +39,7 @@ std::unique_ptr<Display> MyGameLogicExample::createDisplay()
 
 std::unique_ptr<MapManager> MyGameLogicExample::createMapManager()
 {
-	std::unique_ptr<MapLoader> mapLoader = std::unique_ptr<MyMapLoader>(new MyMapLoader(_gameObjectFactory));
+	std::unique_ptr<MapLoader> mapLoader = std::unique_ptr<MyMapLoader>(new MyMapLoader());
 
 	std::shared_ptr<MyFileSystem> myFileSystem = std::make_shared<MyFileSystem>((std::move(mapLoader)));
 
