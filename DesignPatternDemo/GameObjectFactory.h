@@ -4,9 +4,13 @@
 
 #include <map>
 #include <memory>
+#include <functional>
 
-static std::map<GameObjectTypes, std::unique_ptr<GameObject>(*)()> _registeredGameObjects;
-static GameLogicObjectInterface* _gameLogicObjectInterface;
+template<typename T>
+std::unique_ptr<GameObject> createInstance(GameLogicObjectInterface* gameLogicObjectInterface)
+{
+	return std::make_unique<T>(gameLogicObjectInterface);
+}
 
 class GameObjectFactory
 {
@@ -37,7 +41,6 @@ public:
 
 	std::unique_ptr<GameObject> createGameObject(GameObjectTypes name);
 
-	
 	template<typename T>
 	void registerInstance(GameObjectTypes name)
 	{
@@ -45,12 +48,6 @@ public:
 	}
 
 private:
-
-	template<typename T>
-	static std::unique_ptr<GameObject> createInstance()
-	{
-		return std::make_unique<T>(_gameLogicObjectInterface);
-	}
-	
-	
+	std::map<GameObjectTypes, std::function<std::unique_ptr<GameObject>(GameLogicObjectInterface*)>> _registeredGameObjects;
+	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

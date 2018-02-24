@@ -10,5 +10,5 @@ void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 
 std::unique_ptr<GameObject> GameObjectFactory::createGameObject(GameObjectTypes name)
 {
-	return _registeredGameObjects[name]();
+	return _registeredGameObjects[name](_gameLogicObjectInterface);
 }
