@@ -33,7 +33,7 @@ void MapArea::loadLevel(std::string fileName)
 		{
 			if (_mapData[x][y])
 			{
-				if (_mapData[x][y]->getType() != GameObjectTypes::typePlayer)
+				if (_mapData[x][y]->getType() != GameObjectType::Player)
 				{
 					delete _mapData[x][y];
 				}
@@ -66,7 +66,7 @@ void MapArea::loadLevel(std::string fileName)
 		{
 			GameObject* gameObject = GameObjectFactory::createGameObject(c);
 
-			if (gameObject && gameObject->getType() == GameObjectTypes::typePlayer)
+			if (gameObject && gameObject->getType() == GameObjectType::Player)
 			{
 				if (_player)
 				{
@@ -81,13 +81,13 @@ void MapArea::loadLevel(std::string fileName)
 			}
 
 			//debug
-			if (gameObject && gameObject->getType() == GameObjectTypes::typeContainer)
+			if (gameObject && gameObject->getType() == GameObjectType::Container)
 			{
 				gameObject->addItemToInventory(new Sword());
 				gameObject->addItemToInventory(new Armor());
 			}
 
-			if (gameObject && gameObject->getType() == GameObjectTypes::typeEnemy)
+			if (gameObject && gameObject->getType() == GameObjectType::Enemy)
 			{
 				gameObject->addItemToInventory(new Sword());
 				std::string s("01");
@@ -187,7 +187,7 @@ GameObject* MapArea::getObjectNextTo(GameObject* gameObject, Directions directio
 	return result;
 }
 
-std::list<GameObject*> MapArea::getGameObjectByType(GameObjectTypes gameObjectType)
+std::list<GameObject*> MapArea::getGameObjectByType(GameObjectType gameObjectType)
 {
 	std::list<GameObject*> result;
 

@@ -36,7 +36,7 @@ void StateCrouching::processState(Events event, Directions direction, GameObject
 	case Events::interact:
 		if (object)
 		{
-			if (object->getType() == GameObjectTypes::typeContainer)
+			if (object->getType() == GameObjectType::Container)
 			{
 				_owner->open(object);
 			}
@@ -52,7 +52,7 @@ void StateCrouching::processState(Events event, Directions direction, GameObject
 		_owner->changeState(States::standingUp);
 		break;
 	default:
-		WRITE_LOG("unhandled event " + event);
+//		WRITE_LOG("unhandled event " + event);
 		break;
 	}
 }

@@ -15,12 +15,12 @@
 class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData
 {
 public:
-	GameObject(GameObjectTypes type);
+	GameObject(GameObjectType type);
 	virtual ~GameObject();
 
 	virtual void sendEvent(Events event, Directions direction, const std::string& data, GameObject* object = nullptr);
 	virtual void changeState(States state);
-	GameObjectTypes getType();
+	GameObjectType getType();
 	std::string getTypeString();
 	States getState();
 	std::string getStateString();
@@ -45,7 +45,7 @@ public:
 
 protected:
 	FSM* _FSM;
-	GameObjectTypes _type;
+	GameObjectType _type;
 	GameObjectStats* _stats;
 	std::list<ObjectModifier*> _inventoryItems;
 	std::list<EquipSlot*> _equipSlots;

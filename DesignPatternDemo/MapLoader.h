@@ -14,6 +14,6 @@ public:
 	virtual std::vector<std::unique_ptr<GameObject>> parse(std::unique_ptr<std::string>& data) = 0;
 
 protected:
-	std::unique_ptr<GameObject> createGameObject(GameObjectTypes type);
+	std::unique_ptr<GameObject> createGameObject(GameObjectType type);
 };
 

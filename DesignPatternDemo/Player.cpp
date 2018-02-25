@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectTypes::typePlayer)
+Player::Player(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectType::Player)
 {
 	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
@@ -31,7 +31,7 @@ std::string Player::getInfo()
 
 void Player::open(GameObject* gameObject)
 {
-	if (gameObject->getType() == GameObjectTypes::typeContainer)
+	if (gameObject->getType() == GameObjectType::Container)
 	{
 		std::list<ObjectModifier*> items = gameObject->getInventoryItems();
 
@@ -43,7 +43,7 @@ void Player::open(GameObject* gameObject)
 
 		gameObject->changeState(States::dead);
 	}
-	else if (gameObject->getType() == GameObjectTypes::typeDoor)
+	else if (gameObject->getType() == GameObjectType::Door)
 	{
 		_gameLogicObjectInterface->enterDoor(gameObject);
 	}

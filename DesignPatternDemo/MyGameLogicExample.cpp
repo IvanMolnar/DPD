@@ -21,11 +21,11 @@ MyGameLogicExample::MyGameLogicExample()
 
 	setInput(std::shared_ptr<Input>(new InputCommand()));
 	
-	GameObjectFactory::getInstance()->registerInstance<Container>(GameObjectTypes::typeContainer);
-	GameObjectFactory::getInstance()->registerInstance<Door>(GameObjectTypes::typeDoor);
-	GameObjectFactory::getInstance()->registerInstance<Enemy>(GameObjectTypes::typeEnemy);
-	GameObjectFactory::getInstance()->registerInstance<Obstacle>(GameObjectTypes::typeObstacle);
-	GameObjectFactory::getInstance()->registerInstance<Player>(GameObjectTypes::typePlayer);
+	GameObjectFactory::getInstance()->registerInstance<Container>(GameObjectType::Container);
+	GameObjectFactory::getInstance()->registerInstance<Door>(GameObjectType::Door);
+	GameObjectFactory::getInstance()->registerInstance<Enemy>(GameObjectType::Enemy);
+	GameObjectFactory::getInstance()->registerInstance<Obstacle>(GameObjectType::Obstacle);
+	GameObjectFactory::getInstance()->registerInstance<Player>(GameObjectType::Player);
 }
 
 MyGameLogicExample::~MyGameLogicExample()

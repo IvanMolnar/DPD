@@ -19,8 +19,8 @@ std::vector<std::unique_ptr<GameObject>> MyMapLoader::parse(std::unique_ptr<std:
 
 
 	//test
-	result.push_back(std::move(createGameObject(GameObjectTypes::typePlayer)));
-	result.push_back(std::move(createGameObject(GameObjectTypes::typeEnemy)));
+	result.push_back(std::move(createGameObject(GameObjectType::Player)));
+	result.push_back(std::move(createGameObject(GameObjectType::Enemy)));
 
 
 	return result;

@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "EquipSlot.h"
 
-Enemy::Enemy(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectTypes::typeEnemy)
+Enemy::Enemy(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectType::Enemy)
 {
 	_gameLogicObjectInterface = gameLogicObjectInterface;
 }

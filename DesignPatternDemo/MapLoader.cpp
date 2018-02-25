@@ -11,7 +11,7 @@ MapLoader::~MapLoader()
 {
 }
 
-std::unique_ptr<GameObject> MapLoader::createGameObject(GameObjectTypes type)
+std::unique_ptr<GameObject> MapLoader::createGameObject(GameObjectType type)
 {
 	return GameObjectFactory::getInstance()->createGameObject(type);
 }

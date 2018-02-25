@@ -54,7 +54,7 @@ void StateUp::processState(Events event, Directions direction, GameObject* objec
 		// we are allready standing up
 		break;
 	default:
-		WRITE_LOG("unhandled event " + event);
+	//	WRITE_LOG("unhandled event " + event);
 		break;
 	}
 }

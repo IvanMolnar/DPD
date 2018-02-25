@@ -21,7 +21,7 @@ public:
 	void move(GameObject* gameObject, Directions direction);
 //	void drawMap();
 	GameObject* getObjectNextTo(GameObject* gameObject, Directions direction);
-	std::list<GameObject*> getGameObjectByType(GameObjectTypes gameObjectType);
+	std::list<GameObject*> getGameObjectByType(GameObjectType gameObjectType);
 	std::list<GameObject*> getGameObjects();
 	void remove(GameObject* gameObject);
 

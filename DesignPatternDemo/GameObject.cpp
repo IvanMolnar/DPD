@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-GameObject::GameObject(GameObjectTypes type)
+GameObject::GameObject(GameObjectType type)
 {
 	_type = type;
 	_FSM = new FSM(new StateUp(this));
@@ -14,7 +14,7 @@ GameObject::GameObject(GameObjectTypes type)
 	
 	std::string strType = getTypeString();
 
-	if (_type != GameObjectTypes::typeObstacle)
+	if (_type != GameObjectType::Obstacle)
 	{
 		_equipSlots.push_back(new EquipSlot(ObjectModifierType::armor, strType));
 		_equipSlots.push_back(new EquipSlot(ObjectModifierType::weapon | ObjectModifierType::spell, strType));
@@ -67,7 +67,7 @@ void GameObject::changeState(States state)
 		break;
 	default:
 		std::stringstream ss;
-		ss << "State " << state << " does not exist";
+//		ss << "State " << state << " does not exist";
 		WRITE_LOG_WARNING(ss.str());
 		break;
 	}
@@ -75,7 +75,7 @@ void GameObject::changeState(States state)
 	_FSM->changeState(newState);
 }
 
-GameObjectTypes GameObject::getType()
+GameObjectType GameObject::getType()
 {
 	return _type;
 }
@@ -84,13 +84,13 @@ std::string GameObject::getTypeString()
 {
 	switch (_type)
 	{
-	case typePlayer:
+	case GameObjectType::Player:
 		return "Player";
-	case typeObstacle:
+	case GameObjectType::Obstacle:
 		return "Obstacle";
-	case typeEnemy:
+	case GameObjectType::Enemy:
 		return "Enemy";
-	case typeContainer:
+	case GameObjectType::Container:
 		return "Container";
 	default:
 		return "<INVALID TYPE>";
@@ -203,11 +203,11 @@ void GameObject::attack(GameObject* gameObject)
 			{
 				std::stringstream ss;
 
-				if (this->getType() == GameObjectTypes::typePlayer)
+				if (this->getType() == GameObjectType::Player)
 				{
 					ss << "Player attacks for ";
 				}
-				else if (this->getType() == GameObjectTypes::typeEnemy)
+				else if (this->getType() == GameObjectType::Enemy)
 				{
 					ss << "Enemy attacks for ";
 				}
@@ -225,7 +225,7 @@ void GameObject::attack(GameObject* gameObject)
 	}
 
 	// if player attacks enemy then enemy retaliate
-	if (this->getType() == GameObjectTypes::typePlayer)
+	if (this->getType() == GameObjectType::Player)
 	{
 		std::string s;
 		gameObject->sendEvent(Events::attack, Directions::None, s, this);

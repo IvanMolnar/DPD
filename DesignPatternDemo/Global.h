@@ -2,14 +2,14 @@
 
 #include "ConsoleLogger.h"
 
-enum States
+enum class States
 {
 	standingUp,
 	sneaking,
 	dead
 };
 
-enum Events
+enum class Events
 {
 	none,
 	walk,
@@ -21,7 +21,7 @@ enum Events
 	standUp
 };
 
-enum Directions
+enum class Directions
 {
 	None,
 	North,
@@ -30,16 +30,16 @@ enum Directions
 	East
 };
 
-enum GameObjectTypes
+enum class GameObjectType
 {
-	typePlayer,
-	typeObstacle,
-	typeEnemy,
-	typeContainer,
-	typeDoor
+	Player,
+	Obstacle,
+	Enemy,
+	Container,
+	Door
 };
 
-enum GameStates
+enum class GameStates
 {
 	Unchanged,
 	MainMenu,

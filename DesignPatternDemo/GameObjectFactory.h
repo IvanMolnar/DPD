@@ -39,15 +39,15 @@ public:
 
 	void init(GameLogicObjectInterface* gameLogicObjectInterface);
 
-	std::unique_ptr<GameObject> createGameObject(GameObjectTypes name);
+	std::unique_ptr<GameObject> createGameObject(GameObjectType name);
 
 	template<typename T>
-	void registerInstance(GameObjectTypes name)
+	void registerInstance(GameObjectType name)
 	{
 		_registeredGameObjects[name] = &createInstance<T>;
 	}
 
 private:
-	std::map<GameObjectTypes, std::function<std::unique_ptr<GameObject>(GameLogicObjectInterface*)>> _registeredGameObjects;
+	std::map<GameObjectType, std::function<std::unique_ptr<GameObject>(GameLogicObjectInterface*)>> _registeredGameObjects;
 	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

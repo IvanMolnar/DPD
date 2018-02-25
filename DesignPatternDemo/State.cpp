@@ -15,11 +15,11 @@ std::string State::getIdString()
 {
 	switch (_stateID)
 	{
-	case standingUp:
+	case States::standingUp:
 		return "standingUp";
-	case sneaking:
+	case States::sneaking:
 		return "crouching";
-	case dead:
+	case States::dead:
 		return "dead";
 	default:
 		return "INVALID STATE";

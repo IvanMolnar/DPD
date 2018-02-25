@@ -61,7 +61,7 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 	{
 		_level->move(gameObject, direction);
 
-		std::list<GameObject*> enemies = _level->getGameObjectByType(GameObjectTypes::typeEnemy);
+		std::list<GameObject*> enemies = _level->getGameObjectByType(GameObjectType::Enemy);
 
 		for each (GameObject* enemy in enemies)
 		{
@@ -90,18 +90,18 @@ void GameLogic::internalProcessState(GameStates gameState)
 
 	switch (_currentState)
 	{
-	case MainMenu:
+	case GameStates::MainMenu:
 		break;
-	case NewGame:
+	case GameStates::NewGame:
 		startGame();
 		break;
-	case Loading:
+	case GameStates::Loading:
 		break;
-	case GameRunning:
+	case GameStates::GameRunning:
 		break;
-	case GameOver:
+	case GameStates::GameOver:
 		break;
-	case ExitGame:
+	case GameStates::ExitGame:
 		_gameRunning = false;
 		break;
 	default:

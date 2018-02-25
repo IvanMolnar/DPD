@@ -1,6 +1,6 @@
 #include "Container.h"
 
-Container::Container(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectTypes::typeContainer)
+Container::Container(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectType::Container)
 {
 	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
