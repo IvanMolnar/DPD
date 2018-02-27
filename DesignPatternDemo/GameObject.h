@@ -26,7 +26,7 @@ public:
 	std::string getStateString();
 	virtual std::string getInfo();
 
-	GameObjectStats* getStats();
+	std::shared_ptr<GameObjectStats> getStats();
 
 	// modifiers like weapons, spells when attacked
 	void acceptModifier(ObjectModifier& objectModifier);
@@ -44,9 +44,11 @@ public:
 	std::array<float, 3> getModifiersPercent();
 
 protected:
-	FSM* _FSM;
+	std::unique_ptr<FSM> _FSM;
 	GameObjectType _type;
-	GameObjectStats* _stats;
+
+	std::shared_ptr<GameObjectStats> _stats;
+
 	std::list<ObjectModifier*> _inventoryItems;
 	std::list<EquipSlot*> _equipSlots;
 

@@ -9,10 +9,13 @@
 GameObject::GameObject(GameObjectType type)
 {
 	_type = type;
-	_FSM = new FSM(new StateUp(this));
-	_stats = new GameObjectStats(this);
+	_FSM = std::make_unique<FSM>(new StateUp(this));
+
+	_stats = std::make_shared<GameObjectStats>(this);
 	
 	std::string strType = getTypeString();
+
+	auto a = ObjectModifierType::weapon | ObjectModifierType::spell;
 
 	if (_type != GameObjectType::Obstacle)
 	{
@@ -24,25 +27,7 @@ GameObject::GameObject(GameObjectType type)
 
 GameObject::~GameObject()
 {
-	delete _FSM;
-	delete _stats;
 
-	for each (EquipSlot* slot in _equipSlots)
-	{
-		ObjectModifier* item = slot->getObjectModifier();
-
-		if (item)
-		{
-			delete item;
-		}
-
-		delete slot;
-	}
-
-	for each (ObjectModifier* item in _inventoryItems)
-	{
-		delete item;
-	}
 }
 
 void GameObject::sendEvent(Events event, Directions direction, const std::string& data, GameObject* object)
@@ -112,7 +97,7 @@ std::string GameObject::getInfo()
 	return _stats->getInfo();
 }
 
-GameObjectStats* GameObject::getStats()
+std::shared_ptr<GameObjectStats> GameObject::getStats()
 {
 	return _stats;
 }

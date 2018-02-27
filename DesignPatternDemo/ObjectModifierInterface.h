@@ -5,6 +5,7 @@
 
 #include <list>
 #include <array>
+#include <memory>
 
 class EquipSlot;
 
@@ -14,6 +15,6 @@ public:
 	ObjectModifierInterface() {};
 	~ObjectModifierInterface() {};
 
-	virtual GameObjectStats* getStats() = 0;
+	virtual std::shared_ptr<GameObjectStats> getStats() = 0;
 	virtual std::list<EquipSlot*> getEquipSlots() = 0;
 };
