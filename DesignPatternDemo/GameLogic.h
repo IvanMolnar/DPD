@@ -27,10 +27,10 @@ protected:
 	void startGame();
 	void loadLevel(const std::string& levelPath);
 	void processInput();
-	void moveObject(GameObject* gameObject, Directions direction);
+	void moveObject(std::shared_ptr<GameObject> gameObject, Directions direction);
 	void internalProcessState(GameStates gameEvent);
-	void dead(GameObject* gameObject);
-	void enterDoor(GameObject* gameObject);
+	void dead(std::shared_ptr<GameObject> gameObject) override;
+	void enterDoor(std::shared_ptr<GameObject> gameObject) override;
 	virtual void processAction(const resultAction& action) = 0;
 	virtual bool processState(GameStates gameEvent) = 0;
 	virtual void setInput(const std::shared_ptr<Input> newInput) = 0;

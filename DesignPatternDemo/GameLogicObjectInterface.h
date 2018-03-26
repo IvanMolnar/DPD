@@ -9,8 +9,8 @@ public:
 	GameLogicObjectInterface() {};
 	~GameLogicObjectInterface() {};
 
-	virtual void moveObject(GameObject* gameObject, Directions direction) = 0;
-	virtual void dead(GameObject* gameObject) = 0;
-	virtual void enterDoor(GameObject* gameObject) = 0;
+	virtual void moveObject(std::shared_ptr<GameObject> gameObject, Directions direction) = 0;
+	virtual void dead(std::shared_ptr<GameObject> gameObject) = 0;
+	virtual void enterDoor(std::shared_ptr<GameObject> gameObject) = 0;
 };
 

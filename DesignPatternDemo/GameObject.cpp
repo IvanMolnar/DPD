@@ -172,6 +172,14 @@ std::array<float, 3> GameObject::getModifiersPercent()
 	return result;
 }
 
+void GameObject::preMove(Directions direction)
+{
+}
+
+void GameObject::postMove(Directions direction)
+{
+}
+
 void GameObject::attack(GameObject* gameObject)
 {
 	for (std::list<EquipSlot*>::iterator it = _equipSlots.begin(); it != _equipSlots.end(); it++)

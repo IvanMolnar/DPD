@@ -13,6 +13,7 @@ public:
 	void loadArea(const std::string& areaName);
 	
 	void setCurrentMapArea(const unsigned int mapId);
+	std::shared_ptr<MapArea> getCurrentMapArea();
 
 private:
 	std::shared_ptr<FileSystem> _fileSystem;

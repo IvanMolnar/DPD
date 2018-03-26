@@ -11,7 +11,7 @@ Player::~Player()
 
 void Player::move(Directions direction)
 {
-	_gameLogicObjectInterface->moveObject(this, direction);
+	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
 }
 
 void Player::inspect(GameObject* gameObject)

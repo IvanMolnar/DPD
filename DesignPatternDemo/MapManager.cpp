@@ -16,6 +16,8 @@ void MapManager::loadArea(const std::string& areaName)
 	std::shared_ptr<MapArea> mapArea = _fileSystem->loadMapArea(areaName);
 
 	_loadedMapAreas.push_back(mapArea);
+
+	_currentMapArea = mapArea;
 }
 
 const std::shared_ptr<MapArea> MapManager::getMapAreaFromIndex(const unsigned int mapId)
@@ -34,4 +36,9 @@ const std::shared_ptr<MapArea> MapManager::getMapAreaFromIndex(const unsigned in
 void MapManager::setCurrentMapArea(const unsigned int mapId)
 {
 	_currentMapArea = getMapAreaFromIndex(mapId);
+}
+
+std::shared_ptr<MapArea> MapManager::getCurrentMapArea()
+{
+	return _currentMapArea;
 }

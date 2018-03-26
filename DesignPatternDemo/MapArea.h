@@ -16,21 +16,21 @@ public:
 
 
 
-	GameObject* getPlayer();
-	bool canMove(GameObject* gameObject, Directions direction);
-	void move(GameObject* gameObject, Directions direction);
+	std::shared_ptr<GameObject> getPlayer();
+	bool canMove(std::shared_ptr<GameObject> gameObject, Directions direction);
+	void move(std::shared_ptr<GameObject> gameObject, Directions direction);
 //	void drawMap();
-	GameObject* getObjectNextTo(GameObject* gameObject, Directions direction);
+	GameObject* getObjectNextTo(std::shared_ptr<GameObject> gameObject, Directions direction);
 	std::list<GameObject*> getGameObjectByType(GameObjectType gameObjectType);
 	std::list<GameObject*> getGameObjects();
-	void remove(GameObject* gameObject);
+	void remove(std::shared_ptr<GameObject> gameObject);
 
 	unsigned int getMapId();
 	void getLevelDisplayData();
 
 private:
 
-	GameObject* _player;
+	std::shared_ptr<GameObject> _player;
 
 
 

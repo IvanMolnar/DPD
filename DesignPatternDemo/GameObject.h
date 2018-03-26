@@ -12,7 +12,7 @@
 
 #include <memory>
 
-class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData
+class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData, public std::enable_shared_from_this<GameObject>
 {
 public:
 	GameObject(GameObjectType type);
@@ -42,6 +42,10 @@ public:
 	void addItemToInventory(ObjectModifier* item);
 	void removeItemFromInventory(ObjectModifier* item);
 	std::array<float, 3> getModifiersPercent();
+
+	// events
+	void preMove(Directions direction);
+	void postMove(Directions direction);
 
 protected:
 	std::unique_ptr<FSM> _FSM;

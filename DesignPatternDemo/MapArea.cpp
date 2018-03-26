@@ -116,17 +116,17 @@ void MapArea::loadLevel(std::string fileName)
 	infile.close();*/
 }
 
-GameObject* MapArea::getPlayer()
+std::shared_ptr<GameObject> MapArea::getPlayer()
 {
 	return _player;
 }
 
-bool MapArea::canMove(GameObject* gameObject, Directions direction)
+bool MapArea::canMove(std::shared_ptr<GameObject> gameObject, Directions direction)
 {
 	return true;
 }
 
-void MapArea::move(GameObject* gameObject, Directions direction)
+void MapArea::move(std::shared_ptr<GameObject> gameObject, Directions direction)
 {
 	
 
@@ -178,7 +178,7 @@ void MapArea::drawMap()
 	_display->cprintf(ss.str().c_str());
 }*/
 
-GameObject* MapArea::getObjectNextTo(GameObject* gameObject, Directions direction)
+GameObject* MapArea::getObjectNextTo(std::shared_ptr<GameObject> gameObject, Directions direction)
 {
 	GameObject* result = nullptr;
 
@@ -203,7 +203,7 @@ std::list<GameObject*> MapArea::getGameObjects()
 	return result;
 }
 
-void MapArea::remove(GameObject* gameObject)
+void MapArea::remove(std::shared_ptr<GameObject> gameObject)
 {
 
 }

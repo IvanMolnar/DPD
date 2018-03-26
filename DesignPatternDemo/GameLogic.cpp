@@ -55,7 +55,7 @@ void GameLogic::processInput()
 	}
 }
 
-void GameLogic::moveObject(GameObject* gameObject, Directions direction)
+void GameLogic::moveObject(std::shared_ptr<GameObject> gameObject, Directions direction)
 {/*
 	if (_level->canMove(gameObject, direction))
 	{
@@ -70,6 +70,12 @@ void GameLogic::moveObject(GameObject* gameObject, Directions direction)
 
 		_level->getPlayer()->getStats()->regenerate();
 	}*/
+	if (_mapManager->getCurrentMapArea()->canMove(gameObject, direction))
+	{
+		_mapManager->getCurrentMapArea()->getPlayer()->preMove(direction);
+		_mapManager->getCurrentMapArea()->move(gameObject, direction);
+		_mapManager->getCurrentMapArea()->getPlayer()->postMove(direction);
+	}
 }
 
 void GameLogic::internalProcessState(GameStates gameState)
@@ -109,12 +115,12 @@ void GameLogic::internalProcessState(GameStates gameState)
 	}
 }
 
-void GameLogic::dead(GameObject* gameObject)
+void GameLogic::dead(std::shared_ptr<GameObject> gameObject)
 {
 	//_level->remove(gameObject);
 }
 
-void GameLogic::enterDoor(GameObject* gameObject)
+void GameLogic::enterDoor(std::shared_ptr<GameObject> gameObject)
 {
 //	Door* door = dynamic_cast<Door*>(gameObject);
 //	std::string nextMap = door->getMapName();
