@@ -9,16 +9,6 @@ Player::~Player()
 {
 }
 
-void Player::move(Directions direction)
-{
-	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
-}
-
-void Player::inspect(std::shared_ptr<GameObject> gameObject)
-{
-	WRITE_LOG_GAME(gameObject->getInfo());
-}
-
 std::string Player::getInfo()
 {
 	std::string info = GameObject::getInfo();
@@ -27,29 +17,4 @@ std::string Player::getInfo()
 	info += GameObject::getInventoryItemsString();
 
 	return info;
-}
-
-void Player::open(std::shared_ptr<GameObject> gameObject)
-{
-	if (gameObject->getType() == GameObjectType::Container)
-	{
-		std::list<ObjectModifier*> items = gameObject->getInventoryItems();
-
-		for each (ObjectModifier* item in items)
-		{
-			addItemToInventory(item);
-			gameObject->removeItemFromInventory(item);
-		}
-
-		gameObject->changeState(States::dead);
-	}
-	else if (gameObject->getType() == GameObjectType::Door)
-	{
-		_gameLogicObjectInterface->enterDoor(gameObject);
-	}
-}
-
-void Player::dead()
-{
-	_gameLogicObjectInterface->dead(shared_from_this());
 }

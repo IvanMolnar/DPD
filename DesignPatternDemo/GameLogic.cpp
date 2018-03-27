@@ -72,9 +72,7 @@ void GameLogic::moveObject(std::shared_ptr<GameObject> gameObject, Directions di
 	}*/
 	if (_mapManager->getCurrentMapArea()->canMove(gameObject, direction))
 	{
-		_mapManager->getCurrentMapArea()->getPlayer()->preMove(direction);
 		_mapManager->getCurrentMapArea()->move(gameObject, direction);
-		_mapManager->getCurrentMapArea()->getPlayer()->postMove(direction);
 	}
 }
 
@@ -139,4 +137,19 @@ void GameLogic::run()
 	_display->start();
 	internalProcessState(GameStates::NewGame);
 	processInput();
+}
+
+void GameLogic::inspect(std::shared_ptr<GameObject> gameObject)
+{
+
+}
+
+void GameLogic::attack(std::shared_ptr<GameObject> gameObject)
+{
+
+}
+
+void GameLogic::open(std::shared_ptr<GameObject> gameObject)
+{
+
 }

@@ -23,8 +23,3 @@ std::string Container::getInfo()
 {
 	return "Looks like ordinary chest";
 }
-
-void Container::dead()
-{
-	_gameLogicObjectInterface->dead(shared_from_this());
-}

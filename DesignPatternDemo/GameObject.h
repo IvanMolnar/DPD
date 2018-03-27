@@ -28,13 +28,6 @@ public:
 
 	std::shared_ptr<GameObjectStats> getStats();
 
-	// modifiers like weapons, spells when attacked
-	void acceptModifier(ObjectModifier& objectModifier);
-
-	// modifiers like weapons, spells when attacking
-	// returns if it's possible to attack
-	bool acceptModifierSelf(ObjectModifier& objectModifier);
-
 	std::list<EquipSlot*> getEquipSlots();
 	std::list<ObjectModifier*> getInventoryItems();
 	std::string getEquipItemsString();
@@ -43,9 +36,7 @@ public:
 	void removeItemFromInventory(ObjectModifier* item);
 	std::array<float, 3> getModifiersPercent();
 
-	// events
-	void preMove(Directions direction);
-	void postMove(Directions direction);
+	
 
 protected:
 	std::unique_ptr<FSM> _FSM;
@@ -56,12 +47,16 @@ protected:
 	std::list<ObjectModifier*> _inventoryItems;
 	std::list<EquipSlot*> _equipSlots;
 
-	virtual void move(Directions direction) = 0;
-	virtual void inspect(std::shared_ptr<GameObject> gameObject) = 0;
-	virtual void attack(std::shared_ptr<GameObject> gameObject);
-	virtual void open(std::shared_ptr<GameObject> gameObject);
-	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot);
-	virtual void dead() = 0;
+	// events
+	virtual void preMove(Directions direction);
+	virtual void postMove(Directions direction);
+
+	virtual void move(Directions direction) override;
+	virtual void inspect(std::shared_ptr<GameObject> gameObject) override;
+	virtual void attack(std::shared_ptr<GameObject> gameObject) override;
+	virtual void open(std::shared_ptr<GameObject> gameObject) override;
+	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot) override;
+	virtual void dead() override;
 
 	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

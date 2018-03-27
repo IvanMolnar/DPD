@@ -13,9 +13,6 @@ public:
 	void inspect(std::shared_ptr<GameObject> gameObject);
 	std::string getInfo();
 
-	// singnals death
-	void dead();
-
 private:
 	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

@@ -178,7 +178,6 @@
     <ClInclude Include="ObjectEventInterface.h" />
     <ClInclude Include="ObjectModifier.h" />
     <ClInclude Include="ObjectModifierInterface.h" />
-    <ClInclude Include="ObjectModifierVisitor.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="State.h" />

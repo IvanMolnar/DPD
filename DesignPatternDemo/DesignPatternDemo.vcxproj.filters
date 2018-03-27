@@ -117,9 +117,6 @@
     <ClInclude Include="ObjectModifier.h">
       <Filter>src\GameObject\Items</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectModifierVisitor.h">
-      <Filter>src\GameObject\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectModifierInterface.h">
       <Filter>src\GameObject\Interfaces</Filter>
     </ClInclude>

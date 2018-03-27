@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ObjectModifierVisitor.h"
 #include "Utility.h"
 
 #include <list>
@@ -12,16 +11,11 @@ enum ObjectModifierType
 	spell = 4
 };
 
-class ObjectModifier : public ObjectModifierVisitor
+class ObjectModifier
 {
 public:
 	ObjectModifier(ObjectModifierType objectModifierType);
 	virtual ~ObjectModifier();
-
-	// returns if enemy is alive
-	virtual bool apply(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers) = 0;
-
-	virtual bool applySelf(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers);
 
 	struct stats
 	{

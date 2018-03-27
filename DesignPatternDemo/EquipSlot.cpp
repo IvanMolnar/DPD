@@ -18,13 +18,13 @@ bool EquipSlot::equip(ObjectModifier* modifier, ObjectModifier* unequiped)
 	// check if we can equip this
 	if ((_type & modifier->getType()) == 0)
 	{
-		WRITE_LOG_GAME(_ownerName + " can't equip " + modifier->getTypeString() + " on " + getTypeString() + " slot");
+//		WRITE_LOG_GAME(_ownerName + " can't equip " + modifier->getTypeString() + " on " + getTypeString() + " slot");
 		return false;
 	}
 
 	if (!modifier)
 	{
-		WRITE_LOG_WARNING(_ownerName + " can't equip nullptr");
+//		WRITE_LOG_WARNING(_ownerName + " can't equip nullptr");
 		return false;
 	}
 
@@ -35,7 +35,7 @@ bool EquipSlot::equip(ObjectModifier* modifier, ObjectModifier* unequiped)
 
 	_modifier = modifier;
 
-	WRITE_LOG_GAME(_ownerName + " equiped " + modifier->getTypeString() + " on " + getTypeString() + " slot");
+//	WRITE_LOG_GAME(_ownerName + " equiped " + modifier->getTypeString() + " on " + getTypeString() + " slot");
 
 	return true;
 }
@@ -96,7 +96,7 @@ std::string EquipSlot::getTypeString()
 			result += "Armor ";
 			break;
 		default:
-			WRITE_LOG_WARNING("EquipSlot name does not exists!");
+//			WRITE_LOG_WARNING("EquipSlot name does not exists!");
 			result += "EquipSlot name does not exists! ";
 			break;
 		}

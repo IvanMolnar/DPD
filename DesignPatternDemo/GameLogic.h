@@ -29,6 +29,9 @@ protected:
 	void processInput();
 	void moveObject(std::shared_ptr<GameObject> gameObject, Directions direction);
 	void internalProcessState(GameStates gameEvent);
+	void inspect(std::shared_ptr<GameObject> gameObject) override;
+	void attack(std::shared_ptr<GameObject> gameObject) override;
+	void open(std::shared_ptr<GameObject> gameObject) override;
 	void dead(std::shared_ptr<GameObject> gameObject) override;
 	void enterDoor(std::shared_ptr<GameObject> gameObject) override;
 	virtual void processAction(const resultAction& action) = 0;

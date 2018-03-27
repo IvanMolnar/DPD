@@ -11,13 +11,3 @@ Armor::Armor() : ObjectModifier(ObjectModifierType::armor)
 Armor::~Armor()
 {
 }
-
-bool Armor::apply(ObjectModifierInterface * objectModifierInterface, std::array<float, 3> modifiers)
-{
-	return false;
-}
-
-bool Armor::applySelf(ObjectModifierInterface * objectModifierInterface, std::array<float, 3> modifiers)
-{
-	return false;
-}

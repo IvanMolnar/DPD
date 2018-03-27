@@ -11,19 +11,6 @@ ObjectModifier::~ObjectModifier()
 {
 }
 
-bool ObjectModifier::applySelf(ObjectModifierInterface* objectModifierInterface, std::array<float, 3> modifiers)
-{
-	GameObjectStats* gameObjectStats = objectModifierInterface->getStats();
-
-	int totalStaminaUsage = (float)_stats.staminaUsage * modifiers[1];
-	int totalManaUsage = (float)_stats.manaUsage * modifiers[2];
-
-	int staminaLeft = gameObjectStats->getStamina() - totalStaminaUsage;
-	int manaLeft = gameObjectStats->getMana() - totalManaUsage;
-
-	return (staminaLeft >= 0 && manaLeft >= 0);
-}
-
 int ObjectModifier::getDamage()
 {
 	return Utilities::getRandomNumber(_stats.damageMin, _stats.damageMax);
@@ -71,7 +58,7 @@ std::string ObjectModifier::getTypeString()
 		ss << "Armor ";
 		break;
 	default:
-		WRITE_LOG_WARNING("EquipSlot name does not exists!");
+	//	WRITE_LOG_WARNING("EquipSlot name does not exists!");
 		return "EquipSlot name does not exists!";
 	}
 

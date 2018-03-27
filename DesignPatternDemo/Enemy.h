@@ -10,13 +10,10 @@ public:
 	Enemy(GameLogicObjectInterface* gameLogicObjectInterface);
 	~Enemy();
 
-	void move(Directions direction);
 	void inspect(std::shared_ptr<GameObject> gameObject);
 
 	std::string getInfo();
 
-	// singnals death
-	void dead();
 
 private:
 	GameLogicObjectInterface* _gameLogicObjectInterface;

@@ -102,16 +102,6 @@ std::shared_ptr<GameObjectStats> GameObject::getStats()
 	return _stats;
 }
 
-void GameObject::acceptModifier(ObjectModifier& objectModifier)
-{
-	objectModifier.apply(this, this->getModifiersPercent());
-}
-
-bool GameObject::acceptModifierSelf(ObjectModifier& objectModifier)
-{
-	return objectModifier.applySelf(this, this->getModifiersPercent());
-}
-
 std::list<EquipSlot*> GameObject::getEquipSlots()
 {
 	return _equipSlots;
@@ -176,58 +166,35 @@ void GameObject::preMove(Directions direction)
 {
 }
 
+void GameObject::move(Directions direction)
+{
+	preMove(direction);
+	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
+	postMove(direction);
+}
+
 void GameObject::postMove(Directions direction)
 {
 }
 
-void GameObject::attack(GameObject* gameObject)
+void GameObject::attack(std::shared_ptr<GameObject> gameObject)
 {
-	for (std::list<EquipSlot*>::iterator it = _equipSlots.begin(); it != _equipSlots.end(); it++)
-	{
-		EquipSlot* slot = *it;
-
-		ObjectModifier* item = slot->getObjectModifier();
-
-		// check if it's a weapon
-		if (item && (item->getType() == ObjectModifierType::weapon || item->getType() == ObjectModifierType::spell))
-		{
-			// check if we can attack
-			if (item->applySelf(this, this->getModifiersPercent()))
-			{
-				std::stringstream ss;
-
-				if (this->getType() == GameObjectType::Player)
-				{
-					ss << "Player attacks for ";
-				}
-				else if (this->getType() == GameObjectType::Enemy)
-				{
-					ss << "Enemy attacks for ";
-				}
-
-				WRITE_LOG_GAME(ss.str());
-
-				// attack
-				if (item->apply(gameObject, this->getModifiersPercent()))
-				{
-					// if gameObject is dead we abort attack
-					return;
-				}
-			}
-		}
-	}
-
-	// if player attacks enemy then enemy retaliate
-	if (this->getType() == GameObjectType::Player)
-	{
-		std::string s;
-		gameObject->sendEvent(Events::attack, Directions::None, s, shared_from_this());
-	}
+	_gameLogicObjectInterface->attack(gameObject);
 }
 
-void GameObject::open(GameObject* gameObject)
+void GameObject::open(std::shared_ptr<GameObject> gameObject)
 {
-	return;
+	_gameLogicObjectInterface->open(gameObject);
+}
+
+void GameObject::inspect(std::shared_ptr<GameObject> gameObject)
+{
+	_gameLogicObjectInterface->inspect(gameObject);
+}
+
+void GameObject::dead()
+{
+	_gameLogicObjectInterface->dead(shared_from_this());
 }
 
 void GameObject::equip(unsigned int inventorySlot, unsigned int equipSlot)
