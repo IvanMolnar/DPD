@@ -14,7 +14,7 @@ void Player::move(Directions direction)
 	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
 }
 
-void Player::inspect(GameObject* gameObject)
+void Player::inspect(std::shared_ptr<GameObject> gameObject)
 {
 	WRITE_LOG_GAME(gameObject->getInfo());
 }
@@ -29,7 +29,7 @@ std::string Player::getInfo()
 	return info;
 }
 
-void Player::open(GameObject* gameObject)
+void Player::open(std::shared_ptr<GameObject> gameObject)
 {
 	if (gameObject->getType() == GameObjectType::Container)
 	{
@@ -51,5 +51,5 @@ void Player::open(GameObject* gameObject)
 
 void Player::dead()
 {
-	_gameLogicObjectInterface->dead(this);
+	_gameLogicObjectInterface->dead(shared_from_this());
 }

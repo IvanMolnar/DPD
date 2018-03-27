@@ -30,7 +30,7 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::sendEvent(Events event, Directions direction, const std::string& data, GameObject* object)
+void GameObject::sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }
@@ -221,7 +221,7 @@ void GameObject::attack(GameObject* gameObject)
 	if (this->getType() == GameObjectType::Player)
 	{
 		std::string s;
-		gameObject->sendEvent(Events::attack, Directions::None, s, this);
+		gameObject->sendEvent(Events::attack, Directions::None, s, shared_from_this());
 	}
 }
 

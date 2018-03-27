@@ -15,7 +15,7 @@ void StateCrouching::onEnter()
 	WRITE_LOG("StateCrouching::onEnter");
 }
 
-void StateCrouching::processState(Events event, Directions direction, GameObject* object, const std::string& data)
+void StateCrouching::processState(Events event, Directions direction, std::shared_ptr<GameObject> object, const std::string& data)
 {
 	WRITE_LOG("StateCrouching::processState");
 

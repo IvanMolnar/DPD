@@ -6,11 +6,11 @@ public:
 	Obstacle(GameLogicObjectInterface* gameLogicObjectInterface);
 	~Obstacle();
 
-	void sendEvent(Events event, Directions direction, std::string& data, GameObject* object);
+	void sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object = nullptr) override;
 
-	void move(Directions direction);
-	void inspect(GameObject* gameObject);
-	void attack(GameObject* target);
+	void move(Directions direction) override;
+	void inspect(std::shared_ptr<GameObject> gameObject) override;
+	void attack(std::shared_ptr<GameObject> target) override;
 
 	// singnals death
 	void dead();

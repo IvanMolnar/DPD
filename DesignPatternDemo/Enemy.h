@@ -11,7 +11,7 @@ public:
 	~Enemy();
 
 	void move(Directions direction);
-	void inspect(GameObject* gameObject);
+	void inspect(std::shared_ptr<GameObject> gameObject);
 
 	std::string getInfo();
 

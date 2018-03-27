@@ -9,8 +9,8 @@ public:
 	~Door();
 
 	void move(Directions direction);
-	void inspect(GameObject* gameObject);
-	void open(GameObject* gameObject);
+	void inspect(std::shared_ptr<GameObject> gameObject);
+	void open(std::shared_ptr<GameObject> gameObject);
 	void dead();
 
 	std::string getMapName();

@@ -18,7 +18,7 @@ public:
 	GameObject(GameObjectType type);
 	virtual ~GameObject();
 
-	virtual void sendEvent(Events event, Directions direction, const std::string& data, GameObject* object = nullptr);
+	virtual void sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object = nullptr) override;
 	virtual void changeState(States state);
 	GameObjectType getType();
 	std::string getTypeString();
@@ -57,9 +57,9 @@ protected:
 	std::list<EquipSlot*> _equipSlots;
 
 	virtual void move(Directions direction) = 0;
-	virtual void inspect(GameObject* gameObject) = 0;
-	virtual void attack(GameObject* gameObject);
-	virtual void open(GameObject* gameObject);
+	virtual void inspect(std::shared_ptr<GameObject> gameObject) = 0;
+	virtual void attack(std::shared_ptr<GameObject> gameObject);
+	virtual void open(std::shared_ptr<GameObject> gameObject);
 	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot);
 	virtual void dead() = 0;
 

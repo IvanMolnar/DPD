@@ -12,10 +12,10 @@ Enemy::~Enemy()
 
 void Enemy::move(Directions direction)
 {
-	_gameLogicObjectInterface->moveObject(this, direction);
+	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
 }
 
-void Enemy::inspect(GameObject* gameObject)
+void Enemy::inspect(std::shared_ptr<GameObject> gameObject)
 {
 	return;
 }
@@ -27,5 +27,5 @@ std::string Enemy::getInfo()
 
 void Enemy::dead()
 {
-	_gameLogicObjectInterface->dead(this);
+	_gameLogicObjectInterface->dead(shared_from_this());
 }

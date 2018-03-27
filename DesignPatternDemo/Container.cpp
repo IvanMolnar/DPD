@@ -14,7 +14,7 @@ void Container::move(Directions direction)
 	return;
 }
 
-void Container::inspect(GameObject* gameObject)
+void Container::inspect(std::shared_ptr<GameObject> gameObject)
 {
 	return;
 }
@@ -26,5 +26,5 @@ std::string Container::getInfo()
 
 void Container::dead()
 {
-	_gameLogicObjectInterface->dead(this);
+	_gameLogicObjectInterface->dead(shared_from_this());
 }
