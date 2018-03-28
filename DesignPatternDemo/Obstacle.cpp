@@ -26,7 +26,7 @@ void Obstacle::inspect(std::shared_ptr<GameObject> gameObject)
 	return;
 }
 
-void Obstacle::attack(std::shared_ptr<GameObject> target)
+void Obstacle::attack(std::shared_ptr<GameObject> target, const std::shared_ptr<EquipSlot> equipSlot)
 {
 	return;
 }

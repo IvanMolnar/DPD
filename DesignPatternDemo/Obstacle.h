@@ -10,7 +10,7 @@ public:
 
 	void move(Directions direction) override;
 	void inspect(std::shared_ptr<GameObject> gameObject) override;
-	void attack(std::shared_ptr<GameObject> target) override;
+	void attack(std::shared_ptr<GameObject> target, const std::shared_ptr<EquipSlot> equipSlot) override;
 
 	// singnals death
 	void dead();

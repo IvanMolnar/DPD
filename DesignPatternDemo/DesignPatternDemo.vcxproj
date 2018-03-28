@@ -164,6 +164,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputCommand.h" />
+    <ClInclude Include="InventoryManager.h" />
     <ClInclude Include="MapArea.h" />
     <ClInclude Include="MapAreaInterface.h" />
     <ClInclude Include="MapManager.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputCommand.cpp" />
+    <ClCompile Include="InventoryManager.cpp" />
     <ClCompile Include="MapArea.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="MapLoader.cpp" />

@@ -2,7 +2,6 @@
 #include "StateUp.h"
 #include "StateCrouching.h"
 #include "StateDead.h"
-#include "EquipSlot.h"
 
 #include <sstream>
 
@@ -10,19 +9,9 @@ GameObject::GameObject(GameObjectType type)
 {
 	_type = type;
 	_FSM = std::make_unique<FSM>(new StateUp(this));
+	_inventoryManager = std::make_unique<InventoryManager>();
 
 	_stats = std::make_shared<GameObjectStats>(this);
-	
-	std::string strType = getTypeString();
-
-	auto a = ObjectModifierType::weapon | ObjectModifierType::spell;
-
-	if (_type != GameObjectType::Obstacle)
-	{
-		_equipSlots.push_back(new EquipSlot(ObjectModifierType::armor, strType));
-		_equipSlots.push_back(new EquipSlot(ObjectModifierType::weapon | ObjectModifierType::spell, strType));
-		_equipSlots.push_back(new EquipSlot(ObjectModifierType::weapon | ObjectModifierType::spell, strType));
-	}
 }
 
 GameObject::~GameObject()
@@ -177,9 +166,9 @@ void GameObject::postMove(Directions direction)
 {
 }
 
-void GameObject::attack(std::shared_ptr<GameObject> gameObject)
+void GameObject::attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot)
 {
-	_gameLogicObjectInterface->attack(gameObject);
+	_gameLogicObjectInterface->attack(gameObject, equipSlot);
 }
 
 void GameObject::open(std::shared_ptr<GameObject> gameObject)

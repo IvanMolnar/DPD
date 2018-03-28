@@ -1,17 +1,19 @@
 #pragma once
 
 #include "ObjectModifier.h"
+#include <memory>
 
 class EquipSlot
 {
 public:
-	EquipSlot(int type, std::string ownerName);
+	EquipSlot(int type);
 	~EquipSlot();
 
-	bool equip(ObjectModifier* modifier, ObjectModifier* unequiped);
+	// returns nullptr if can't equip
+	std::shared_ptr<ObjectModifier> equip(std::shared_ptr<ObjectModifier> modifier);
 
-	ObjectModifier* unequip();
-	ObjectModifier* getObjectModifier();
+	std::shared_ptr<ObjectModifier> unequip();
+	const std::shared_ptr<ObjectModifier> getObjectModifier();
 
 	// returns list of types that can hold
 	std::list<ObjectModifierType> getType();
@@ -22,8 +24,7 @@ public:
 	std::string getInfo();
 
 private:
-	ObjectModifier* _modifier;
-	std::string _ownerName;
+	std::shared_ptr<ObjectModifier> _modifier;
 
 	// type of ObjectModifiers that can hold
 	// example: sword and magic

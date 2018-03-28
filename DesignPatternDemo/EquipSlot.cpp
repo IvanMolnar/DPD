@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-EquipSlot::EquipSlot(int type, std::string ownerName) : _type(type), _ownerName(ownerName)
+EquipSlot::EquipSlot(int type) : _type(type)
 {
 	_modifier = nullptr;
 }
@@ -11,45 +11,38 @@ EquipSlot::~EquipSlot()
 {
 }
 
-bool EquipSlot::equip(ObjectModifier* modifier, ObjectModifier* unequiped)
+std::shared_ptr<ObjectModifier> EquipSlot::equip(std::shared_ptr<ObjectModifier> modifier)
 {
-	unequiped = nullptr;
+	std::shared_ptr<ObjectModifier> result;
+
+	if (!modifier)
+	{
+		return nullptr;
+	}
 
 	// check if we can equip this
 	if ((_type & modifier->getType()) == 0)
 	{
-//		WRITE_LOG_GAME(_ownerName + " can't equip " + modifier->getTypeString() + " on " + getTypeString() + " slot");
-		return false;
+		return nullptr;
 	}
 
-	if (!modifier)
-	{
-//		WRITE_LOG_WARNING(_ownerName + " can't equip nullptr");
-		return false;
-	}
-
-	if (_modifier)
-	{
-		unequiped = _modifier;
-	}
+	result = _modifier;
 
 	_modifier = modifier;
 
-//	WRITE_LOG_GAME(_ownerName + " equiped " + modifier->getTypeString() + " on " + getTypeString() + " slot");
-
-	return true;
+	return result;
 }
 
-ObjectModifier* EquipSlot::unequip()
+std::shared_ptr<ObjectModifier> EquipSlot::unequip()
 {
-	ObjectModifier* result = _modifier;
+	std::shared_ptr<ObjectModifier> result = _modifier;
 
 	_modifier = nullptr;
 
 	return result;
 }
 
-ObjectModifier* EquipSlot::getObjectModifier()
+const std::shared_ptr<ObjectModifier> EquipSlot::getObjectModifier()
 {
 	return _modifier;
 }

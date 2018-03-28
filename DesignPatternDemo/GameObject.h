@@ -9,6 +9,7 @@
 #include "ObjectModifier.h"
 #include "MyObjectDisplayData.h"
 #include "GameLogicObjectInterface.h"
+#include "InventoryManager.h"
 
 #include <memory>
 
@@ -41,11 +42,9 @@ public:
 protected:
 	std::unique_ptr<FSM> _FSM;
 	GameObjectType _type;
+	std::unique_ptr<InventoryManager> _inventoryManager;
 
 	std::shared_ptr<GameObjectStats> _stats;
-
-	std::list<ObjectModifier*> _inventoryItems;
-	std::list<EquipSlot*> _equipSlots;
 
 	// events
 	virtual void preMove(Directions direction);
@@ -53,7 +52,7 @@ protected:
 
 	virtual void move(Directions direction) override;
 	virtual void inspect(std::shared_ptr<GameObject> gameObject) override;
-	virtual void attack(std::shared_ptr<GameObject> gameObject) override;
+	virtual void attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot) override;
 	virtual void open(std::shared_ptr<GameObject> gameObject) override;
 	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot) override;
 	virtual void dead() override;

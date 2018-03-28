@@ -1,5 +1,6 @@
 #include "GameLogic.h"
 #include "Global.h"
+#include "InventoryManager.h"
 
 GameLogic::GameLogic()
 {
@@ -144,7 +145,7 @@ void GameLogic::inspect(std::shared_ptr<GameObject> gameObject)
 
 }
 
-void GameLogic::attack(std::shared_ptr<GameObject> gameObject)
+void GameLogic::attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot)
 {
 
 }

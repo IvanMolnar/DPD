@@ -29,16 +29,20 @@ protected:
 	void processInput();
 	void moveObject(std::shared_ptr<GameObject> gameObject, Directions direction);
 	void internalProcessState(GameStates gameEvent);
-	void inspect(std::shared_ptr<GameObject> gameObject) override;
-	void attack(std::shared_ptr<GameObject> gameObject) override;
-	void open(std::shared_ptr<GameObject> gameObject) override;
-	void dead(std::shared_ptr<GameObject> gameObject) override;
-	void enterDoor(std::shared_ptr<GameObject> gameObject) override;
+	
 	virtual void processAction(const resultAction& action) = 0;
 	virtual bool processState(GameStates gameEvent) = 0;
 	virtual void setInput(const std::shared_ptr<Input> newInput) = 0;
 	virtual std::unique_ptr<Display> createDisplay() = 0;
 	virtual std::unique_ptr<MapManager> createMapManager() = 0;
+
+
+	// requests from GameObject
+	void inspect(std::shared_ptr<GameObject> gameObject) override;
+	void attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot) override;
+	void open(std::shared_ptr<GameObject> gameObject) override;
+	void dead(std::shared_ptr<GameObject> gameObject) override;
+	void enterDoor(std::shared_ptr<GameObject> gameObject) override;
 
 
 	std::string getDisplayData();
