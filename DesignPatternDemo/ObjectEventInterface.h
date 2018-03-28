@@ -13,7 +13,7 @@ public:
 	ObjectEventInterface() {};
 	~ObjectEventInterface() {};
 
-	virtual void sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object) = 0;
+	virtual void sendEvent(Events event, Directions direction, const std::string& data, const GameObject * const object) = 0;
 	virtual void changeState(States state) = 0;
 };
 

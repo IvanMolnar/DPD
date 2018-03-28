@@ -10,7 +10,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::inspect(std::shared_ptr<GameObject> gameObject)
+void Enemy::inspect(const GameObject * const gameObject)
 {
 	return;
 }

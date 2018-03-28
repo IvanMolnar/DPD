@@ -15,12 +15,12 @@ void Door::move(Directions direction)
 	return;
 }
 
-void Door::inspect(std::shared_ptr<GameObject> gameObject)
+void Door::inspect(const GameObject * const gameObject)
 {
 	return;
 }
 
-void Door::open(std::shared_ptr<GameObject> gameObject)
+void Door::open(const GameObject * const gameObject)
 {
 	return;
 }

@@ -19,7 +19,7 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object)
+void GameObject::sendEvent(Events event, Directions direction, const std::string& data, const GameObject * const object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }
@@ -158,7 +158,7 @@ void GameObject::preMove(Directions direction)
 void GameObject::move(Directions direction)
 {
 	preMove(direction);
-	_gameLogicObjectInterface->moveObject(shared_from_this(), direction);
+	_gameLogicObjectInterface->moveObject(this, direction);
 	postMove(direction);
 }
 
@@ -166,24 +166,24 @@ void GameObject::postMove(Directions direction)
 {
 }
 
-void GameObject::attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot)
+void GameObject::attack(const GameObject * const gameObject, const EquipSlot * const equipSlot)
 {
 	_gameLogicObjectInterface->attack(gameObject, equipSlot);
 }
 
-void GameObject::open(std::shared_ptr<GameObject> gameObject)
+void GameObject::open(const GameObject * const gameObject)
 {
 	_gameLogicObjectInterface->open(gameObject);
 }
 
-void GameObject::inspect(std::shared_ptr<GameObject> gameObject)
+void GameObject::inspect(const GameObject * const gameObject)
 {
-	_gameLogicObjectInterface->inspect(gameObject);
+	_gameLogicObjectInterface->inspect(gameObject.get());
 }
 
 void GameObject::dead()
 {
-	_gameLogicObjectInterface->dead(shared_from_this());
+	_gameLogicObjectInterface->dead(this);
 }
 
 void GameObject::equip(unsigned int inventorySlot, unsigned int equipSlot)

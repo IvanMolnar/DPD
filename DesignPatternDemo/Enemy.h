@@ -10,7 +10,7 @@ public:
 	Enemy(GameLogicObjectInterface* gameLogicObjectInterface);
 	~Enemy();
 
-	void inspect(std::shared_ptr<GameObject> gameObject);
+	void inspect(const GameObject * const gameObject);
 
 	std::string getInfo();
 

@@ -14,7 +14,7 @@ void Container::move(Directions direction)
 	return;
 }
 
-void Container::inspect(std::shared_ptr<GameObject> gameObject)
+void Container::inspect(const GameObject * const gameObject)
 {
 	return;
 }

@@ -10,7 +10,7 @@ Obstacle::~Obstacle()
 {
 }
 
-void Obstacle::sendEvent(Events event, Directions direction, const std::string& data, std::shared_ptr<GameObject> object)
+void Obstacle::sendEvent(Events event, Directions direction, const std::string& data, const GameObject * const object)
 {
 	// obstacle don't have events
 	return;
@@ -21,12 +21,12 @@ void Obstacle::move(Directions direction)
 	return;
 }
 
-void Obstacle::inspect(std::shared_ptr<GameObject> gameObject)
+void Obstacle::inspect(const GameObject * const gameObject)
 {
 	return;
 }
 
-void Obstacle::attack(std::shared_ptr<GameObject> target, const std::shared_ptr<EquipSlot> equipSlot)
+void Obstacle::attack(const GameObject * const target, const EquipSlot * const equipSlot)
 {
 	return;
 }

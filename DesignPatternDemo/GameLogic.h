@@ -38,11 +38,11 @@ protected:
 
 
 	// requests from GameObject
-	void inspect(std::shared_ptr<GameObject> gameObject) override;
-	void attack(std::shared_ptr<GameObject> gameObject, const std::shared_ptr<EquipSlot> equipSlot) override;
-	void open(std::shared_ptr<GameObject> gameObject) override;
-	void dead(std::shared_ptr<GameObject> gameObject) override;
-	void enterDoor(std::shared_ptr<GameObject> gameObject) override;
+	void inspect(const GameObject * const gameObject) override;
+	void attack(const GameObject * const gameObject, const EquipSlot * const equipSlot) override;
+	void open(const GameObject * const gameObject) override;
+	void dead(const GameObject * const gameObject) override;
+	void enterDoor(const GameObject * const gameObject) override;
 
 
 	std::string getDisplayData();
