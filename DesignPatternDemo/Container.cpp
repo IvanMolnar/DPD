@@ -14,7 +14,7 @@ void Container::move(Directions direction)
 	return;
 }
 
-void Container::inspect(const GameObject * const gameObject)
+void Container::inspect(const GameObject* const gameObject)
 {
 	return;
 }

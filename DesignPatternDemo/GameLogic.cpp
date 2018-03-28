@@ -56,7 +56,7 @@ void GameLogic::processInput()
 	}
 }
 
-void GameLogic::moveObject(std::shared_ptr<GameObject> gameObject, Directions direction)
+void GameLogic::moveObject(const GameObject* const gameObject, Directions direction)
 {/*
 	if (_level->canMove(gameObject, direction))
 	{
@@ -114,12 +114,12 @@ void GameLogic::internalProcessState(GameStates gameState)
 	}
 }
 
-void GameLogic::dead(const GameObject * const gameObject)
+void GameLogic::dead(const GameObject* const gameObject)
 {
 	//_level->remove(gameObject);
 }
 
-void GameLogic::enterDoor(const GameObject * const gameObject)
+void GameLogic::enterDoor(const GameObject* const gameObject)
 {
 //	Door* door = dynamic_cast<Door*>(gameObject);
 //	std::string nextMap = door->getMapName();
@@ -140,17 +140,17 @@ void GameLogic::run()
 	processInput();
 }
 
-void GameLogic::inspect(const GameObject * const gameObject)
+void GameLogic::inspect(const GameObject* const gameObject)
 {
 
 }
 
-void GameLogic::attack(const GameObject * const gameObject, const EquipSlot * const equipSlot)
+void GameLogic::attack(const GameObject* const gameObject, const EquipSlot* const equipSlot)
 {
 
 }
 
-void GameLogic::open(const GameObject * const gameObject)
+void GameLogic::open(const GameObject* const gameObject)
 {
 
 }

@@ -19,7 +19,7 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::sendEvent(Events event, Directions direction, const std::string& data, const GameObject * const object)
+void GameObject::sendEvent(Events event, Directions direction, const std::string& data, const GameObject* const object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }
@@ -166,17 +166,17 @@ void GameObject::postMove(Directions direction)
 {
 }
 
-void GameObject::attack(const GameObject * const gameObject, const EquipSlot * const equipSlot)
+void GameObject::attack(const GameObject* const gameObject, const EquipSlot* const equipSlot)
 {
 	_gameLogicObjectInterface->attack(gameObject, equipSlot);
 }
 
-void GameObject::open(const GameObject * const gameObject)
+void GameObject::open(const GameObject* const gameObject)
 {
 	_gameLogicObjectInterface->open(gameObject);
 }
 
-void GameObject::inspect(const GameObject * const gameObject)
+void GameObject::inspect(const GameObject* const gameObject)
 {
 	_gameLogicObjectInterface->inspect(gameObject.get());
 }

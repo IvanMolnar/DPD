@@ -10,7 +10,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::inspect(const GameObject * const gameObject)
+void Enemy::inspect(const GameObject* const gameObject)
 {
 	return;
 }

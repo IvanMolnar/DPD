@@ -27,7 +27,7 @@ protected:
 	void startGame();
 	void loadLevel(const std::string& levelPath);
 	void processInput();
-	void moveObject(std::shared_ptr<GameObject> gameObject, Directions direction);
+	void moveObject(const GameObject* const gameObject, Directions direction);
 	void internalProcessState(GameStates gameEvent);
 	
 	virtual void processAction(const resultAction& action) = 0;
@@ -38,11 +38,11 @@ protected:
 
 
 	// requests from GameObject
-	void inspect(const GameObject * const gameObject) override;
-	void attack(const GameObject * const gameObject, const EquipSlot * const equipSlot) override;
-	void open(const GameObject * const gameObject) override;
-	void dead(const GameObject * const gameObject) override;
-	void enterDoor(const GameObject * const gameObject) override;
+	void inspect(const GameObject* const gameObject) override;
+	void attack(const GameObject* const gameObject, const EquipSlot* const equipSlot) override;
+	void open(const GameObject* const gameObject) override;
+	void dead(const GameObject* const gameObject) override;
+	void enterDoor(const GameObject* const gameObject) override;
 
 
 	std::string getDisplayData();
