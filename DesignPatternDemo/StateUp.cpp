@@ -14,7 +14,7 @@ void StateUp::onEnter()
 	WRITE_LOG("StateUp::onEnter");
 }
 
-void StateUp::processState(Events event, Directions direction, const GameObject* const object, const std::string& data)
+void StateUp::processState(Events event, Directions direction, GameObject* const object, const std::string& data)
 {
 	WRITE_LOG("StateUp::processState");
 
@@ -32,7 +32,7 @@ void StateUp::processState(Events event, Directions direction, const GameObject*
 	case Events::attack:
 		if (object)
 		{
-			_owner->attack(object);
+//			_owner->attack(object);
 		}
 		break;
 	case Events::interact:

@@ -8,13 +8,3 @@ Player::Player(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(
 Player::~Player()
 {
 }
-
-std::string Player::getInfo()
-{
-	std::string info = GameObject::getInfo();
-
-	info += GameObject::getEquipItemsString();
-	info += GameObject::getInventoryItemsString();
-
-	return info;
-}

@@ -17,10 +17,10 @@ public:
 
 
 	std::shared_ptr<GameObject> getPlayer();
-	bool canMove(std::shared_ptr<GameObject> gameObject, Directions direction);
-	void move(std::shared_ptr<GameObject> gameObject, Directions direction);
+	bool canMove(GameObject* const gameObject, Directions direction);
+	void move(GameObject* const gameObject, Directions direction);
 //	void drawMap();
-	GameObject* getObjectNextTo(std::shared_ptr<GameObject> gameObject, Directions direction);
+	GameObject* getObjectNextTo(GameObject* const gameObject, Directions direction);
 	std::list<GameObject*> getGameObjectByType(GameObjectType gameObjectType);
 	std::list<GameObject*> getGameObjects();
 	void remove(std::shared_ptr<GameObject> gameObject);

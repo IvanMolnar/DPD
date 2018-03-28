@@ -121,12 +121,12 @@ std::shared_ptr<GameObject> MapArea::getPlayer()
 	return _player;
 }
 
-bool MapArea::canMove(std::shared_ptr<GameObject> gameObject, Directions direction)
+bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 {
 	return true;
 }
 
-void MapArea::move(std::shared_ptr<GameObject> gameObject, Directions direction)
+void MapArea::move(GameObject* const gameObject, Directions direction)
 {
 	
 
@@ -178,7 +178,7 @@ void MapArea::drawMap()
 	_display->cprintf(ss.str().c_str());
 }*/
 
-GameObject* MapArea::getObjectNextTo(std::shared_ptr<GameObject> gameObject, Directions direction)
+GameObject* MapArea::getObjectNextTo(GameObject* const gameObject, Directions direction)
 {
 	GameObject* result = nullptr;
 

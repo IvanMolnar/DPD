@@ -10,10 +10,12 @@ public:
 	~EquipSlot();
 
 	// returns nullptr if can't equip
-	std::shared_ptr<ObjectModifier> equip(std::shared_ptr<ObjectModifier> modifier);
+	// returns unequiped item if can equip
+	std::unique_ptr<ObjectModifier> equip(std::unique_ptr<ObjectModifier> modifier);
 
-	std::shared_ptr<ObjectModifier> unequip();
-	const std::shared_ptr<ObjectModifier> getObjectModifier();
+	// returns nullptr if slot is empty
+	// otherwise returns unequiped item
+	std::unique_ptr<ObjectModifier> unequip();
 
 	// returns list of types that can hold
 	std::list<ObjectModifierType> getType();
@@ -24,7 +26,7 @@ public:
 	std::string getInfo();
 
 private:
-	std::shared_ptr<ObjectModifier> _modifier;
+	std::unique_ptr<ObjectModifier> _modifier;
 
 	// type of ObjectModifiers that can hold
 	// example: sword and magic

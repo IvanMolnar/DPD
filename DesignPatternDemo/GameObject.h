@@ -19,7 +19,7 @@ public:
 	GameObject(GameObjectType type);
 	virtual ~GameObject();
 
-	virtual void sendEvent(Events event, Directions direction, const std::string& data, const GameObject* const object = nullptr) override;
+	virtual void sendEvent(Events event, Directions direction, const std::string& data, GameObject* const object = nullptr) override;
 	virtual void changeState(States state);
 	GameObjectType getType();
 	std::string getTypeString();
@@ -28,16 +28,6 @@ public:
 	virtual std::string getInfo();
 
 	std::shared_ptr<GameObjectStats> getStats();
-
-	std::list<EquipSlot*> getEquipSlots();
-	std::list<ObjectModifier*> getInventoryItems();
-	std::string getEquipItemsString();
-	std::string getInventoryItemsString();
-	void addItemToInventory(ObjectModifier* item);
-	void removeItemFromInventory(ObjectModifier* item);
-	std::array<float, 3> getModifiersPercent();
-
-	
 
 protected:
 	std::unique_ptr<FSM> _FSM;
@@ -51,9 +41,9 @@ protected:
 	virtual void postMove(Directions direction);
 
 	virtual void move(Directions direction) override;
-	virtual void inspect(const GameObject* const gameObject) override;
-	virtual void attack(const GameObject* const gameObject, const EquipSlot* const equipSlot) override;
-	virtual void open(const GameObject* const gameObject) override;
+	virtual void inspect(GameObject* const gameObject) override;
+	virtual void attack(GameObject* const gameObject, EquipSlot* const equipSlot) override;
+	virtual void open(GameObject* const gameObject) override;
 	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot) override;
 	virtual void dead() override;
 

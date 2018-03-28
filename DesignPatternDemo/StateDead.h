@@ -9,7 +9,7 @@ public:
 	~StateDead();
 
 	void onEnter();
-	void processState(Events event, Directions direction, const GameObject* const object, const std::string& data) override;
+	void processState(Events event, Directions direction, GameObject* const object, const std::string& data) override;
 	void onExit();
 	bool canChangeState(State* nextState);
 };

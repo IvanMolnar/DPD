@@ -11,9 +11,9 @@ EquipSlot::~EquipSlot()
 {
 }
 
-std::shared_ptr<ObjectModifier> EquipSlot::equip(std::shared_ptr<ObjectModifier> modifier)
+std::unique_ptr<ObjectModifier> EquipSlot::equip(std::unique_ptr<ObjectModifier> modifier)
 {
-	std::shared_ptr<ObjectModifier> result;
+	std::unique_ptr<ObjectModifier> result;
 
 	if (!modifier)
 	{
@@ -26,25 +26,28 @@ std::shared_ptr<ObjectModifier> EquipSlot::equip(std::shared_ptr<ObjectModifier>
 		return nullptr;
 	}
 
-	result = _modifier;
+	result = unequip();
 
-	_modifier = modifier;
-
-	return result;
-}
-
-std::shared_ptr<ObjectModifier> EquipSlot::unequip()
-{
-	std::shared_ptr<ObjectModifier> result = _modifier;
-
-	_modifier = nullptr;
+	_modifier = std::move(modifier);
 
 	return result;
 }
 
-const std::shared_ptr<ObjectModifier> EquipSlot::getObjectModifier()
+std::unique_ptr<ObjectModifier> EquipSlot::unequip()
 {
-	return _modifier;
+	if (_modifier)
+	{
+		std::unique_ptr<ObjectModifier> result = std::move(_modifier);
+
+		_modifier.reset();
+
+		return result;
+	}
+	else
+	{
+		return nullptr;
+	}
+	
 }
 
 std::list<ObjectModifierType> EquipSlot::getType()

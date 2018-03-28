@@ -15,7 +15,7 @@ void StateCrouching::onEnter()
 	WRITE_LOG("StateCrouching::onEnter");
 }
 
-void StateCrouching::processState(Events event, Directions direction, const GameObject* const object, const std::string& data)
+void StateCrouching::processState(Events event, Directions direction, GameObject* const object, const std::string& data)
 {
 	WRITE_LOG("StateCrouching::processState");
 
@@ -30,7 +30,7 @@ void StateCrouching::processState(Events event, Directions direction, const Game
 	case Events::attack:
 		if (object)
 		{
-			_owner->attack(object);
+		//	_owner->attack(object);
 		}
 		break;
 	case Events::interact:

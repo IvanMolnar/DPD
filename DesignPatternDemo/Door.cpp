@@ -15,12 +15,12 @@ void Door::move(Directions direction)
 	return;
 }
 
-void Door::inspect(const GameObject* const gameObject)
+void Door::inspect(GameObject* const gameObject)
 {
 	return;
 }
 
-void Door::open(const GameObject* const gameObject)
+void Door::open(GameObject* const gameObject)
 {
 	return;
 }

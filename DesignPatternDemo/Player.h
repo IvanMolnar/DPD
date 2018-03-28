@@ -10,8 +10,5 @@ public:
 	Player(GameLogicObjectInterface* gameLogicInterface);
 	~Player();
 
-
-	std::string getInfo();
-
 };
 

@@ -19,7 +19,7 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::sendEvent(Events event, Directions direction, const std::string& data, const GameObject* const object)
+void GameObject::sendEvent(Events event, Directions direction, const std::string& data, GameObject* const object)
 {
 	_FSM->processCurrentState(event, direction, object, data);
 }
@@ -91,66 +91,6 @@ std::shared_ptr<GameObjectStats> GameObject::getStats()
 	return _stats;
 }
 
-std::list<EquipSlot*> GameObject::getEquipSlots()
-{
-	return _equipSlots;
-}
-
-std::list<ObjectModifier*> GameObject::getInventoryItems()
-{
-	return _inventoryItems;
-}
-
-std::string GameObject::getEquipItemsString()
-{
-	std::stringstream result;
-
-	for each (EquipSlot* slot in _equipSlots)
-	{
-		result << slot->getInfo() << std::endl;
-	}
-
-	return result.str();
-}
-
-std::string GameObject::getInventoryItemsString()
-{
-	std::stringstream result;
-	int index = 0;
-
-	for each (ObjectModifier* item in _inventoryItems)
-	{
-		result << index << ": " << item->getTypeString() << std::endl;
-		++index;
-	}
-
-	return result.str();
-}
-
-void GameObject::addItemToInventory(ObjectModifier* item)
-{
-	_inventoryItems.push_back(item);
-}
-
-void GameObject::removeItemFromInventory(ObjectModifier* item)
-{
-	_inventoryItems.remove(item);
-}
-
-std::array<float, 3> GameObject::getModifiersPercent()
-{
-	//damage, stamina, mana
-	std::array<float, 3> result = {1, 1, 1};
-	
-	if (getState() == States::sneaking)
-	{
-		result[0] = 1.4f;
-		result[1] = 1.6f;
-	}
-
-	return result;
-}
-
 void GameObject::preMove(Directions direction)
 {
 }
@@ -166,19 +106,19 @@ void GameObject::postMove(Directions direction)
 {
 }
 
-void GameObject::attack(const GameObject* const gameObject, const EquipSlot* const equipSlot)
+void GameObject::attack(GameObject* const gameObject, EquipSlot* const equipSlot)
 {
 	_gameLogicObjectInterface->attack(gameObject, equipSlot);
 }
 
-void GameObject::open(const GameObject* const gameObject)
+void GameObject::open(GameObject* const gameObject)
 {
 	_gameLogicObjectInterface->open(gameObject);
 }
 
-void GameObject::inspect(const GameObject* const gameObject)
+void GameObject::inspect(GameObject* const gameObject)
 {
-	_gameLogicObjectInterface->inspect(gameObject.get());
+	_gameLogicObjectInterface->inspect(gameObject);
 }
 
 void GameObject::dead()
@@ -188,52 +128,5 @@ void GameObject::dead()
 
 void GameObject::equip(unsigned int inventorySlot, unsigned int equipSlot)
 {
-	if ((inventorySlot >= _inventoryItems.size()) || (equipSlot >= _equipSlots.size()))
-	{
-		return;
-	}
-
-	int inventoryIndex = 0;
-	ObjectModifier* inventoryItem = nullptr;
-
-	for (std::list<ObjectModifier*>::iterator it = _inventoryItems.begin(); it != _inventoryItems.end(); it++)
-	{
-		if (inventoryIndex == inventorySlot)
-		{
-			inventoryItem = *it;
-			break;
-		}
-
-		++inventoryIndex;
-	}
-
-	EquipSlot* slot = nullptr;
-	
-	int slotIndex = 0;
-
-	for each (EquipSlot* es in _equipSlots)
-	{
-		if (slotIndex == equipSlot)
-		{
-			slot = es;
-			break;
-		}
-
-		++slotIndex;
-	}
-
-	ObjectModifier* unequipedItem = nullptr;
-
-	bool equiped = slot->equip(inventoryItem, unequipedItem);
-
-	if (unequipedItem)
-	{
-		_inventoryItems.push_back(unequipedItem);
-	}
-
-	if (equiped)
-	{
-		_inventoryItems.remove(inventoryItem);
-	}
 	
 }

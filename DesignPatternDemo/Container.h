@@ -10,7 +10,7 @@ public:
 	~Container();
 
 	void move(Directions direction);
-	void inspect(const GameObject* const gameObject);
+	void inspect(GameObject* const gameObject);
 	std::string getInfo();
 
 private:
