@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Global.h"
+#include <vector>
+#include "MyObjectDisplayData.h"
 
 class MapAreaInterface
 {
@@ -8,6 +10,5 @@ public:
 	MapAreaInterface() {};
 	~MapAreaInterface() {};
 
-	virtual std::string getDisplayData() = 0;
+	virtual std::vector<MyObjectDisplayData*> getDisplayData() = 0;
 };
-

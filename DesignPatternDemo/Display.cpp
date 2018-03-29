@@ -11,7 +11,7 @@ Display::~Display()
 {
 }
 
-std::string Display::getDisplayData()
+std::vector<MyObjectDisplayData*> Display::getDisplayData()
 {
 	return _mapAreaInterface->getDisplayData();
 }

@@ -127,9 +127,9 @@ void GameLogic::enterDoor(GameObject* const gameObject)
 //	loadLevel(nextMap);
 }
 
-std::string GameLogic::getDisplayData()
+std::vector<MyObjectDisplayData*> GameLogic::getDisplayData()
 {
-	return std::string();
+	return _mapManager->getCurrentMapArea()->getLevelDisplayData();
 }
 
 void GameLogic::run()

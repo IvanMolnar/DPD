@@ -9,7 +9,7 @@ public:
 	Display();
 	virtual ~Display();
 
-	std::string getDisplayData();
+	std::vector<MyObjectDisplayData*> getDisplayData();
 
 	void init(MapAreaInterface* const mapAreaInterface);
 

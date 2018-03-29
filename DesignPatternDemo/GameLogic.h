@@ -7,6 +7,7 @@
 #include "GameObjectFactory.h"
 #include <memory>
 #include <map>
+#include <vector>
 
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
 {
@@ -45,5 +46,5 @@ protected:
 	void enterDoor(GameObject* const gameObject) override;
 
 
-	std::string getDisplayData();
+	std::vector<MyObjectDisplayData*> getDisplayData() override;
 };
