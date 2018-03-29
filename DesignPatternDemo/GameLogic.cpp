@@ -12,7 +12,7 @@ void GameLogic::init(std::unique_ptr<Display>& display, std::unique_ptr<MapManag
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
 	
-	GameObjectFactory::getInstance()->init(this);
+	GameObjectFactory::getInstance()->setCallbackInterface(this);
 }
 
 GameLogic::~GameLogic()
@@ -129,7 +129,8 @@ void GameLogic::enterDoor(GameObject* const gameObject)
 
 std::vector<MyObjectDisplayData*> GameLogic::getDisplayData()
 {
-	return _mapManager->getCurrentMapArea()->getLevelDisplayData();
+	std::vector<MyObjectDisplayData*> a;
+	return a;//_mapManager->getCurrentMapArea()->getLevelDisplayData();
 }
 
 void GameLogic::run()

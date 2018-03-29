@@ -16,7 +16,7 @@
 class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData
 {
 public:
-	GameObject(GameObjectType type);
+	GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type);
 	virtual ~GameObject();
 
 	virtual void sendEvent(Events event, Directions direction, const std::string& data, GameObject* const object = nullptr) override;

@@ -3,7 +3,7 @@
 class Obstacle : public GameObject
 {
 public:
-	Obstacle(GameLogicObjectInterface* gameLogicObjectInterface);
+	Obstacle(void* gameLogicObjectInterface);
 	~Obstacle();
 
 	void sendEvent(Events event, Directions direction, const std::string& data, GameObject* const object = nullptr) override;

@@ -7,8 +7,7 @@
 class Player : public GameObject
 {
 public:
-	Player(GameLogicObjectInterface* gameLogicInterface);
+	Player(void* gameLogicInterface);
 	~Player();
-
 };
 

@@ -1,9 +1,8 @@
 #include "Door.h"
 
 
-Door::Door(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectType::Door)
+Door::Door(void* gameLogicObjectInterface) : GameObject(static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface), GameObjectType::Door)
 {
-	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
 
 Door::~Door()

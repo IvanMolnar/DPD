@@ -12,13 +12,12 @@ enum class TileType
 class Tile : public MyObjectDisplayData
 {
 public:
-	Tile(position2d position, TileType tileType);
+	Tile(TileType tileType);
 	virtual ~Tile();
 
-	MyObjectDisplayData* getDisplayData();
+	virtual MyObjectDisplayData* getDisplayData() = 0;
 
 protected:
-	MyObjectDisplayData _displayData;
 	TileType _type;
 
 };

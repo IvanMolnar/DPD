@@ -1,5 +1,6 @@
+#include "GameObjectFactory.h"
 #pragma once
-
+/*
 #include "GameObjectFactory.h"
 
 
@@ -11,4 +12,4 @@ void GameObjectFactory::init(GameLogicObjectInterface* gameLogicObjectInterface)
 std::unique_ptr<GameObject> GameObjectFactory::createGameObject(GameObjectType name)
 {
 	return _registeredGameObjects[name](_gameLogicObjectInterface);
-}
+}*/

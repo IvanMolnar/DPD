@@ -7,15 +7,11 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(GameLogicObjectInterface* gameLogicObjectInterface);
+	Enemy(void* gameLogicObjectInterface);
 	~Enemy();
 
 	void inspect(GameObject* const gameObject);
 
 	std::string getInfo();
-
-
-private:
-	GameLogicObjectInterface* _gameLogicObjectInterface;
 };
 

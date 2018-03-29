@@ -5,8 +5,9 @@
 
 #include <sstream>
 
-GameObject::GameObject(GameObjectType type)
+GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type)
 {
+	_gameLogicObjectInterface = static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface);
 	_type = type;
 	_FSM = std::make_unique<FSM>(new StateUp(this));
 	_inventoryManager = std::make_unique<InventoryManager>();

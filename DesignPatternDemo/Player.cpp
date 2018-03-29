@@ -1,8 +1,7 @@
 #include "Player.h"
 
-Player::Player(GameLogicObjectInterface* gameLogicObjectInterface) : GameObject(GameObjectType::Player)
+Player::Player(void* gameLogicObjectInterface) : GameObject(static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface), GameObjectType::Player)
 {
-	_gameLogicObjectInterface = gameLogicObjectInterface;
 }
 
 Player::~Player()
