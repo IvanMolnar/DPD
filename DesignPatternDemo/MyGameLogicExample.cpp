@@ -41,7 +41,7 @@ std::unique_ptr<MapManager> MyGameLogicExample::createMapManager()
 {
 	std::unique_ptr<MapLoader> mapLoader = std::unique_ptr<MyMapLoader>(new MyMapLoader());
 
-	std::shared_ptr<MyFileSystem> myFileSystem = std::make_shared<MyFileSystem>((std::move(mapLoader)));
+	std::shared_ptr<FileSystem> myFileSystem = std::make_shared<MyFileSystem>((std::move(mapLoader)));
 
 	return std::make_unique<MapManager>(myFileSystem);
 }
