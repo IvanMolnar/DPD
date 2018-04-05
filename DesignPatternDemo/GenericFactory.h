@@ -46,7 +46,7 @@ public:
 		_callbackInterface = callbackInterface;
 	}
 
-	std::unique_ptr<O> createGameObject(K name)
+	std::unique_ptr<O> create(K name)
 	{
 		return _registeredGameObjects[name](_callbackInterface);
 	}

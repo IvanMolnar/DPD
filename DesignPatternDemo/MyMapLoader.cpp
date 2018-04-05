@@ -11,7 +11,11 @@ MyMapLoader::~MyMapLoader()
 {
 }
 
-std::vector<std::unique_ptr<GameObject>> MyMapLoader::parse(std::unique_ptr<std::string>& data)
+void MyMapLoader::parse(std::unique_ptr<std::string>& data)
+{
+}
+
+std::vector<std::unique_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)
 {
 	std::vector<std::unique_ptr<GameObject>> result;
 
@@ -19,8 +23,24 @@ std::vector<std::unique_ptr<GameObject>> MyMapLoader::parse(std::unique_ptr<std:
 
 
 	//test
+
 	result.push_back(std::move(createGameObject(GameObjectType::Player)));
 	result.push_back(std::move(createGameObject(GameObjectType::Enemy)));
+
+
+	return result;
+}
+
+std::vector<std::unique_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::string>& data)
+{
+	std::vector<std::unique_ptr<Tile>> result;
+
+	//parse data
+
+
+	//test
+
+	result.push_back(createTile(TileType::Grass));
 
 
 	return result;

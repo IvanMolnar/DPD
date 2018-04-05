@@ -3,10 +3,10 @@
 
 enum class TileType
 {
-	grass,
-	dirt,
-	road,
-	water
+	Grass,
+	Dirt,
+	Road,
+	Water
 };
 
 class Tile : public MyObjectDisplayData
