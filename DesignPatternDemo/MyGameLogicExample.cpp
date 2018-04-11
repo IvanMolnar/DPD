@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Obstacle.h"
 #include "Player.h"
+#include "TileGrass.h"
 
 
 #include "MyFileSystem.h"
@@ -26,6 +27,8 @@ MyGameLogicExample::MyGameLogicExample()
 	GameObjectFactory::getInstance()->registerInstance<Enemy>(GameObjectType::Enemy);
 	GameObjectFactory::getInstance()->registerInstance<Obstacle>(GameObjectType::Obstacle);
 	GameObjectFactory::getInstance()->registerInstance<Player>(GameObjectType::Player);
+
+	TileFactory::getInstance()->registerInstance<TileGrass>(TileType::Grass);
 }
 
 MyGameLogicExample::~MyGameLogicExample()

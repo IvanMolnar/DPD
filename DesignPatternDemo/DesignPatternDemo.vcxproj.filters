@@ -180,13 +180,13 @@
     <ClInclude Include="Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TileFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GenericFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileGrass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -293,7 +293,7 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyTile.cpp">
+    <ClCompile Include="TileGrass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

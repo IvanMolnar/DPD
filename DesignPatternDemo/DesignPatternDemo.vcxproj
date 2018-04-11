@@ -175,7 +175,7 @@
     <ClInclude Include="MyGameLogicExample.h" />
     <ClInclude Include="MyInputExample.h" />
     <ClInclude Include="MyMapLoader.h" />
-    <ClInclude Include="MyTile.h" />
+    <ClInclude Include="TileGrass.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
     <ClInclude Include="MyObjectDisplayData.h" />
     <ClInclude Include="ObjectEventInterface.h" />
@@ -219,7 +219,7 @@
     <ClCompile Include="MyGameLogicExample.cpp" />
     <ClCompile Include="MyInputExample.cpp" />
     <ClCompile Include="MyMapLoader.cpp" />
-    <ClCompile Include="MyTile.cpp" />
+    <ClCompile Include="TileGrass.cpp" />
     <ClCompile Include="ObjectModifier.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
