@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 
+
+
 MapArea::MapArea(std::unique_ptr<std::string> mapLoadData) :
 	_mapId(0),
 	_mapLoadData(std::move(mapLoadData))
@@ -15,105 +17,26 @@ MapArea::~MapArea()
 
 void MapArea::loadMapData()
 {
-//	for ()
-
-}
-
-void MapArea::loadLevel(std::string fileName)
-{/*
-	std::string line;
-	std::ifstream infile;
-
-	int currentRow = 0;
-	int currentColumn = 0;
-
-	for (int x = 0; x < MaxLevelColumns; x++)
+	//test
+	int row = 0;
+	int column = 0;
+	for (int i = 0; i < 20; i++, column++)
 	{
-		for (int y = 0; y < MaxLevelRows; y++)
+		std::shared_ptr<Tile> newTile = TileFactory::getInstance()->create(TileType::Grass);
+		newTile->_position.x = column;
+		newTile->_position.y = row;
+
+		_mapData[newTile] = std::list<std::shared_ptr<GameObject>>();
+
+		if (column == 4)
 		{
-			if (_mapData[x][y])
-			{
-				if (_mapData[x][y]->getType() != GameObjectType::Player)
-				{
-					delete _mapData[x][y];
-				}
-				else
-				{
-					_mapData[x][y] = nullptr;
-				}
-				
-			}
+			column = 0;
+			++row;
 		}
 	}
 
-	infile.open(fileName);
-
-	if (!infile.good())
-	{
-		WRITE_LOG_WARNING("Could not open map file " + fileName)
-		return;
-	}
-
-	int i = 0;
-
-	while (!infile.eof())
-	{
-		getline(infile, line);
-
-		currentRow = 0;
-
-		for (char c : line)
-		{
-			GameObject* gameObject = GameObjectFactory::createGameObject(c);
-
-			if (gameObject && gameObject->getType() == GameObjectType::Player)
-			{
-				if (_player)
-				{
-					delete gameObject;
-					gameObject = _player;
-				}
-				else
-				{
-					_player = gameObject;
-				}
-				
-			}
-
-			//debug
-			if (gameObject && gameObject->getType() == GameObjectType::Container)
-			{
-				gameObject->addItemToInventory(new Sword());
-				gameObject->addItemToInventory(new Armor());
-			}
-
-			if (gameObject && gameObject->getType() == GameObjectType::Enemy)
-			{
-				gameObject->addItemToInventory(new Sword());
-				std::string s("01");
-				gameObject->sendEvent(Events::equip, Directions::None, s);
-
-				if (i == 1)
-				{
-					gameObject->addItemToInventory(new Sword());
-					std::string s("02");
-					gameObject->sendEvent(Events::equip, Directions::None, s);
-				}
-
-				++i;
-			}
-			///////////////////////////////////////////////////////////////////////
-			
-			_mapData[currentColumn][currentRow] = gameObject;
-
-			++currentRow;
-		}
-
-		++currentColumn;
-
-	}
-
-	infile.close();*/
+	//add player
+	 _mapData[0].push_back(GameObjectFactory::getInstance()->create(GameObjectType::Player));
 }
 
 std::shared_ptr<GameObject> MapArea::getPlayer()
@@ -128,7 +51,6 @@ bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 
 void MapArea::move(GameObject* const gameObject, Directions direction)
 {
-	
 
 }
 

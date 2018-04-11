@@ -4,16 +4,19 @@
 
 #include "ConsoleLogger.h"
 
+
+#include <map>
+
+//test
+#include "GameObjectFactory.h"
+#include "TileFactory.h"
+
+
 class MapArea
 {
 public:
 	MapArea(std::unique_ptr<std::string> mapLoadData);
 	~MapArea();
-
-	
-
-	void loadLevel(std::string fileName);
-
 
 
 	std::shared_ptr<GameObject> getPlayer();
@@ -39,6 +42,8 @@ private:
 
 
 	std::unique_ptr<std::string> _mapLoadData;
+
+	std::map<std::shared_ptr<Tile>, std::list<std::shared_ptr<GameObject>>> _mapData;
 
 	void loadMapData();
 };
