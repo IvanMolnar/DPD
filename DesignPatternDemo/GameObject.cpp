@@ -7,6 +7,8 @@
 
 GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type)
 {
+	_drawLayer = 1;
+
 	_gameLogicObjectInterface = static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface);
 	_type = type;
 	_FSM = std::make_unique<FSM>(new StateUp(this));

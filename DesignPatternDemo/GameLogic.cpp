@@ -7,7 +7,7 @@ GameLogic::GameLogic()
 	_gameRunning = true;
 }
 
-void GameLogic::init(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager)
+void GameLogic::init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager)
 {
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
@@ -129,8 +129,9 @@ void GameLogic::enterDoor(GameObject* const gameObject)
 
 std::vector<MyObjectDisplayData*> GameLogic::getDisplayData()
 {
+	return _mapManager->getCurrentMapArea()->getDisplayData();
 	std::vector<MyObjectDisplayData*> a;
-	return a;//_mapManager->getCurrentMapArea()->getLevelDisplayData();
+	 a;//_mapManager->getCurrentMapArea()->getLevelDisplayData();
 }
 
 void GameLogic::run()

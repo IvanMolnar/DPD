@@ -16,7 +16,7 @@ public:
 	GameLogic();
 	virtual ~GameLogic();
 
-	void init(std::unique_ptr<Display>& display, std::unique_ptr<MapManager>& mapManager);
+	void init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager);
 
 	void run();
 

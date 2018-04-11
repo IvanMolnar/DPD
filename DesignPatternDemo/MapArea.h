@@ -29,7 +29,7 @@ public:
 	void remove(std::shared_ptr<GameObject> gameObject);
 
 	unsigned int getMapId();
-	void getLevelDisplayData();
+	std::vector<MyObjectDisplayData*> getDisplayData();
 
 private:
 
@@ -38,7 +38,6 @@ private:
 
 
 	unsigned int _mapId;
-	std::string generateScreenData();
 
 
 	std::unique_ptr<std::string> _mapLoadData;

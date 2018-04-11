@@ -141,7 +141,7 @@ void MapArea::move(GameObject* const gameObject, Directions direction)
 	for (auto& data : _mapData)
 	{
 		for (auto& object : data.second)
-		{`
+		{
 			if (object.get() == gameObject)
 			{
 				_mapData[tile].push_back(object);
@@ -153,51 +153,27 @@ void MapArea::move(GameObject* const gameObject, Directions direction)
 
 }
 
-std::string MapArea::generateScreenData()
-{
-	std::string result;
-	/*
-	for (int x = 0; x < MaxLevelColumns; x++)
-	{
-		for (int y = 0; y < MaxLevelRows; y++)
-		{
-			std::string c(" ");
-
-			if (_mapData[x][y])
-			{
-				c = GameObjectFactory::getCharIdFromType(_mapData[x][y]->getType());
-			}
-
-			result += c;
-		}
-
-		result += '\n';
-	}*/
-
-	return result;
-}
 unsigned int MapArea::getMapId()
 {
 	return _mapId;
 }
-void MapArea::getLevelDisplayData()
+
+std::vector<MyObjectDisplayData*> MapArea::getDisplayData()
 {
-}
-/*
-void MapArea::drawMap()
-{
-	std::stringstream ss;
-	ss << generateScreenData();
-	
-	if (_player)
+	std::vector<MyObjectDisplayData*> result;
+
+	for (auto& data : _mapData)
 	{
-		ss << "State: " << _player->getStateString() << endl;
-		ss << _player->getInfo();
+		for (auto& object : data.second)
+		{
+			result.push_back(object.get());
+		}
+
+		result.push_back(data.first.get());
 	}
 
-	_display->cls();
-	_display->cprintf(ss.str().c_str());
-}*/
+	return result;
+}
 
 GameObject* MapArea::getObjectNextTo(GameObject* const gameObject, Directions direction)
 {
