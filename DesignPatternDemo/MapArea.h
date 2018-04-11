@@ -46,5 +46,11 @@ private:
 	std::map<std::shared_ptr<Tile>, std::list<std::shared_ptr<GameObject>>> _mapData;
 
 	void loadMapData();
+
+
+	//
+	std::shared_ptr<Tile> getTileFromDirection(GameObject* const gameObject, Directions direction);
+	std::shared_ptr<Tile> getTileFromObject(GameObject* const gameObject);
+	std::shared_ptr<Tile> getTileFromPosition(position2d position);
 };
 

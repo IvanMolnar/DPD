@@ -58,6 +58,10 @@ void MyGameLogicExample::processAction(const resultAction& action)
 		// send event
 		_level->getPlayer()->sendEvent(action._event, action._direction, action._data, gameObject);
 	}*/
+
+
+	//test
+	_mapManager->getCurrentMapArea()->getPlayer()->sendEvent(action._event, action._direction, action._data, nullptr);
 }
 
 bool MyGameLogicExample::processState(GameStates gameState)

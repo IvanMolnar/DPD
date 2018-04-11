@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-
+#include <algorithm>
 
 MapArea::MapArea(std::unique_ptr<std::string> mapLoadData) :
 	_mapId(0),
@@ -30,13 +30,93 @@ void MapArea::loadMapData()
 
 		if (column == 4)
 		{
-			column = 0;
+			column = -1;
 			++row;
 		}
 	}
 
 	//add player
-	 _mapData[0].push_back(GameObjectFactory::getInstance()->create(GameObjectType::Player));
+
+	for (auto& data : _mapData)
+	{
+		if (data.first->_position.x == 0 && data.first->_position.y == 0)
+		{
+			_player = GameObjectFactory::getInstance()->create(GameObjectType::Player);
+			data.second.push_back(_player);
+			break;
+		}
+	}
+
+}
+
+std::shared_ptr<Tile> MapArea::getTileFromDirection(GameObject* const gameObject, Directions direction)
+{
+	int tileOffsetX = 0;
+	int tileOffsetY = 0;
+
+	switch (direction)
+	{
+	case Directions::North:
+		--tileOffsetY;
+		break;
+	case Directions::South:
+		++tileOffsetY;
+		break;
+	case Directions::East:
+		--tileOffsetX;
+		break;
+	case Directions::West:
+		++tileOffsetX;
+		break;
+	default:
+		return nullptr;
+	}
+
+
+	std::shared_ptr<Tile> tile = getTileFromObject(gameObject);
+
+	if (!tile)
+	{
+		return nullptr;
+	}
+
+	position2d targetedPosition(tile->_position.x + tileOffsetX, tile->_position.y + tileOffsetY);
+
+	std::shared_ptr<Tile> tileFromPosition = getTileFromPosition(targetedPosition);
+
+	return tileFromPosition;
+}
+
+std::shared_ptr<Tile> MapArea::getTileFromObject(GameObject* const gameObject)
+{
+	for (auto& data : _mapData)
+	{
+		std::list<std::shared_ptr<GameObject>> gameObjectList = data.second;
+
+		for (auto& object : gameObjectList)
+		{
+			if (object.get() == gameObject)
+			{
+				return data.first;
+			}
+		}
+
+	}
+
+	return nullptr;
+}
+
+std::shared_ptr<Tile> MapArea::getTileFromPosition(position2d position)
+{
+	for (auto& data : _mapData)
+	{
+		if (data.first->_position.x == position.x && data.first->_position.y == position.y)
+		{
+			return data.first;
+		}
+	}
+
+	return nullptr;
 }
 
 std::shared_ptr<GameObject> MapArea::getPlayer()
@@ -51,6 +131,25 @@ bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 
 void MapArea::move(GameObject* const gameObject, Directions direction)
 {
+	std::shared_ptr<Tile> tile = getTileFromDirection(gameObject, direction);
+
+	if (!tile)
+	{
+		return;
+	}
+
+	for (auto& data : _mapData)
+	{
+		for (auto& object : data.second)
+		{`
+			if (object.get() == gameObject)
+			{
+				_mapData[tile].push_back(object);
+				data.second.remove(object);
+				return;
+			}
+		}
+	}
 
 }
 
