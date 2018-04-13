@@ -3,10 +3,10 @@
 //test
 #include <functional>
 
-MyDisplayExample::MyDisplayExample() : _graphicEngineInterface(nullptr)
+MyDisplayExample::MyDisplayExample()
 {
+	_graphicEngineInterface = nullptr;
 }
-
 
 MyDisplayExample::~MyDisplayExample()
 {
@@ -41,12 +41,7 @@ void MyDisplayExample::start()
 
 void MyDisplayExample::draw()
 {
-	auto displayData = getDisplayData();
-	
-	for (auto& data : displayData)
-	{
+	_displayData = getDisplayData();
 
-	}
-
-	_graphicEngineInterface->tick();
+	_graphicEngineInterface->tick(&_displayData);
 }

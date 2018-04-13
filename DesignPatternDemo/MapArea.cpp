@@ -26,6 +26,8 @@ void MapArea::loadMapData()
 		newTile->_position.x = column;
 		newTile->_position.y = row;
 
+//		_graphicEngineInterface->loadTexture(newTile.get());
+
 		_mapData[newTile] = std::list<std::shared_ptr<GameObject>>();
 
 		if (column == 4)
@@ -42,6 +44,7 @@ void MapArea::loadMapData()
 		if (data.first->_position.x == 0 && data.first->_position.y == 0)
 		{
 			_player = GameObjectFactory::getInstance()->create(GameObjectType::Player);
+	//		_graphicEngineInterface->loadTexture(_player.get());
 			data.second.push_back(_player);
 			break;
 		}

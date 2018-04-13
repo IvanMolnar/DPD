@@ -13,6 +13,14 @@ MyMapLoader::~MyMapLoader()
 
 void MyMapLoader::parse(std::unique_ptr<std::string>& data)
 {
+	/*
+	parseTile(data);
+	parseGameObject(data);
+
+	for (auto& object : result)
+	{
+
+	}*/
 }
 
 std::vector<std::unique_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)

@@ -14,8 +14,10 @@ public:
 	void draw();
 
 private:
+
 	GraphicEngineInterface* _graphicEngineInterface;
 
 	HINSTANCE _dllHandle;
-};
 
+	std::vector<MyObjectDisplayData*> _displayData;
+};

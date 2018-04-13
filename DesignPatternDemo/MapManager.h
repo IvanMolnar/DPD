@@ -2,6 +2,7 @@
 
 #include "FileSystem.h"
 #include <vector>
+#include "MyDisplayExample.h"
 
 class MapManager
 {

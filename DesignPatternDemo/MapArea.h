@@ -10,6 +10,7 @@
 //test
 #include "GameObjectFactory.h"
 #include "TileFactory.h"
+//#include "MyDisplayExample.h"
 
 
 class MapArea

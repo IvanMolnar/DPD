@@ -1,6 +1,7 @@
 #include "MapManager.h"
 
 
+
 MapManager::MapManager(const std::shared_ptr<FileSystem>& fileSystem) :
 	_fileSystem(fileSystem)
 {
@@ -14,6 +15,8 @@ MapManager::~MapManager()
 void MapManager::loadArea(const std::string& areaName)
 {
 	std::shared_ptr<MapArea> mapArea = _fileSystem->loadMapArea(areaName);
+
+
 
 	_loadedMapAreas.push_back(mapArea);
 
