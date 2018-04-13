@@ -4,9 +4,10 @@
 
 #include <algorithm>
 
-MapArea::MapArea(std::unique_ptr<std::string> mapLoadData) :
+MapArea::MapArea(std::unique_ptr<std::string> mapLoadData, MapLoader* mapLoader) :
 	_mapId(0),
-	_mapLoadData(std::move(mapLoadData))
+	_mapLoadData(std::move(mapLoadData)),
+	_mapLoader(mapLoader)
 {
 	loadMapData();
 }
@@ -17,6 +18,8 @@ MapArea::~MapArea()
 
 void MapArea::loadMapData()
 {
+	_mapLoader->parse(_mapLoadData);
+
 	//test
 	int row = 0;
 	int column = 0;

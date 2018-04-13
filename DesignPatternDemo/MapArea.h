@@ -10,13 +10,13 @@
 //test
 #include "GameObjectFactory.h"
 #include "TileFactory.h"
-//#include "MyDisplayExample.h"
+#include "MapLoader.h"
 
 
 class MapArea
 {
 public:
-	MapArea(std::unique_ptr<std::string> mapLoadData);
+	MapArea(std::unique_ptr<std::string> mapLoadData, MapLoader* mapLoader);
 	~MapArea();
 
 
@@ -52,5 +52,8 @@ private:
 	std::shared_ptr<Tile> getTileFromDirection(GameObject* const gameObject, Directions direction);
 	std::shared_ptr<Tile> getTileFromObject(GameObject* const gameObject);
 	std::shared_ptr<Tile> getTileFromPosition(position2d position);
+
+
+	MapLoader* _mapLoader;
 };
 

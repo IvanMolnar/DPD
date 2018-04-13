@@ -21,6 +21,7 @@ void MyMapLoader::parse(std::unique_ptr<std::string>& data)
 	{
 
 	}*/
+
 }
 
 std::vector<std::unique_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)

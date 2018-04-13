@@ -15,7 +15,7 @@ std::unique_ptr<MapArea> FileSystem::loadMapArea(const std::string& areaName)
 {
 	std::unique_ptr<std::string> areaData = readFile(areaName);
 
-	_mapLoader->parse(areaData);
+//	return _mapLoader->parse(areaData);
 
-	return std::unique_ptr<MapArea>(new MapArea(std::move(areaData)));
+	return std::unique_ptr<MapArea>(new MapArea(std::move(areaData), _mapLoader.get()));
 }
