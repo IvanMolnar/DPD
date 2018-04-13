@@ -162,9 +162,6 @@
     <ClInclude Include="FileSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyObjectDisplayData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MyFileSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>

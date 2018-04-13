@@ -50,19 +50,6 @@ enum class GameStates
 	ExitGame
 };
 
-struct position2d
-{
-	position2d(int xPos = 0, int yPos = 0)
-	{
-		x = xPos;
-		y = yPos;
-	}
-
-	int x;
-	int y;
-};
-
-
 class Logger
 {
 public:

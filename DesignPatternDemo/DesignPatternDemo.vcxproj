@@ -177,7 +177,6 @@
     <ClInclude Include="MyMapLoader.h" />
     <ClInclude Include="TileGrass.h" />
     <ClInclude Include="ObjectCommandInterface.h" />
-    <ClInclude Include="MyObjectDisplayData.h" />
     <ClInclude Include="ObjectEventInterface.h" />
     <ClInclude Include="ObjectModifier.h" />
     <ClInclude Include="ObjectModifierInterface.h" />

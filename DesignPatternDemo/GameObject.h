@@ -7,7 +7,7 @@
 #include "ObjectCommandInterface.h"
 #include "ObjectModifierInterface.h"
 #include "ObjectModifier.h"
-#include "MyObjectDisplayData.h"
+#include "../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
 #include "GameLogicObjectInterface.h"
 #include "InventoryManager.h"
 
