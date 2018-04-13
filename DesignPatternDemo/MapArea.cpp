@@ -18,8 +18,13 @@ MapArea::~MapArea()
 
 void MapArea::loadMapData()
 {
-	_mapLoader->parse(_mapLoadData);
+	auto loadedTiles = _mapLoader->parseTile(_mapLoadData);
 
+	for (auto& tile : loadedTiles)
+	{
+		_mapData[std::move(tile)] = std::list<std::shared_ptr<GameObject>>();
+	}
+	/*
 	//test
 	int row = 0;
 	int column = 0;
@@ -38,10 +43,25 @@ void MapArea::loadMapData()
 			column = -1;
 			++row;
 		}
-	}
+	}*/
 
 	//add player
 
+	auto loadedObjects =_mapLoader->parseGameObject(_mapLoadData);
+
+	for (auto& object : loadedObjects)
+	{
+		for (auto& data : _mapData)
+		{
+			if (data.first->_position.x == object->_position.x && data.first->_position.y == object->_position.y)
+			{
+				_player = object;
+				data.second.push_back(_player);
+				break;
+			}
+		}
+	}
+	/*
 	for (auto& data : _mapData)
 	{
 		if (data.first->_position.x == 0 && data.first->_position.y == 0)
@@ -51,7 +71,7 @@ void MapArea::loadMapData()
 			data.second.push_back(_player);
 			break;
 		}
-	}
+	}*/
 
 }
 

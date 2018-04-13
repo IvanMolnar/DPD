@@ -11,45 +11,48 @@ MyMapLoader::~MyMapLoader()
 {
 }
 
-void MyMapLoader::parse(std::unique_ptr<std::string>& data)
+std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)
 {
-	/*
-	parseTile(data);
-	parseGameObject(data);
-
-	for (auto& object : result)
-	{
-
-	}*/
-
-}
-
-std::vector<std::unique_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)
-{
-	std::vector<std::unique_ptr<GameObject>> result;
+	std::vector<std::shared_ptr<GameObject>> result;
 
 	//parse data
 
 
 	//test
 
-	result.push_back(std::move(createGameObject(GameObjectType::Player)));
-	result.push_back(std::move(createGameObject(GameObjectType::Enemy)));
+	auto player = createGameObject(GameObjectType::Player);
+	player->_position.x = 0;
+	player->_position.y = 0;
 
+	result.push_back(std::move(player));
 
 	return result;
 }
 
-std::vector<std::unique_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::string>& data)
+std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::string>& data)
 {
-	std::vector<std::unique_ptr<Tile>> result;
+	std::vector<std::shared_ptr<Tile>> result;
 
 	//parse data
 
 
 	//test
+	int row = 0;
+	int column = 0;
+	for (int i = 0; i < 20; i++, column++)
+	{
+		std::shared_ptr<Tile> newTile = TileFactory::getInstance()->create(TileType::Grass);
+		newTile->_position.x = column;
+		newTile->_position.y = row;
 
-	result.push_back(createTile(TileType::Grass));
+		result.push_back(newTile);
+
+		if (column == 4)
+		{
+			column = -1;
+			++row;
+		}
+	}
 
 
 	return result;
