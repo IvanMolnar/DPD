@@ -15,6 +15,10 @@ public:
 
 	virtual void start() = 0;
 	virtual void draw() = 0;
+	virtual void initObjects(std::vector<MyObjectDisplayData*>* objects) = 0;
+	virtual void loadTexture(std::vector<MyObjectDisplayData*>* objects) = 0;
+	virtual void addObjectToRender(MyObjectDisplayData* object) = 0;
+	virtual void addObjectsToRender(std::vector<MyObjectDisplayData*>* objects) = 0;
 
 private:
 	MapAreaInterface* _mapAreaInterface;

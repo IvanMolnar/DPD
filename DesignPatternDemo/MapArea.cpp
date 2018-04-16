@@ -9,7 +9,6 @@ MapArea::MapArea(std::unique_ptr<std::string> mapLoadData, MapLoader* mapLoader)
 	_mapLoadData(std::move(mapLoadData)),
 	_mapLoader(mapLoader)
 {
-	loadMapData();
 }
 
 MapArea::~MapArea()
@@ -89,10 +88,10 @@ std::shared_ptr<Tile> MapArea::getTileFromDirection(GameObject* const gameObject
 		++tileOffsetY;
 		break;
 	case Directions::East:
-		--tileOffsetX;
+		++tileOffsetX;
 		break;
 	case Directions::West:
-		++tileOffsetX;
+		--tileOffsetX;
 		break;
 	default:
 		return nullptr;
@@ -170,6 +169,8 @@ void MapArea::move(GameObject* const gameObject, Directions direction)
 		{
 			if (object.get() == gameObject)
 			{
+				object->_position.x = tile->_position.x;
+				object->_position.y = tile->_position.y;
 				_mapData[tile].push_back(object);
 				data.second.remove(object);
 				return;

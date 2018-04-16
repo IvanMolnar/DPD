@@ -23,6 +23,7 @@ std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::uniqu
 	auto player = createGameObject(GameObjectType::Player);
 	player->_position.x = 0;
 	player->_position.y = 0;
+	player->texturePath = "player.png";
 
 	result.push_back(std::move(player));
 
@@ -44,6 +45,7 @@ std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::s
 		std::shared_ptr<Tile> newTile = TileFactory::getInstance()->create(TileType::Grass);
 		newTile->_position.x = column;
 		newTile->_position.y = row;
+		newTile->texturePath = "grass.png";
 
 		result.push_back(newTile);
 

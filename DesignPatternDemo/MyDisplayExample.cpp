@@ -16,6 +16,12 @@ MyDisplayExample::~MyDisplayExample()
 
 void MyDisplayExample::start()
 {
+
+	char pBuf[255];
+
+	int bytes = GetModuleFileNameA(NULL, pBuf, 255);
+
+
 	HINSTANCE _dllHandle = ::LoadLibraryA(GraphicEngineModuleInfo::DllName);
 	if (!_dllHandle)
 	{
@@ -41,7 +47,25 @@ void MyDisplayExample::start()
 
 void MyDisplayExample::draw()
 {
-	_displayData = getDisplayData();
+	_graphicEngineInterface->tick();
+}
 
-	_graphicEngineInterface->tick(&_displayData);
+void MyDisplayExample::initObjects(std::vector<MyObjectDisplayData*>* objects)
+{
+	_graphicEngineInterface->initObjects(objects);
+}
+
+void MyDisplayExample::loadTexture(std::vector<MyObjectDisplayData*>* objects)
+{
+	_graphicEngineInterface->loadTextures(objects);
+}
+
+void MyDisplayExample::addObjectToRender(MyObjectDisplayData* object)
+{
+	_graphicEngineInterface->addObjectToRender(object);
+}
+
+void MyDisplayExample::addObjectsToRender(std::vector<MyObjectDisplayData*>* objects)
+{
+	_graphicEngineInterface->addObjectsToRender(objects);
 }

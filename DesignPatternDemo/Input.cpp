@@ -21,7 +21,7 @@ resultAction Input::handleInput()
 	for (std::list<inputAction>::iterator it = _inputActions.begin(); it != _inputActions.end(); it++)
 	{
 		inputAction action = *it;
-
+		
 		if ((action._inputLevel == _inputLevel) && (action._input == input))
 		{
 			_inputLevel = action._setInputLevel;

@@ -37,7 +37,10 @@ void GameLogic::loadLevel(const std::string& levelPath)
 	WRITE_LOG("loading level...");
 
 	_mapManager->loadArea(levelPath);
-	//_mapManager->setCurrentMapArea()
+	std::vector<MyObjectDisplayData*> loadedObjects = _mapManager->getCurrentMapArea()->getDisplayData();
+	_display->initObjects(&loadedObjects);
+	_display->loadTexture(&loadedObjects);
+	_display->addObjectsToRender(&loadedObjects);
 
 	WRITE_LOG("level loaded");
 }

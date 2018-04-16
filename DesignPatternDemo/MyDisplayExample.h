@@ -10,8 +10,14 @@ public:
 	MyDisplayExample();
 	~MyDisplayExample();
 
-	void start();
-	void draw();
+	void start() override;
+	void draw() override;
+
+	void initObjects(std::vector<MyObjectDisplayData*>* objects) override;
+	void loadTexture(std::vector<MyObjectDisplayData*>* objects) override;
+
+	void addObjectToRender(MyObjectDisplayData* object) override;
+	void addObjectsToRender(std::vector<MyObjectDisplayData*>* objects) override;
 
 private:
 
