@@ -31,6 +31,7 @@ public:
 
 	unsigned int getMapId();
 	std::vector<MyObjectDisplayData*> getDisplayData();
+	void loadMapData();
 
 private:
 
@@ -45,7 +46,7 @@ private:
 
 	std::map<std::shared_ptr<Tile>, std::list<std::shared_ptr<GameObject>>> _mapData;
 
-	void loadMapData();
+	
 
 
 	//
