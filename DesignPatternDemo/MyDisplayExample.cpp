@@ -16,12 +16,6 @@ MyDisplayExample::~MyDisplayExample()
 
 void MyDisplayExample::start()
 {
-
-	char pBuf[255];
-
-	int bytes = GetModuleFileNameA(NULL, pBuf, 255);
-
-
 	HINSTANCE _dllHandle = ::LoadLibraryA(GraphicEngineModuleInfo::DllName);
 	if (!_dllHandle)
 	{
