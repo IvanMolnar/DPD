@@ -7,7 +7,7 @@
 
 GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type)
 {
-	_drawLayer = 1;
+	_drawLayer = DrawingLayer::Game;
 
 	_gameLogicObjectInterface = static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface);
 	_type = type;
