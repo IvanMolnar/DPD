@@ -165,6 +165,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InventoryManager.h" />
+    <ClInclude Include="Log\Log.h" />
     <ClInclude Include="MapArea.h" />
     <ClInclude Include="MapAreaInterface.h" />
     <ClInclude Include="MapManager.h" />

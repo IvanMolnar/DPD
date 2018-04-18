@@ -2,6 +2,8 @@
 #include "Global.h"
 #include "InventoryManager.h"
 
+const static std::string __namespace__ = "GameLogic";
+
 GameLogic::GameLogic()
 {
 	_gameRunning = true;
@@ -9,6 +11,8 @@ GameLogic::GameLogic()
 
 void GameLogic::init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager)
 {
+	LOG_INIT;
+
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
 	
