@@ -135,9 +135,6 @@
     <ClInclude Include="Input.h">
       <Filter>src\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="InputCommand.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="MyInputExample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -249,9 +246,6 @@
       <Filter>src\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="InputCommand.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="MyInputExample.cpp">

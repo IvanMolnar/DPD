@@ -14,14 +14,16 @@
 #include "MyMapLoader.h"
 
 //test
-#include "InputCommand.h"
+#include "MyInputExample.h"
 
 MyGameLogicExample::MyGameLogicExample()
 {
 	GameLogic::init(createDisplay(), createMapManager());
 
-	setInput(std::shared_ptr<Input>(new InputCommand()));
+	setInput(std::shared_ptr<Input>(new MyInputExample()));
 	
+	_currentInput->init();
+
 	GameObjectFactory::getInstance()->registerInstance<Container>(GameObjectType::Container);
 	GameObjectFactory::getInstance()->registerInstance<Door>(GameObjectType::Door);
 	GameObjectFactory::getInstance()->registerInstance<Enemy>(GameObjectType::Enemy);

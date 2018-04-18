@@ -37,6 +37,8 @@ public:
 	Input();
 	virtual ~Input();
 
+	virtual void init() = 0;
+
 	resultAction handleInput();
 
 protected:

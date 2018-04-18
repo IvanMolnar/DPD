@@ -16,7 +16,7 @@ MyDisplayExample::~MyDisplayExample()
 
 void MyDisplayExample::start()
 {
-	HINSTANCE _dllHandle = ::LoadLibraryA(GraphicEngineModuleInfo::DllName);
+	_dllHandle = ::LoadLibraryA(GraphicEngineModuleInfo::DllName);
 	if (!_dllHandle)
 	{
 	//	cerr << "Unable to load DLL!\n";
