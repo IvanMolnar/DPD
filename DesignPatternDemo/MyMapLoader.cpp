@@ -27,9 +27,6 @@ std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::uniqu
 	player->_dimension.w = 50;
 	player->_dimension.h = 50;
 
-	player->_objectRect.updateDimenstion(player->_dimension);
-	player->_objectRect.updatePosition(player->_position);
-
 	player->texturePath = "player.png";
 
 	result.push_back(std::move(player));
@@ -55,8 +52,6 @@ std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::s
 		newTile->_position.y = row;
 		newTile->_dimension.w = 50;
 		newTile->_dimension.h = 50;
-		newTile->_objectRect.updateDimenstion(newTile->_dimension);
-		newTile->_objectRect.updatePosition(newTile->_position);
 
 		newTile->texturePath = "grass.png";
 

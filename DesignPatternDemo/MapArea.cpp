@@ -171,7 +171,6 @@ void MapArea::move(GameObject* const gameObject, Directions direction)
 			{
 				object->_position.x = tile->_position.x;
 				object->_position.y = tile->_position.y;
-				object->_objectRect.updatePosition(object->_position);
 				_mapData[tile].push_back(object);
 				data.second.remove(object);
 				return;
