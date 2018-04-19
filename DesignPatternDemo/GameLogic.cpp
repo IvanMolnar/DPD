@@ -21,13 +21,11 @@ void GameLogic::init(std::unique_ptr<Display>&& display, std::unique_ptr<MapMana
 
 GameLogic::~GameLogic()
 {
-	CLOSE_LOG_WINDOW;
 }
 
 void GameLogic::startGame()
 {
-	CREATE_LOG_WINDOW("log");
-	WRITE_LOG("startGame called");
+	WRITE_LOG_MESSAGE("startGame called");
 
 	processState(GameStates::Loading);
 
@@ -38,7 +36,7 @@ void GameLogic::startGame()
 
 void GameLogic::loadLevel(const std::string& levelPath)
 {
-	WRITE_LOG("loading level...");
+	WRITE_LOG_MESSAGE("loading level...");
 
 	_mapManager->loadArea(levelPath);
 	std::vector<MyObjectDisplayData*> loadedObjects = _mapManager->getCurrentMapArea()->getDisplayData();
@@ -46,7 +44,7 @@ void GameLogic::loadLevel(const std::string& levelPath)
 	_display->loadTexture(&loadedObjects);
 	_display->addObjectsToRender(&loadedObjects);
 
-	WRITE_LOG("level loaded");
+	WRITE_LOG_MESSAGE("level loaded");
 }
 
 void GameLogic::processInput()

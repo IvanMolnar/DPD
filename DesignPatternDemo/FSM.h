@@ -20,4 +20,7 @@ public:
 
 private:
 	State* _currentState;
+
+protected:
+	const std::string __namespace__ = "FSM";
 };

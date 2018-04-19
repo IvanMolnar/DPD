@@ -24,6 +24,7 @@ public:
 
 protected:
 	ObjectCommandInterface* _owner;
+	const std::string __namespace__ = "State";
 
 private:
 	States _stateID;

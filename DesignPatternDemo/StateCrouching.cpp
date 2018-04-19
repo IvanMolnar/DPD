@@ -12,12 +12,12 @@ StateCrouching::~StateCrouching()
 
 void StateCrouching::onEnter()
 {
-	WRITE_LOG("StateCrouching::onEnter");
+	WRITE_LOG_MESSAGE("StateCrouching::onEnter");
 }
 
 void StateCrouching::processState(Events event, Directions direction, GameObject* const object, const std::string& data)
 {
-	WRITE_LOG("StateCrouching::processState");
+	WRITE_LOG_MESSAGE("StateCrouching::processState");
 
 	switch (event)
 	{
@@ -25,7 +25,7 @@ void StateCrouching::processState(Events event, Directions direction, GameObject
 		_owner->move(direction);
 		break;
 	case Events::inspect:
-		WRITE_LOG_GAME("Can't inspect while crouching");
+		WRITE_LOG_MESSAGE("Can't inspect while crouching");
 		break;
 	case Events::attack:
 		if (object)
@@ -43,7 +43,7 @@ void StateCrouching::processState(Events event, Directions direction, GameObject
 		}
 		break;
 	case Events::equip:
-		WRITE_LOG_GAME("Can't equip while crouching");
+		WRITE_LOG_MESSAGE("Can't equip while crouching");
 		break;
 	case Events::sneak:
 		// we are allready in sneak state
@@ -59,7 +59,7 @@ void StateCrouching::processState(Events event, Directions direction, GameObject
 
 void StateCrouching::onExit()
 {
-	WRITE_LOG("StateCrouching::onExit");
+	WRITE_LOG_MESSAGE("StateCrouching::onExit");
 }
 
 bool StateCrouching::canChangeState(State* nextState)

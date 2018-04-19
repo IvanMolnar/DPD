@@ -5,6 +5,8 @@
 
 #include <sstream>
 
+const static std::string __namespace__ = "GameObject";
+
 GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type)
 {
 	_drawLayer = DrawingLayer::Game;
@@ -44,7 +46,7 @@ void GameObject::changeState(States state)
 		break;
 	default:
 		std::stringstream ss;
-//		ss << "State " << state << " does not exist";
+		ss << "State " << static_cast<int>(state) << " does not exist";
 		WRITE_LOG_WARNING(ss.str());
 		break;
 	}

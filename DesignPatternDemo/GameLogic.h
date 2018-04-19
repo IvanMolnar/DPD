@@ -9,7 +9,6 @@
 #include <memory>
 #include <map>
 #include <vector>
-#include "Log\Log.h"
 
 class GameLogic : public GameLogicObjectInterface, public MapAreaInterface
 {

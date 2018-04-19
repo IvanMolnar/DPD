@@ -11,12 +11,12 @@ StateUp::~StateUp()
 
 void StateUp::onEnter()
 {
-	WRITE_LOG("StateUp::onEnter");
+	WRITE_LOG_MESSAGE("StateUp::onEnter");
 }
 
 void StateUp::processState(Events event, Directions direction, GameObject* const object, const std::string& data)
 {
-	WRITE_LOG("StateUp::processState");
+	WRITE_LOG_MESSAGE("StateUp::processState");
 
 	switch (event)
 	{
@@ -61,7 +61,7 @@ void StateUp::processState(Events event, Directions direction, GameObject* const
 
 void StateUp::onExit()
 {
-	WRITE_LOG("StateUp::onExit");
+	WRITE_LOG_MESSAGE("StateUp::onExit");
 }
 
 bool StateUp::canChangeState(State* nextState)
