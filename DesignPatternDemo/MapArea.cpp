@@ -54,9 +54,13 @@ void MapArea::loadMapData()
 		{
 			if (data.first->_position.x == object->_position.x && data.first->_position.y == object->_position.y)
 			{
-				_player = object;
-				data.second.push_back(_player);
-				break;
+				if (object->_position.x == 0 && object->_position.y == 0)
+				{
+					_player = object;
+				}
+				
+				data.second.push_back(object);
+		//		break;
 			}
 		}
 	}
@@ -151,7 +155,21 @@ std::shared_ptr<GameObject> MapArea::getPlayer()
 
 bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 {
-	return true;
+	bool result = true;
+
+	std::shared_ptr<Tile> tile = getTileFromDirection(gameObject, direction);
+
+	if (tile)
+	{
+		std::list<std::shared_ptr<GameObject>> objects = _mapData[tile];
+		
+		if (objects.size() > 0)
+		{
+			result = false;
+		}
+	}
+
+	return result;
 }
 
 void MapArea::move(GameObject* const gameObject, Directions direction)

@@ -31,6 +31,17 @@ std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::uniqu
 
 	result.push_back(std::move(player));
 
+	auto enemy = createGameObject(GameObjectType::Enemy);
+	enemy->_position.x = 2;
+	enemy->_position.y = 1;
+
+	enemy->_dimension.w = 50;
+	enemy->_dimension.h = 50;
+
+	enemy->texturePath = "enemy.png";
+
+	result.push_back(std::move(enemy));
+
 	return result;
 }
 
