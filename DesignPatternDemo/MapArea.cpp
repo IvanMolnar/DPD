@@ -155,7 +155,7 @@ std::shared_ptr<GameObject> MapArea::getPlayer()
 
 bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 {
-	bool result = true;
+	bool result = false;
 
 	std::shared_ptr<Tile> tile = getTileFromDirection(gameObject, direction);
 
@@ -163,9 +163,9 @@ bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 	{
 		std::list<std::shared_ptr<GameObject>> objects = _mapData[tile];
 		
-		if (objects.size() > 0)
+		if (objects.size() == 0)
 		{
-			result = false;
+			result = true;
 		}
 	}
 
