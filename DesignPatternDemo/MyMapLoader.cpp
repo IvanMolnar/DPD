@@ -11,7 +11,7 @@ MyMapLoader::~MyMapLoader()
 {
 }
 
-std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::unique_ptr<std::string>& data)
+std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::string& data)
 {
 	std::vector<std::shared_ptr<GameObject>> result;
 
@@ -45,7 +45,7 @@ std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::uniqu
 	return result;
 }
 
-std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::unique_ptr<std::string>& data)
+std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::string& data)
 {
 	std::vector<std::shared_ptr<Tile>> result;
 

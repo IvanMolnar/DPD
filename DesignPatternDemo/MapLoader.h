@@ -13,8 +13,8 @@ public:
 	virtual ~MapLoader();
 
 
-	virtual std::vector<std::shared_ptr<GameObject>> parseGameObject(std::unique_ptr<std::string>& data) = 0;
-	virtual std::vector<std::shared_ptr<Tile>> parseTile(std::unique_ptr<std::string>& data) = 0;
+	virtual std::vector<std::shared_ptr<GameObject>> parseGameObject(std::string& data) = 0;
+	virtual std::vector<std::shared_ptr<Tile>> parseTile(std::string& data) = 0;
 	
 
 protected:

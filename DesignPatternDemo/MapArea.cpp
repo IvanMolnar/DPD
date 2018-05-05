@@ -17,7 +17,7 @@ MapArea::~MapArea()
 
 void MapArea::loadMapData()
 {
-	auto loadedTiles = _mapLoader->parseTile(_mapLoadData);
+	auto loadedTiles = _mapLoader->parseTile(*(_mapLoadData.get()));
 
 	for (auto& tile : loadedTiles)
 	{
@@ -46,7 +46,7 @@ void MapArea::loadMapData()
 
 	//add player
 
-	auto loadedObjects =_mapLoader->parseGameObject(_mapLoadData);
+	auto loadedObjects =_mapLoader->parseGameObject(*(_mapLoadData.get()));
 
 	for (auto& object : loadedObjects)
 	{
