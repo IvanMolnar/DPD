@@ -291,4 +291,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TestMap.ini">
+      <Filter>Maps</Filter>
+    </None>
+    <None Include="ObjectDatabase.ini">
+      <Filter>Maps</Filter>
+    </None>
+  </ItemGroup>
 </Project>

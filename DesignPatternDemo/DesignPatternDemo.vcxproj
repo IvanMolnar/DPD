@@ -229,6 +229,10 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Sword.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ObjectDatabase.ini" />
+    <None Include="TestMap.ini" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
