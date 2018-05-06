@@ -51,5 +51,7 @@ private:
 
 
 	MapLoader* _mapLoader;
+
+	const std::string __namespace__ = "Map";
 };
 

@@ -47,6 +47,8 @@ std::vector<std::map<std::string, std::string>> MapArea::generateChunks()
 
 	for (auto& chunk : mapInfo)
 	{
+		bool foundInDatabase = false;
+
 		for (auto& chunkDatabase : ObjectDatabase)
 		{
 			if (chunk.sectionName == chunkDatabase.sectionName)
@@ -62,9 +64,17 @@ std::vector<std::map<std::string, std::string>> MapArea::generateChunks()
 
 				result.push_back(objectForLoading);
 
+				foundInDatabase = true;
+
 				break;
 			}
 		}
+
+		if (foundInDatabase == false)
+		{
+			WRITE_LOG_WARNING("Object " + chunk.sectionName + " was not found in database");
+		}
+
 	}
 
 	return result;
