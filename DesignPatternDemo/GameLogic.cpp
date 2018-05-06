@@ -29,7 +29,7 @@ void GameLogic::startGame()
 
 	processState(GameStates::Loading);
 
-	loadLevel("TestMap.txt");
+	loadLevel("TestMap.ini");
 
 	processState(GameStates::GameRunning);
 }

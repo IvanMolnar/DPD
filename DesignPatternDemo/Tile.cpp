@@ -1,11 +1,32 @@
 #include "Tile.h"
 
 
-Tile::Tile(TileType tileType) : _type(tileType)
+
+Tile::Tile(void* gameLogicObjectInterface) : GameObject(static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface), GameObjectType::Tile)
 {
-	_drawLayer = DrawingLayer::Floor;
+
 }
 
 Tile::~Tile()
 {
+}
+
+void Tile::move(Directions direction)
+{
+	return;
+}
+
+void Tile::inspect(GameObject* const gameObject)
+{
+	return;
+}
+
+void Tile::open(GameObject* const gameObject)
+{
+	return;
+}
+
+void Tile::dead()
+{
+	return;
 }

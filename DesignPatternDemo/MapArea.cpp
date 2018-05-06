@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include <algorithm>
+#include "IniParser.h"
 
 MapArea::MapArea(std::unique_ptr<std::string> mapLoadData, MapLoader* mapLoader) :
 	_mapId(0),
@@ -15,70 +16,60 @@ MapArea::~MapArea()
 {
 }
 
+std::vector<std::map<std::string, std::string>> MapArea::generateChunks()
+{
+	std::vector<std::map<std::string, std::string>> result;
+
+	IniParser iniParser;
+
+	iniParser.setData(*_mapLoadData.get());
+
+	chunk dataChunk = iniParser.getNextChunk();
+
+	while (dataChunk.data.size() > 0)
+	{
+		result.push_back(dataChunk.data);
+		dataChunk = iniParser.getNextChunk();
+	}
+
+	return result;
+}
+
 void MapArea::loadMapData()
 {
-	auto loadedTiles = _mapLoader->parseTile(*(_mapLoadData.get()));
+	std::vector<std::map<std::string, std::string>> dataChunks = generateChunks();
 
-	for (auto& tile : loadedTiles)
-	{
-		_mapData[std::move(tile)] = std::list<std::shared_ptr<GameObject>>();
-	}
-	/*
-	//test
-	int row = 0;
-	int column = 0;
-	for (int i = 0; i < 20; i++, column++)
-	{
-		std::shared_ptr<Tile> newTile = TileFactory::getInstance()->create(TileType::Grass);
-		newTile->_position.x = column;
-		newTile->_position.y = row;
-
-//		_graphicEngineInterface->loadTexture(newTile.get());
-
-		_mapData[newTile] = std::list<std::shared_ptr<GameObject>>();
-
-		if (column == 4)
-		{
-			column = -1;
-			++row;
-		}
-	}*/
-
-	//add player
-
-	auto loadedObjects =_mapLoader->parseGameObject(*(_mapLoadData.get()));
+	auto loadedObjects = _mapLoader->parseGameObject(dataChunks);
 
 	for (auto& object : loadedObjects)
 	{
-		for (auto& data : _mapData)
+		if (object->getType() == GameObjectType::Tile)
 		{
-			if (data.first->_position.x == object->_position.x && data.first->_position.y == object->_position.y)
+			_mapData[std::move(object)] = std::list<std::shared_ptr<GameObject>>();
+		}
+		else if (object->getType() == GameObjectType::Player)
+		{
+			_player = object;
+		}
+		
+	}
+
+	for (auto& object : loadedObjects)
+	{
+		if (object)
+		{
+			for (auto& data : _mapData)
 			{
-				if (object->_position.x == 0 && object->_position.y == 0)
+				if (data.first->_position.x == object->_position.x && data.first->_position.y == object->_position.y)
 				{
-					_player = object;
+					data.second.push_back(object);
 				}
-				
-				data.second.push_back(object);
-		//		break;
 			}
 		}
 	}
-	/*
-	for (auto& data : _mapData)
-	{
-		if (data.first->_position.x == 0 && data.first->_position.y == 0)
-		{
-			_player = GameObjectFactory::getInstance()->create(GameObjectType::Player);
-	//		_graphicEngineInterface->loadTexture(_player.get());
-			data.second.push_back(_player);
-			break;
-		}
-	}*/
-
 }
 
-std::shared_ptr<Tile> MapArea::getTileFromDirection(GameObject* const gameObject, Directions direction)
+std::shared_ptr<GameObject> MapArea::getTileFromDirection(GameObject* const gameObject, Directions direction)
 {
 	int tileOffsetX = 0;
 	int tileOffsetY = 0;
@@ -102,7 +93,7 @@ std::shared_ptr<Tile> MapArea::getTileFromDirection(GameObject* const gameObject
 	}
 
 
-	std::shared_ptr<Tile> tile = getTileFromObject(gameObject);
+	std::shared_ptr<GameObject> tile = getTileFromObject(gameObject);
 
 	if (!tile)
 	{
@@ -111,12 +102,12 @@ std::shared_ptr<Tile> MapArea::getTileFromDirection(GameObject* const gameObject
 
 	position2d targetedPosition(tile->_position.x + tileOffsetX, tile->_position.y + tileOffsetY);
 
-	std::shared_ptr<Tile> tileFromPosition = getTileFromPosition(targetedPosition);
+	std::shared_ptr<GameObject> tileFromPosition = getTileFromPosition(targetedPosition);
 
 	return tileFromPosition;
 }
 
-std::shared_ptr<Tile> MapArea::getTileFromObject(GameObject* const gameObject)
+std::shared_ptr<GameObject> MapArea::getTileFromObject(GameObject* const gameObject)
 {
 	for (auto& data : _mapData)
 	{
@@ -135,7 +126,7 @@ std::shared_ptr<Tile> MapArea::getTileFromObject(GameObject* const gameObject)
 	return nullptr;
 }
 
-std::shared_ptr<Tile> MapArea::getTileFromPosition(position2d position)
+std::shared_ptr<GameObject> MapArea::getTileFromPosition(position2d position)
 {
 	for (auto& data : _mapData)
 	{
@@ -157,7 +148,7 @@ bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 {
 	bool result = false;
 
-	std::shared_ptr<Tile> tile = getTileFromDirection(gameObject, direction);
+	std::shared_ptr<GameObject> tile = getTileFromDirection(gameObject, direction);
 
 	if (tile)
 	{
@@ -174,7 +165,7 @@ bool MapArea::canMove(GameObject* const gameObject, Directions direction)
 
 void MapArea::move(GameObject* const gameObject, Directions direction)
 {
-	std::shared_ptr<Tile> tile = getTileFromDirection(gameObject, direction);
+	std::shared_ptr<GameObject> tile = getTileFromDirection(gameObject, direction);
 
 	if (!tile)
 	{

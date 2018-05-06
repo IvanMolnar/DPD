@@ -10,10 +10,11 @@
 #include "../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
 #include "GameLogicObjectInterface.h"
 #include "InventoryManager.h"
+#include "Serializer.h"
 
 #include <memory>
 
-class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData
+class GameObject : public ObjectEventInterface, public ObjectCommandInterface, public ObjectModifierInterface, public MyObjectDisplayData, public Serializer
 {
 public:
 	GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type);
@@ -28,6 +29,10 @@ public:
 	virtual std::string getInfo();
 
 	std::shared_ptr<GameObjectStats> getStats();
+
+
+	std::map<std::string, std::string> serialize() override;
+	void deserialize(std::map<std::string, std::string>& data) override;
 
 protected:
 	std::unique_ptr<FSM> _FSM;
@@ -46,6 +51,7 @@ protected:
 	virtual void open(GameObject* const gameObject) override;
 	virtual void equip(unsigned int inventorySlot, unsigned int equipSlot) override;
 	virtual void dead() override;
+	
 
 	GameLogicObjectInterface* _gameLogicObjectInterface;
 };

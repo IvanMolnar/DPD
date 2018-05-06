@@ -16,8 +16,6 @@ void MapManager::loadArea(const std::string& areaName)
 {
 	std::shared_ptr<MapArea> mapArea = _fileSystem->loadMapArea(areaName);
 
-
-
 	_loadedMapAreas.push_back(mapArea);
 
 	_currentMapArea = mapArea;

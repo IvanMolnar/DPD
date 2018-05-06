@@ -7,12 +7,11 @@
 
 const static std::string __namespace__ = "GameObject";
 
-GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type)
+GameObject::GameObject(GameLogicObjectInterface* gameLogicObjectInterface, GameObjectType type) : _type(type)
 {
 	_drawLayer = DrawingLayer::Game;
 
 	_gameLogicObjectInterface = static_cast<GameLogicObjectInterface*>(gameLogicObjectInterface);
-	_type = type;
 	_FSM = std::make_unique<FSM>(new StateUp(this));
 	_inventoryManager = std::make_unique<InventoryManager>();
 
@@ -61,7 +60,7 @@ GameObjectType GameObject::getType()
 
 std::string GameObject::getTypeString()
 {
-	switch (_type)
+	switch (getType())
 	{
 	case GameObjectType::Player:
 		return "Player";
@@ -129,6 +128,40 @@ void GameObject::inspect(GameObject* const gameObject)
 void GameObject::dead()
 {
 	_gameLogicObjectInterface->dead(this);
+}
+
+std::map<std::string, std::string> GameObject::serialize()
+{
+	std::map<std::string, std::string> serializedData;
+
+	MyObjectDisplayData* displayData = dynamic_cast<MyObjectDisplayData*>(this);
+	
+	serializedData["Type"] = static_cast<int>(getType());
+	serializedData["Texture"] = displayData->texturePath;
+	serializedData["DimensionH"] = displayData->_dimension.h;
+	serializedData["DimensionW"] = displayData->_dimension.w;
+	serializedData["PositionX"] = displayData->_position.x;
+	serializedData["PositionY"] = displayData->_position.y;
+	serializedData["DrawLayer"] = static_cast<int>(displayData->_drawLayer);
+	
+	return serializedData;
+}
+
+void GameObject::deserialize(std::map<std::string, std::string>& data)
+{
+	MyObjectDisplayData* displayData = dynamic_cast<MyObjectDisplayData*>(this);
+
+	_type = static_cast<GameObjectType>(std::stoi(data["Type"]));
+
+	displayData->texturePath = data["Texture"];
+
+	displayData->_dimension.h = std::stoi(data["DimensionH"]);
+	displayData->_dimension.w = std::stoi(data["DimensionW"]);
+
+	displayData->_position.x = std::stoi(data["PositionX"]);
+	displayData->_position.y = std::stoi(data["PositionY"]);
+
+	displayData->_drawLayer = static_cast<DrawingLayer>(std::stoi(data["DrawLayer"]));
 }
 
 void GameObject::equip(unsigned int inventorySlot, unsigned int equipSlot)

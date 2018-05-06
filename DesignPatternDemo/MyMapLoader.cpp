@@ -11,15 +11,33 @@ MyMapLoader::~MyMapLoader()
 {
 }
 
-std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::string& data)
+std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::vector<std::map<std::string, std::string>>& data)
 {
 	std::vector<std::shared_ptr<GameObject>> result;
 
 	//parse data
 
+	//neki switch da li je gameObject ili tile
+
+	for (auto& chunk : data)
+	{
+		std::string value = chunk["Type"];
+
+		GameObjectType type = GameObjectType::Enemy;
+
+		if (value.size() > 0)
+		{
+			type = static_cast<GameObjectType>(std::stoi(value));
+		}
+
+		auto gameObject = createGameObject(type);
+		gameObject->deserialize(chunk);
+		result.push_back(std::move(gameObject));
+	}
+
 
 	//test
-
+	/*
 	auto player = createGameObject(GameObjectType::Player);
 	player->_position.x = 0;
 	player->_position.y = 0;
@@ -40,41 +58,7 @@ std::vector<std::shared_ptr<GameObject>> MyMapLoader::parseGameObject(std::strin
 
 	enemy->texturePath = "enemy.png";
 
-	result.push_back(std::move(enemy));
-
-	return result;
-}
-
-std::vector<std::shared_ptr<Tile>> MyMapLoader::parseTile(std::string& data)
-{
-	std::vector<std::shared_ptr<Tile>> result;
-
-	//parse data
-
-
-	//test
-	int row = 0;
-	int column = 0;
-	for (int i = 0; i < 20; i++, column++)
-	{
-		std::shared_ptr<Tile> newTile = TileFactory::getInstance()->create(TileType::Grass);
-
-		newTile->_position.x = column;
-		newTile->_position.y = row;
-		newTile->_dimension.w = 50;
-		newTile->_dimension.h = 50;
-
-		newTile->texturePath = "grass.png";
-
-		result.push_back(newTile);
-
-		if (column == 4)
-		{
-			column = -1;
-			++row;
-		}
-	}
-
+	result.push_back(std::move(enemy));*/
 
 	return result;
 }

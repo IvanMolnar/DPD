@@ -1,24 +1,16 @@
 #pragma once
-#include "../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
 
-enum class TileType
-{
-	Grass,
-	Dirt,
-	Road,
-	Water
-};
+#include "GameObject.h"
 
-class Tile : public MyObjectDisplayData
+class Tile : public GameObject
 {
 public:
-	Tile(TileType tileType);
-	virtual ~Tile();
+	Tile(void* gameLogicInterface);
+	~Tile();
 
-	virtual MyObjectDisplayData* getDisplayData() = 0;
-
-protected:
-	TileType _type;
-
+	void move(Directions direction);
+	void inspect(GameObject* const gameObject);
+	void open(GameObject* const gameObject);
+	void dead();
 };
 

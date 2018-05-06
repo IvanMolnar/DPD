@@ -36,7 +36,8 @@ enum class GameObjectType
 	Obstacle,
 	Enemy,
 	Container,
-	Door
+	Door,
+	Tile
 };
 
 enum class GameStates

@@ -5,7 +5,6 @@
 #include "Display.h"
 #include "MapAreaInterface.h"
 #include "GameObjectFactory.h"
-#include "TileFactory.h"
 #include <memory>
 #include <map>
 #include <vector>

@@ -9,7 +9,6 @@
 
 //test
 #include "GameObjectFactory.h"
-#include "TileFactory.h"
 #include "MapLoader.h"
 
 
@@ -35,6 +34,8 @@ public:
 
 private:
 
+	std::vector<std::map<std::string, std::string>> generateChunks();
+
 	std::shared_ptr<GameObject> _player;
 
 
@@ -44,15 +45,15 @@ private:
 
 	std::unique_ptr<std::string> _mapLoadData;
 
-	std::map<std::shared_ptr<Tile>, std::list<std::shared_ptr<GameObject>>> _mapData;
+	std::map<std::shared_ptr<GameObject>, std::list<std::shared_ptr<GameObject>>> _mapData;
 
 	
 
 
 	//
-	std::shared_ptr<Tile> getTileFromDirection(GameObject* const gameObject, Directions direction);
-	std::shared_ptr<Tile> getTileFromObject(GameObject* const gameObject);
-	std::shared_ptr<Tile> getTileFromPosition(position2d position);
+	std::shared_ptr<GameObject> getTileFromDirection(GameObject* const gameObject, Directions direction);
+	std::shared_ptr<GameObject> getTileFromObject(GameObject* const gameObject);
+	std::shared_ptr<GameObject> getTileFromPosition(position2d position);
 
 
 	MapLoader* _mapLoader;
