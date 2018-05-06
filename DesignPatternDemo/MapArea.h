@@ -1,13 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
-
-#include "ConsoleLogger.h"
-
-
 #include <map>
-
-//test
 #include "GameObjectFactory.h"
 #include "MapLoader.h"
 

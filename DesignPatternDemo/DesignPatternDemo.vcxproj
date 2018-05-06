@@ -194,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="ConsoleLogger.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="DesignPatternDemo.cpp" />
     <ClCompile Include="Display.cpp" />

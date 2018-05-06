@@ -214,9 +214,6 @@
     <ClCompile Include="DesignPatternDemo.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleLogger.cpp">
-      <Filter>src\Level</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>src\GameObject</Filter>
     </ClCompile>
