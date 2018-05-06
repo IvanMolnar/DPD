@@ -42,7 +42,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
     <Text Include="TestMap2.txt">
       <Filter>Maps</Filter>
     </Text>
@@ -298,5 +297,6 @@
     <None Include="ObjectDatabase.ini">
       <Filter>Maps</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

@@ -142,7 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
     <Text Include="TestMap.txt" />
     <Text Include="TestMap2.txt" />
   </ItemGroup>
@@ -230,6 +229,7 @@
     <ClCompile Include="Sword.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
     <None Include="ObjectDatabase.ini" />
     <None Include="TestMap.ini" />
   </ItemGroup>
