@@ -17,7 +17,7 @@ IniParser::~IniParser()
 {
 }
 
-void IniParser::open(std::string filePath)
+void IniParser::readData(std::string filePath)
 {
 	if (_stream.is_open())
 	{
@@ -26,6 +26,8 @@ void IniParser::open(std::string filePath)
 
 	_currentLine = 0;
 	_loadedFile.clear();
+	parsedChunks.clear();
+
 	_stream.open(filePath);
 
 	std::string line;
@@ -36,12 +38,15 @@ void IniParser::open(std::string filePath)
 	}
 
 	_stream.close();
+
+	parseAllData();
 }
 
 void IniParser::setData(std::string fileData)
 {
 	_currentLine = 0;
 	_loadedFile.clear();
+	parsedChunks.clear();
 
 	size_t pos = fileData.find('\n');
 
@@ -62,6 +67,8 @@ void IniParser::setData(std::string fileData)
 	{
 		_loadedFile.push_back(fileData);
 	}
+
+	parseAllData();
 }
 
 bool IniParser::isNewSection(std::string& data)
@@ -105,4 +112,25 @@ chunk IniParser::getNextChunk()
 	}
 
 	return result;
+}
+
+void IniParser::parseAllData()
+{
+	chunk data = getNextChunk();
+
+	while (data.sectionName.size() > 0)
+	{
+		parsedChunks.push_back(data);
+		data = getNextChunk();
+	}
+}
+
+std::vector<chunk>::iterator IniParser::begin()
+{
+	return parsedChunks.begin();
+}
+
+std::vector<chunk>::iterator IniParser::end()
+{
+	return parsedChunks.end();
 }

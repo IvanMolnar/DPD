@@ -26,23 +26,17 @@ std::vector<std::map<std::string, std::string>> MapArea::generateChunks()
 
 	iniParser.setData(*_mapLoadData.get());
 
-	chunk dataChunk = iniParser.getNextChunk();
-
-	while (dataChunk.sectionName.size() > 0)
+	for (auto& dataChunk : iniParser)
 	{
 		mapInfo.push_back(dataChunk);
-		dataChunk = iniParser.getNextChunk();
 	}
 
-	iniParser.open("ObjectDatabase.ini");
+	iniParser.readData("ObjectDatabase.ini");
 	std::vector<chunk> ObjectDatabase;
 
-	dataChunk = iniParser.getNextChunk();
-
-	while (dataChunk.sectionName.size() > 0)
+	for (auto& dataChunk : iniParser)
 	{
 		ObjectDatabase.push_back(dataChunk);
-		dataChunk = iniParser.getNextChunk();
 	}
 
 	for (auto& chunk : mapInfo)

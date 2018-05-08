@@ -18,9 +18,11 @@ public:
 	IniParser();
 	~IniParser();
 
-	void open(std::string filePath);
-	chunk getNextChunk();
+	void readData(std::string filePath);
 	void setData(std::string fileData);
+
+	std::vector<chunk>::iterator begin();
+	std::vector<chunk>::iterator end();
 
 private:
 	std::ifstream _stream;
@@ -29,5 +31,9 @@ private:
 
 	bool isNewSection(std::string& data);
 
+	chunk getNextChunk();
+	void parseAllData();
+
+	std::vector<chunk> parsedChunks;
 };
 
