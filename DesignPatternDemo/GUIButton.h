@@ -1,7 +1,7 @@
 #pragma once
-#include "UIElement.h"
+#include "GUIElement.h"
 
-class GUIButton : public UIElement
+class GUIButton : public GUIElement
 {
 public:
 	GUIButton();
