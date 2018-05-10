@@ -5,6 +5,7 @@
 #include "Display.h"
 #include "MapAreaInterface.h"
 #include "GameObjectFactory.h"
+#include "GUIManager.h"
 #include <memory>
 #include <map>
 #include <vector>
@@ -15,7 +16,7 @@ public:
 	GameLogic();
 	virtual ~GameLogic();
 
-	void init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager);
+	void init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager, std::unique_ptr<GUIManager>&& guiManager);
 
 	void run();
 
@@ -23,6 +24,7 @@ protected:
 	std::shared_ptr<Input> _currentInput;
 	std::unique_ptr<Display> _display;
 	std::unique_ptr<MapManager> _mapManager;
+	std::unique_ptr<GUIManager> _guiManager;
 	GameStates _currentState;
 	bool _gameRunning;
 	void startGame();
@@ -36,6 +38,7 @@ protected:
 	virtual void setInput(const std::shared_ptr<Input> newInput) = 0;
 	virtual std::unique_ptr<Display> createDisplay() = 0;
 	virtual std::unique_ptr<MapManager> createMapManager() = 0;
+	virtual std::unique_ptr<GUIManager> createGUIManager() = 0;
 
 
 	// requests from GameObject

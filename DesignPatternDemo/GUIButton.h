@@ -4,7 +4,7 @@
 class GUIButton : public GUIElement
 {
 public:
-	GUIButton();
+	GUIButton(void* gameLogicInterface);
 	~GUIButton();
 
 	void onPress() override;

@@ -1,7 +1,6 @@
 #include "MyGameLogicExample.h"
 #include "MyDisplayExample.h"
 
-
 #include "Container.h"
 #include "Door.h"
 #include "Enemy.h"
@@ -12,13 +11,14 @@
 
 #include "MyFileSystem.h"
 #include "MyMapLoader.h"
+#include "MyGUIManager.h"
 
 //test
 #include "MyInputExample.h"
 
 MyGameLogicExample::MyGameLogicExample()
 {
-	GameLogic::init(createDisplay(), createMapManager());
+	GameLogic::init(createDisplay(), createMapManager(), createGUIManager());
 
 	setInput(std::shared_ptr<Input>(new MyInputExample()));
 	
@@ -48,6 +48,11 @@ std::unique_ptr<MapManager> MyGameLogicExample::createMapManager()
 	std::shared_ptr<FileSystem> myFileSystem = std::make_shared<MyFileSystem>((std::move(mapLoader)));
 
 	return std::make_unique<MapManager>(myFileSystem);
+}
+
+std::unique_ptr<GUIManager> MyGameLogicExample::createGUIManager()
+{
+	return std::unique_ptr<GUIManager>(new MyGUIManager());
 }
 
 void MyGameLogicExample::processAction(const resultAction& action)

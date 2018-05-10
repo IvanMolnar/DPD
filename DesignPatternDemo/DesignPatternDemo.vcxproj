@@ -162,6 +162,8 @@
     <ClInclude Include="GameObjectStats.h" />
     <ClInclude Include="GenericFactory.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="GUIElementFactory.h" />
+    <ClInclude Include="GUIManager.h" />
     <ClInclude Include="IniParser.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InventoryManager.h" />
@@ -173,6 +175,7 @@
     <ClInclude Include="MyDisplayExample.h" />
     <ClInclude Include="MyFileSystem.h" />
     <ClInclude Include="MyGameLogicExample.h" />
+    <ClInclude Include="MyGUIManager.h" />
     <ClInclude Include="MyInputExample.h" />
     <ClInclude Include="MyMapLoader.h" />
     <ClInclude Include="Serializer.h" />
@@ -206,6 +209,7 @@
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GUIManager.cpp" />
     <ClCompile Include="IniParser.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InventoryManager.cpp" />
@@ -215,6 +219,7 @@
     <ClCompile Include="MyDisplayExample.cpp" />
     <ClCompile Include="MyFileSystem.cpp" />
     <ClCompile Include="MyGameLogicExample.cpp" />
+    <ClCompile Include="MyGUIManager.cpp" />
     <ClCompile Include="MyInputExample.cpp" />
     <ClCompile Include="MyMapLoader.cpp" />
     <ClCompile Include="Tile.cpp" />

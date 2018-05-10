@@ -191,6 +191,15 @@
     <ClInclude Include="GUIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GUIManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIElementFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGUIManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -293,6 +302,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GUIElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGUIManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

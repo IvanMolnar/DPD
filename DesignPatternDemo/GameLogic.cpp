@@ -9,12 +9,13 @@ GameLogic::GameLogic()
 	_gameRunning = true;
 }
 
-void GameLogic::init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager)
+void GameLogic::init(std::unique_ptr<Display>&& display, std::unique_ptr<MapManager>&& mapManager, std::unique_ptr<GUIManager>&& guiManager)
 {
 	LOG_INIT;
 
 	_display = std::move(display);
 	_mapManager = std::move(mapManager);
+	_guiManager = std::move(guiManager);
 	
 	GameObjectFactory::getInstance()->setCallbackInterface(this);
 }
@@ -29,6 +30,8 @@ void GameLogic::startGame()
 
 	processState(GameStates::Loading);
 
+	std::string guiFilePath = "GUI.ini";
+	_guiManager->loadGUI(guiFilePath);
 	loadLevel("TestMap.ini");
 
 	processState(GameStates::GameRunning);

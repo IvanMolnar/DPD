@@ -1,7 +1,7 @@
 #include "GUIButton.h"
 
 
-GUIButton::GUIButton()
+GUIButton::GUIButton(void* gameLogicInterface) : GUIElement(gameLogicInterface)
 {
 }
 
