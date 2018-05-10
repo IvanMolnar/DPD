@@ -2,11 +2,11 @@
 
 #include "../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
 
-class UIElement : public MyObjectDisplayData
+class GUIElement : public MyObjectDisplayData
 {
 public:
-	UIElement();
-	virtual ~UIElement();
+	GUIElement();
+	virtual ~GUIElement();
 
 	virtual void onPress() = 0;
 	virtual void update(void* data) = 0;

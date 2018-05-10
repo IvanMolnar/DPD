@@ -185,10 +185,10 @@
     <ClInclude Include="Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIElement.h">
+    <ClInclude Include="GUIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIButton.h">
+    <ClInclude Include="GUIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -289,10 +289,10 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UIElement.cpp">
+    <ClCompile Include="GUIButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UIButton.cpp">
+    <ClCompile Include="GUIElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

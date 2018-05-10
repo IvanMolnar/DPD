@@ -1,11 +1,11 @@
 #pragma once
 #include "UIElement.h"
 
-class UIButton : public UIElement
+class GUIButton : public UIElement
 {
 public:
-	UIButton();
-	~UIButton();
+	GUIButton();
+	~GUIButton();
 
 	void onPress() override;
 	void update(void* data) override;

@@ -190,8 +190,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="UIButton.h" />
-    <ClInclude Include="UIElement.h" />
+    <ClInclude Include="GUIButton.h" />
+    <ClInclude Include="GUIElement.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -227,8 +227,8 @@
     <ClCompile Include="StateUp.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="UIButton.cpp" />
-    <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="GUIButton.cpp" />
+    <ClCompile Include="GUIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
