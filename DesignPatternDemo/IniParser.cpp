@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "IniParser.h"
-
+#include "Log/Log.h"
 
 #include <memory>
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream> 
+
+static const std::string __namespace__ = "IniParser";
 
 IniParser::IniParser()
 {
@@ -133,4 +135,68 @@ std::vector<chunk>::iterator IniParser::begin()
 std::vector<chunk>::iterator IniParser::end()
 {
 	return parsedChunks.end();
+}
+
+std::vector<std::map<std::string, std::string>> IniParser::getObjectData(std::string& data, std::string& databaseFile, bool fromFile)
+{
+	std::vector<std::map<std::string, std::string>> result;
+
+	std::vector<chunk> mapInfo;
+
+	if (fromFile)
+	{
+		readData(data);
+	}
+	else
+	{
+		setData(data);
+	}
+	
+
+	for (auto& dataChunk : parsedChunks)
+	{
+		mapInfo.push_back(dataChunk);
+	}
+
+	readData(databaseFile);
+	std::vector<chunk> ObjectDatabase;
+
+	for (auto& dataChunk : parsedChunks)
+	{
+		ObjectDatabase.push_back(dataChunk);
+	}
+
+	for (auto& chunk : mapInfo)
+	{
+		bool foundInDatabase = false;
+
+		for (auto& chunkDatabase : ObjectDatabase)
+		{
+			if (chunk.sectionName == chunkDatabase.sectionName)
+			{
+				std::map<std::string, std::string> objectForLoading;
+
+				objectForLoading = chunkDatabase.data;
+
+				for (auto& map : chunk.data)
+				{
+					objectForLoading[map.first] = map.second;
+				}
+
+				result.push_back(objectForLoading);
+
+				foundInDatabase = true;
+
+				break;
+			}
+		}
+
+		if (foundInDatabase == false)
+		{
+			WRITE_LOG_WARNING("Object " + chunk.sectionName + " was not found in database");
+		}
+
+	}
+
+	return result;
 }

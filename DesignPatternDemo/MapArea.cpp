@@ -16,67 +16,13 @@ MapArea::~MapArea()
 {
 }
 
-std::vector<std::map<std::string, std::string>> MapArea::generateChunks()
-{
-	std::vector<std::map<std::string, std::string>> result;
-
-	std::vector<chunk> mapInfo;
-
-	IniParser iniParser;
-
-	iniParser.setData(*_mapLoadData.get());
-
-	for (auto& dataChunk : iniParser)
-	{
-		mapInfo.push_back(dataChunk);
-	}
-
-	iniParser.readData("ObjectDatabase.ini");
-	std::vector<chunk> ObjectDatabase;
-
-	for (auto& dataChunk : iniParser)
-	{
-		ObjectDatabase.push_back(dataChunk);
-	}
-
-	for (auto& chunk : mapInfo)
-	{
-		bool foundInDatabase = false;
-
-		for (auto& chunkDatabase : ObjectDatabase)
-		{
-			if (chunk.sectionName == chunkDatabase.sectionName)
-			{
-				std::map<std::string, std::string> objectForLoading;
-
-				objectForLoading = chunkDatabase.data;
-
-				for (auto& map : chunk.data)
-				{
-					objectForLoading[map.first] = map.second;
-				}
-
-				result.push_back(objectForLoading);
-
-				foundInDatabase = true;
-
-				break;
-			}
-		}
-
-		if (foundInDatabase == false)
-		{
-			WRITE_LOG_WARNING("Object " + chunk.sectionName + " was not found in database");
-		}
-
-	}
-
-	return result;
-}
-
 void MapArea::loadMapData()
 {
-	std::vector<std::map<std::string, std::string>> dataChunks = generateChunks();
+	IniParser iniParser;
+
+	std::string objectDatabase = "ObjectDatabase.ini";
+
+	std::vector<std::map<std::string, std::string>> dataChunks = iniParser.getObjectData(*_mapLoadData.get(), objectDatabase, false);
 
 	auto loadedObjects = _mapLoader->parseGameObject(dataChunks);
 

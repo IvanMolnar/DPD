@@ -319,5 +319,11 @@
       <Filter>Maps</Filter>
     </None>
     <None Include="..\README.md" />
+    <None Include="GUI.ini">
+      <Filter>Maps</Filter>
+    </None>
+    <None Include="GuiDatabase.ini">
+      <Filter>Maps</Filter>
+    </None>
   </ItemGroup>
 </Project>

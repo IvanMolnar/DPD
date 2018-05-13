@@ -1,38 +1,43 @@
 #include "MyGUIManager.h"
 
-
+#include "GUIButton.h"
 
 MyGUIManager::MyGUIManager()
 {
+	GUIElementFactory::getInstance()->registerInstance<GUIButton>(GUIElementType::button);
 }
 
 MyGUIManager::~MyGUIManager()
 {
 }
 
-void MyGUIManager::createGUIElement(chunk& chunkData)
+void MyGUIManager::createGUIElements(std::vector<std::map<std::string, std::string>>& data)
 {
-	std::string value = chunkData.data["Type"];
 
-	GUIElementType type = GUIElementType::button;
-
-	if (value.size() > 0)
+	for (auto& chunk : data)
 	{
-		type = static_cast<GUIElementType>(std::stoi(value));
-	}
+		std::string value = chunk["Type"];
 
-	auto guiElement = GUIManager::createGUIElement(type);
-	guiElement->deserialize(chunkData.data);
-	_guiElements.push_back(std::move(guiElement));
+		GUIElementType type = GUIElementType::button;
+
+		if (value.size() > 0)
+		{
+			type = static_cast<GUIElementType>(std::stoi(value));
+		}
+
+		auto guiElement = GUIManager::createGUIElement(type);
+		guiElement->deserialize(chunk);
+		_guiElements.push_back(std::move(guiElement));
+	}
 }
 
 void MyGUIManager::loadGUI(std::string& guiFile)
 {
 	IniParser iniParser;
-	iniParser.readData(guiFile);
 
-	for (auto& chunk : iniParser)
-	{
-		createGUIElement(chunk);
-	}
+	std::string guiDatabaseFile = "GuiDatabase.ini";
+
+	std::vector<std::map<std::string, std::string>> dataChunks = iniParser.getObjectData(guiFile, guiDatabaseFile);
+
+	createGUIElements(dataChunks);
 }

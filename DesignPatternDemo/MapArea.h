@@ -28,8 +28,6 @@ public:
 
 private:
 
-	std::vector<std::map<std::string, std::string>> generateChunks();
-
 	std::shared_ptr<GameObject> _player;
 
 

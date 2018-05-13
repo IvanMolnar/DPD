@@ -47,6 +47,11 @@ void GameLogic::loadLevel(const std::string& levelPath)
 	_display->loadTexture(&loadedObjects);
 	_display->addObjectsToRender(&loadedObjects);
 
+	std::vector<MyObjectDisplayData*> loadedGUI = _guiManager->getDisplayData();
+	_display->initObjects(&loadedGUI);
+	_display->loadTexture(&loadedGUI);
+	_display->addObjectsToRender(&loadedGUI);
+
 	WRITE_LOG_MESSAGE("level loaded");
 }
 

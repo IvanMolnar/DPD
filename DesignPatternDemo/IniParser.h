@@ -21,6 +21,8 @@ public:
 	void readData(std::string filePath);
 	void setData(std::string fileData);
 
+	std::vector<std::map<std::string, std::string>> getObjectData(std::string& file, std::string& databaseFile, bool fromFile = true);
+
 	std::vector<chunk>::iterator begin();
 	std::vector<chunk>::iterator end();
 

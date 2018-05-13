@@ -237,6 +237,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="GUI.ini" />
+    <None Include="GuiDatabase.ini" />
     <None Include="ObjectDatabase.ini" />
     <None Include="TestMap.ini" />
   </ItemGroup>

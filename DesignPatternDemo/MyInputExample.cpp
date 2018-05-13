@@ -42,5 +42,16 @@ void MyInputExample::init()
 
 unsigned int MyInputExample::waitForInput()
 {
-	return _inputInterface->getInput();
+	SDL_Event* event = _inputInterface->getInput();
+
+	if (event->type == SDL_MOUSEBUTTONDOWN)
+	{
+		return event.button;
+	}
+	else if (event->type == SDL_KEYDOWN)
+	{
+		return event->key.keysym.scancode;
+	}
+
+	return 0;
 }

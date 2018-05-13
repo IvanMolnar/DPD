@@ -11,9 +11,9 @@ public:
 	void loadGUI(std::string& guiFile) override;
 
 private:
-	std::vector<std::unique_ptr<GUIElement>> _guiElements;
+	
 
-	void createGUIElement(chunk& chunkData) override;
+	void createGUIElements(std::vector<std::map<std::string, std::string>>& data) override;
 
 };
 
