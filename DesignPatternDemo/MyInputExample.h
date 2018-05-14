@@ -13,7 +13,7 @@ public:
 	void init() override;
 
 private:
-	unsigned int waitForInput();
+	SDL_Event* waitForInput() override;
 
 	InputInterface* _inputInterface;
 	HINSTANCE _dllHandle;

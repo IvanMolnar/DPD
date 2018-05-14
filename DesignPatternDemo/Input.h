@@ -5,6 +5,8 @@
 
 #include "Global.h"
 
+#include "../../2D_Engine/2D_Engine/InputInterface.h"
+
 struct resultAction
 {
 	resultAction(Events event = Events::none, Directions direction = Directions::None, GameStates gameEvent = GameStates::Unchanged)
@@ -49,6 +51,6 @@ private:
 	int _inputLevel;
 	std::list<char> _multiInputActions;
 
-	virtual unsigned int waitForInput() = 0;
+	virtual SDL_Event* waitForInput() = 0;
 };
 

@@ -1,5 +1,4 @@
 #include "MyInputExample.h"
-#include "../../2D_Engine/2D_Engine/InputInterface.h"
 
 #include <functional>
 
@@ -40,18 +39,9 @@ void MyInputExample::init()
 	_inputInterface = getInstance();
 }
 
-unsigned int MyInputExample::waitForInput()
+SDL_Event* MyInputExample::waitForInput()
 {
 	SDL_Event* event = _inputInterface->getInput();
 
-	if (event->type == SDL_MOUSEBUTTONDOWN)
-	{
-		return event.button;
-	}
-	else if (event->type == SDL_KEYDOWN)
-	{
-		return event->key.keysym.scancode;
-	}
-
-	return 0;
+	return event;
 }

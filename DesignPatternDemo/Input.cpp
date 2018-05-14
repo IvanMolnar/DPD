@@ -16,22 +16,29 @@ resultAction Input::handleInput()
 {
 	resultAction result;
 
-	unsigned long input = waitForInput();
+	SDL_Event inputEvent = *waitForInput();
 
-	for (std::list<inputAction>::iterator it = _inputActions.begin(); it != _inputActions.end(); it++)
+	if (inputEvent.type == SDL_KEYDOWN)
 	{
-		inputAction action = *it;
-		
-		if ((action._inputLevel == _inputLevel) && (action._input == input))
+		for (std::list<inputAction>::iterator it = _inputActions.begin(); it != _inputActions.end(); it++)
 		{
-			_inputLevel = action._setInputLevel;
+			inputAction action = *it;
 
-			result._direction = action._direction;
-			result._event = action._event;
-			result._gameState = action._gameEvent;
-			break;
+			if ((action._inputLevel == _inputLevel) && (action._input == inputEvent.key.keysym.scancode))
+			{
+				_inputLevel = action._setInputLevel;
+
+				result._direction = action._direction;
+				result._event = action._event;
+				result._gameState = action._gameEvent;
+				break;
+			}
+
 		}
-
+	}
+	else if (inputEvent.type == SDL_MOUSEBUTTONDOWN)
+	{
+	    //event.button;
 	}
 
 	return result;
