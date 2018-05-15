@@ -29,3 +29,14 @@ std::vector<MyObjectDisplayData*> GUIManager::getDisplayData()
 
 	return result;
 }
+
+void GUIManager::processMouseEvent(unsigned char clickType, int x, int y)
+{
+	for (auto& guiElement : _guiElements)
+	{
+		if (x >= guiElement->_position.x && x <= (guiElement->_position.x + guiElement->_dimension.w)
+			&& y >= guiElement->_position.y && y <= (guiElement->_position.y + guiElement->_dimension.h))
+		{
+		}
+	}
+}

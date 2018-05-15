@@ -10,27 +10,26 @@
 struct resultAction
 {
 	resultAction(Events event = Events::none, Directions direction = Directions::None, GameStates gameEvent = GameStates::Unchanged)
-		: _event(event), _direction(direction), _gameState(gameEvent) {}
+		: _event(event), _direction(direction), _clicks(0), _x(0), _y(0) {}
 
 	Events _event;
 	Directions _direction;
-	GameStates _gameState;
 	std::string _data;
+
+	// mouse
+	unsigned char _clicks;       /**< 1 for single-click, 2 for double-click, etc. */
+	int _x;           /**< X coordinate, relative to window */
+	int _y;           /**< Y coordinate, relative to window */
 };
 
 struct inputAction
 {
-	inputAction(char charId, std::string description, Events event = Events::none, Directions direction = Directions::None, GameStates gameEvent = GameStates::Unchanged, int setScreenLevel = 0, int drawScreenLevel = 0, bool multiInput = false)
-		: _input(charId), _description(description), _setInputLevel(setScreenLevel), _inputLevel(drawScreenLevel), _event(event), _direction(direction), _gameEvent(gameEvent), _multiInput(multiInput) {}
+	inputAction(unsigned int charId, Events event = Events::none, Directions direction = Directions::None)
+		: _input(charId), _event(event), _direction(direction) {}
 
 	unsigned int _input;
-	std::string _description;
 	Events _event;
 	Directions _direction;
-	GameStates _gameEvent;
-	int _setInputLevel;
-	int _inputLevel;
-	bool _multiInput;
 };
 
 class Input
@@ -48,8 +47,6 @@ protected:
 
 private:
 	std::list<inputAction> _inputActions;
-	int _inputLevel;
-	std::list<char> _multiInputActions;
 
 	virtual SDL_Event* waitForInput() = 0;
 };

@@ -3,8 +3,7 @@
 #include <sstream>
 #include <iostream>
 
-Input::Input() :
-	_inputLevel(0)
+Input::Input()
 {
 }
 
@@ -24,13 +23,10 @@ resultAction Input::handleInput()
 		{
 			inputAction action = *it;
 
-			if ((action._inputLevel == _inputLevel) && (action._input == inputEvent.key.keysym.scancode))
+			if (action._input == inputEvent.key.keysym.scancode)
 			{
-				_inputLevel = action._setInputLevel;
-
 				result._direction = action._direction;
 				result._event = action._event;
-				result._gameState = action._gameEvent;
 				break;
 			}
 
@@ -38,7 +34,9 @@ resultAction Input::handleInput()
 	}
 	else if (inputEvent.type == SDL_MOUSEBUTTONDOWN)
 	{
-	    //event.button;
+		result._clicks = inputEvent.button.clicks;
+		result._x = inputEvent.button.x;
+		result._y = inputEvent.button.y;
 	}
 
 	return result;
@@ -47,9 +45,4 @@ resultAction Input::handleInput()
 void Input::addInputAction(inputAction action)
 {
 	_inputActions.push_back(action);
-
-	if (action._multiInput)
-	{
-		_multiInputActions.push_back(action._input);
-	}
 }

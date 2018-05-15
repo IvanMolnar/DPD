@@ -4,10 +4,10 @@
 
 MyInputExample::MyInputExample() : Input ()
 {
-	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_W, "North", Events::walk, Directions::North, GameStates::Unchanged, 0, 0));
-	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_S, "South", Events::walk, Directions::South, GameStates::Unchanged, 0, 0));
-	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_A, "West", Events::walk, Directions::West, GameStates::Unchanged, 0, 0));
-	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_D, "East", Events::walk, Directions::East, GameStates::Unchanged, 0, 0));
+	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_W, Events::walk, Directions::North));
+	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_S, Events::walk, Directions::South));
+	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_A, Events::walk, Directions::West));
+	Input::addInputAction(inputAction(SDL_Scancode::SDL_SCANCODE_D, Events::walk, Directions::East));
 }
 
 MyInputExample::~MyInputExample()

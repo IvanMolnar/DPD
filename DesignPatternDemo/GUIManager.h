@@ -14,6 +14,8 @@ public:
 
 	const std::vector<std::unique_ptr<GUIElement>> & getGUIElements();
 	std::vector<MyObjectDisplayData*> getDisplayData();
+	
+	virtual void processMouseEvent(unsigned char clickType, int x, int y);
 
 	virtual void createGUIElements(std::vector<std::map<std::string, std::string>>& data) = 0;
 	virtual void loadGUI(std::string& guiFile) = 0;

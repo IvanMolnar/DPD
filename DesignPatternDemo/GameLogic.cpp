@@ -61,9 +61,16 @@ void GameLogic::processInput()
 	{
 		resultAction action = _currentInput->handleInput();
 
-	    processAction(action);
+		if (action._event != Events::none)
+		{
+			processAction(action);
+		}
+		else if (action._clicks > 0 )
+		{
+			_guiManager->processMouseEvent(action._clicks, action._x, action._y);
+		}
 
-		internalProcessState(action._gameState);
+		//internalProcessState(action._gameState);
 
 		_display->draw();
 	}
