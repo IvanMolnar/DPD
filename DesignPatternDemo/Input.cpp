@@ -38,6 +38,11 @@ resultAction Input::handleInput()
 		result._x = inputEvent.button.x;
 		result._y = inputEvent.button.y;
 	}
+	else if (inputEvent.type == SDL_MOUSEMOTION)
+	{
+		result._x = inputEvent.button.x;
+		result._y = inputEvent.button.y;
+	}
 
 	return result;
 }

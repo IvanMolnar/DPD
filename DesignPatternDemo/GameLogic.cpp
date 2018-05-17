@@ -65,7 +65,7 @@ void GameLogic::processInput()
 		{
 			processAction(action);
 		}
-		else if (action._clicks > 0 )
+		else if (action._clicks > 0 || action._x > 0 || action._y > 0)
 		{
 			_guiManager->processMouseEvent(action._clicks, action._x, action._y);
 		}

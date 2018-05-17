@@ -37,6 +37,33 @@ void GUIManager::processMouseEvent(unsigned char clickType, int x, int y)
 		if (x >= guiElement->_position.x && x <= (guiElement->_position.x + guiElement->_dimension.w)
 			&& y >= guiElement->_position.y && y <= (guiElement->_position.y + guiElement->_dimension.h))
 		{
+
+			// move event
+			if (clickType <= 0)
+			{
+				if (guiElement->_mouseIsInside == false)
+				{
+					guiElement->_mouseIsInside = true;
+					guiElement->onMouseEnter();
+				}
+				
+			}
+			// click event
+			// for now we don't care if it was double click
+			else
+			{
+				guiElement->onClick();
+			}
+
+		}
+		// we check for mouse leave event
+		else
+		{
+			if (guiElement->_mouseIsInside)
+			{
+				guiElement->_mouseIsInside = false;
+				guiElement->onMouseLeave();
+			}
 		}
 	}
 }

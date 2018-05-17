@@ -1,7 +1,7 @@
 #include "GUIElement.h"
 
 
-GUIElement::GUIElement(void* gameLogicInterface)
+GUIElement::GUIElement(void* gameLogicInterface) : _mouseIsInside(false)
 {
 }
 

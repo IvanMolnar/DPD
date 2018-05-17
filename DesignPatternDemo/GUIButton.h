@@ -7,6 +7,9 @@ public:
 	GUIButton(void* gameLogicInterface);
 	~GUIButton();
 
-	void onPress() override;
+	void onClick() override;
+	void onMouseEnter() override;
+	void onMouseLeave() override;
+
 	void update(void* data) override;
 };
