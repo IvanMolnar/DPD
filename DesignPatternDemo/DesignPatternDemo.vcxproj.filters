@@ -1,329 +1,334 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{3dbb2234-6492-4558-9ff5-2d02e651541c}</UniqueIdentifier>
+      <UniqueIdentifier>{77a2fa53-3d54-4cc1-bb91-774ddcdcf635}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GameObject">
-      <UniqueIdentifier>{edffc52c-e44c-48af-bf1a-1a6216c50a9c}</UniqueIdentifier>
+    <Filter Include="src\Data">
+      <UniqueIdentifier>{617511e6-9b4d-4c67-8800-6828573519e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GameObject\FSM">
-      <UniqueIdentifier>{146f56a8-3fd1-42b4-aeee-128487325ac9}</UniqueIdentifier>
+    <Filter Include="src\Display">
+      <UniqueIdentifier>{9e35093f-cfaa-418f-99ad-7aa2035e1b59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Factories">
+      <UniqueIdentifier>{d2c03388-d946-4fbd-8baf-7ad913f644c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FileSystem">
+      <UniqueIdentifier>{4210e5ad-14fe-4c19-b68a-b88fe3460221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FSM">
+      <UniqueIdentifier>{edf67143-946d-4bc7-998b-c421130c8a70}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\GameLogic">
-      <UniqueIdentifier>{de23aae8-ef7d-4f83-b4c4-8e07200bdac5}</UniqueIdentifier>
+      <UniqueIdentifier>{2985c642-1981-41a1-879a-9d47607b84e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Level">
-      <UniqueIdentifier>{1aac611f-8aea-4dfd-9c6c-703eac1f2c6c}</UniqueIdentifier>
+    <Filter Include="src\GameObjects">
+      <UniqueIdentifier>{e7303e08-f198-4930-8575-ddc9b6f4b39f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Screens">
-      <UniqueIdentifier>{e5af8743-ac92-446e-99ca-492f47aea587}</UniqueIdentifier>
+    <Filter Include="src\GUI">
+      <UniqueIdentifier>{2f54882b-ca26-4c04-98a7-4029068818cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GameObject\Items">
-      <UniqueIdentifier>{72788e79-0ded-4907-a6e3-7bf553e1768d}</UniqueIdentifier>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{929289e7-8ee4-49d4-a964-a7882815abab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GameObject\Interfaces">
-      <UniqueIdentifier>{98df0f3e-2edc-424a-8228-9886f5269663}</UniqueIdentifier>
+    <Filter Include="src\Interfaces">
+      <UniqueIdentifier>{bf3670f0-40f9-47e3-9d83-e6986d802ea8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Maps">
-      <UniqueIdentifier>{60b96094-dc0e-4c06-b668-61512e171c49}</UniqueIdentifier>
+    <Filter Include="src\Items">
+      <UniqueIdentifier>{d5b99051-b2bf-43ba-a2b8-d3b1a0ac3726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Log">
+      <UniqueIdentifier>{e45c25ca-3fd1-4c98-97d7-0f3cdf930957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Map">
+      <UniqueIdentifier>{c4a76f89-629d-4ac1-9963-18567064c1b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utility">
+      <UniqueIdentifier>{4c0422e3-e239-40db-a56a-53704b3d1cbe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestMap2.txt">
-      <Filter>Maps</Filter>
-    </Text>
-    <Text Include="TestMap.txt">
-      <Filter>Maps</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Display\Display.h">
+      <Filter>src\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Display\MyDisplayExample.h">
+      <Filter>src\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Factories\GenericFactory.h">
+      <Filter>src\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Factories\GUIElementFactory.h">
+      <Filter>src\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Factories\GameObjectFactory.h">
+      <Filter>src\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileSystem\FileSystem.h">
+      <Filter>src\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileSystem\MyFileSystem.h">
+      <Filter>src\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FSM\StateCrouching.h">
+      <Filter>src\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FSM\StateDead.h">
+      <Filter>src\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FSM\StateUp.h">
+      <Filter>src\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FSM\FSM.h">
+      <Filter>src\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FSM\State.h">
+      <Filter>src\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameLogic\GameLogic.h">
+      <Filter>src\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameLogic\MyGameLogicExample.h">
+      <Filter>src\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Door.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Enemy.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\GameObject.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\GameObjectStats.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Obstacle.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Player.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Serializer.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Tile.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Armor.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Container.h">
+      <Filter>src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GUIElement.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GUIManager.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\MyGUIManager.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GUIButton.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\MyInputExample.h">
+      <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\ObjectCommandInterface.h">
+      <Filter>src\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\ObjectEventInterface.h">
+      <Filter>src\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\ObjectModifierInterface.h">
+      <Filter>src\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\GameLogicObjectInterface.h">
+      <Filter>src\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\MapAreaInterface.h">
+      <Filter>src\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Items\ObjectModifier.h">
+      <Filter>src\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Items\Sword.h">
+      <Filter>src\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Items\EquipSlot.h">
+      <Filter>src\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Items\InventoryManager.h">
+      <Filter>src\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log\Log.h">
+      <Filter>src\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapArea.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapLoader.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapManager.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MyMapLoader.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\IniParser.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Utility.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Global.h">
+      <Filter>src\Utility</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Global.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="FSM.h">
-      <Filter>src\GameObject\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>src\GameObject\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="StateUp.h">
-      <Filter>src\GameObject\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="StateCrouching.h">
-      <Filter>src\GameObject\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="StateDead.h">
-      <Filter>src\GameObject\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLogic.h">
-      <Filter>src\GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLogicObjectInterface.h">
-      <Filter>src\GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ConsoleLogger.h">
-      <Filter>src\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Container.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectStats.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectFactory.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Sword.h">
-      <Filter>src\GameObject\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Armor.h">
-      <Filter>src\GameObject\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectModifier.h">
-      <Filter>src\GameObject\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectModifierInterface.h">
-      <Filter>src\GameObject\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectCommandInterface.h">
-      <Filter>src\GameObject\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectEventInterface.h">
-      <Filter>src\GameObject\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Obstacle.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipSlot.h">
-      <Filter>src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="MyInputExample.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyGameLogicExample.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapArea.h">
-      <Filter>src\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="MapAreaInterface.h">
-      <Filter>src\GameObject\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="MyDisplayExample.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyFileSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyMapLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GenericFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Log\Log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Serializer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IniParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GUIButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GUIElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GUIManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GUIElementFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyGUIManager.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+    <None Include="..\README.md" />
+    <None Include="src\Data\GuiDatabase.ini">
+      <Filter>src\Data</Filter>
+    </None>
+    <None Include="src\Data\ObjectDatabase.ini">
+      <Filter>src\Data</Filter>
+    </None>
+    <None Include="src\Data\TestMap.ini">
+      <Filter>src\Data</Filter>
+    </None>
+    <None Include="src\Data\GUI.ini">
+      <Filter>src\Data</Filter>
+    </None>
+    <None Include="src\Log\LogViewer.html">
+      <Filter>src\Log</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\Data\TestMap.txt">
+      <Filter>src\Data</Filter>
+    </Text>
+    <Text Include="src\Data\TestMap2.txt">
+      <Filter>src\Data</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Display\MyDisplayExample.cpp">
+      <Filter>src\Display</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>src\GameObject</Filter>
+    <ClCompile Include="src\Display\Display.cpp">
+      <Filter>src\Display</Filter>
     </ClCompile>
-    <ClCompile Include="FSM.cpp">
-      <Filter>src\GameObject\FSM</Filter>
+    <ClCompile Include="src\FileSystem\MyFileSystem.cpp">
+      <Filter>src\FileSystem</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>src\GameObject\FSM</Filter>
+    <ClCompile Include="src\FileSystem\FileSystem.cpp">
+      <Filter>src\FileSystem</Filter>
     </ClCompile>
-    <ClCompile Include="StateUp.cpp">
-      <Filter>src\GameObject\FSM</Filter>
+    <ClCompile Include="src\FSM\StateCrouching.cpp">
+      <Filter>src\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="StateCrouching.cpp">
-      <Filter>src\GameObject\FSM</Filter>
+    <ClCompile Include="src\FSM\StateDead.cpp">
+      <Filter>src\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="StateDead.cpp">
-      <Filter>src\GameObject\FSM</Filter>
+    <ClCompile Include="src\FSM\StateUp.cpp">
+      <Filter>src\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
+    <ClCompile Include="src\FSM\FSM.cpp">
+      <Filter>src\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FSM\State.cpp">
+      <Filter>src\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameLogic\MyGameLogicExample.cpp">
       <Filter>src\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameLogic\GameLogic.cpp">
+      <Filter>src\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Door.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Enemy.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\GameObject.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Obstacle.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Player.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Tile.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Armor.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Container.cpp">
+      <Filter>src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GUIManager.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\MyGUIManager.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GUIButton.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GUIElement.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\MyInputExample.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Items\ObjectModifier.cpp">
+      <Filter>src\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Items\Sword.cpp">
+      <Filter>src\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Items\EquipSlot.cpp">
+      <Filter>src\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Items\InventoryManager.cpp">
+      <Filter>src\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapLoader.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapManager.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MyMapLoader.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapArea.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\IniParser.cpp">
+      <Filter>src\Utility</Filter>
     </ClCompile>
     <ClCompile Include="DesignPatternDemo.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Container.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Sword.cpp">
-      <Filter>src\GameObject\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Armor.cpp">
-      <Filter>src\GameObject\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectModifier.cpp">
-      <Filter>src\GameObject\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstacle.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipSlot.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>src\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="MyInputExample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyGameLogicExample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapArea.cpp">
-      <Filter>src\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="MyDisplayExample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyFileSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyMapLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InventoryManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IniParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIElement.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyGUIManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestMap.ini">
-      <Filter>Maps</Filter>
-    </None>
-    <None Include="ObjectDatabase.ini">
-      <Filter>Maps</Filter>
-    </None>
-    <None Include="..\README.md" />
-    <None Include="GUI.ini">
-      <Filter>Maps</Filter>
-    </None>
-    <None Include="GuiDatabase.ini">
-      <Filter>Maps</Filter>
-    </None>
+    <Xml Include="src\Log\Template.xsl">
+      <Filter>src\Log</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

@@ -22,7 +22,7 @@
     <ProjectGuid>{AD30897B-343D-45AB-BCEF-5465025EFED8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DesignPatternDemo</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,12 +74,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,11 +98,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,12 +130,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,105 +146,106 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="TestMap.txt" />
-    <Text Include="TestMap2.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="ConsoleLogger.h" />
-    <ClInclude Include="Container.h" />
-    <ClInclude Include="Display.h" />
-    <ClInclude Include="Door.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EquipSlot.h" />
-    <ClInclude Include="FileSystem.h" />
-    <ClInclude Include="FSM.h" />
-    <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="GameLogicObjectInterface.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameObjectFactory.h" />
-    <ClInclude Include="GameObjectStats.h" />
-    <ClInclude Include="GenericFactory.h" />
-    <ClInclude Include="Global.h" />
-    <ClInclude Include="GUIElementFactory.h" />
-    <ClInclude Include="GUIManager.h" />
-    <ClInclude Include="IniParser.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="InventoryManager.h" />
-    <ClInclude Include="Log\Log.h" />
-    <ClInclude Include="MapArea.h" />
-    <ClInclude Include="MapAreaInterface.h" />
-    <ClInclude Include="MapManager.h" />
-    <ClInclude Include="MapLoader.h" />
-    <ClInclude Include="MyDisplayExample.h" />
-    <ClInclude Include="MyFileSystem.h" />
-    <ClInclude Include="MyGameLogicExample.h" />
-    <ClInclude Include="MyGUIManager.h" />
-    <ClInclude Include="MyInputExample.h" />
-    <ClInclude Include="MyMapLoader.h" />
-    <ClInclude Include="Serializer.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="ObjectCommandInterface.h" />
-    <ClInclude Include="ObjectEventInterface.h" />
-    <ClInclude Include="ObjectModifier.h" />
-    <ClInclude Include="ObjectModifierInterface.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="StateCrouching.h" />
-    <ClInclude Include="StateDead.h" />
-    <ClInclude Include="StateUp.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Sword.h" />
+    <ClInclude Include="src\Display\Display.h" />
+    <ClInclude Include="src\Display\MyDisplayExample.h" />
+    <ClInclude Include="src\Factories\GameObjectFactory.h" />
+    <ClInclude Include="src\Factories\GenericFactory.h" />
+    <ClInclude Include="src\Factories\GUIElementFactory.h" />
+    <ClInclude Include="src\FileSystem\FileSystem.h" />
+    <ClInclude Include="src\FileSystem\MyFileSystem.h" />
+    <ClInclude Include="src\FSM\FSM.h" />
+    <ClInclude Include="src\FSM\State.h" />
+    <ClInclude Include="src\FSM\StateCrouching.h" />
+    <ClInclude Include="src\FSM\StateDead.h" />
+    <ClInclude Include="src\FSM\StateUp.h" />
+    <ClInclude Include="src\GameLogic\GameLogic.h" />
+    <ClInclude Include="src\GameLogic\MyGameLogicExample.h" />
+    <ClInclude Include="src\GameObjects\Armor.h" />
+    <ClInclude Include="src\GameObjects\Container.h" />
+    <ClInclude Include="src\GameObjects\Door.h" />
+    <ClInclude Include="src\GameObjects\Enemy.h" />
+    <ClInclude Include="src\GameObjects\GameObject.h" />
+    <ClInclude Include="src\GameObjects\GameObjectStats.h" />
+    <ClInclude Include="src\GameObjects\Obstacle.h" />
+    <ClInclude Include="src\GameObjects\Player.h" />
+    <ClInclude Include="src\GameObjects\Serializer.h" />
+    <ClInclude Include="src\GameObjects\Tile.h" />
+    <ClInclude Include="src\GUI\GUIButton.h" />
+    <ClInclude Include="src\GUI\GUIElement.h" />
+    <ClInclude Include="src\GUI\GUIManager.h" />
+    <ClInclude Include="src\GUI\MyGUIManager.h" />
+    <ClInclude Include="src\Input\Input.h" />
+    <ClInclude Include="src\Input\MyInputExample.h" />
+    <ClInclude Include="src\Interfaces\GameLogicObjectInterface.h" />
+    <ClInclude Include="src\Interfaces\MapAreaInterface.h" />
+    <ClInclude Include="src\Interfaces\ObjectCommandInterface.h" />
+    <ClInclude Include="src\Interfaces\ObjectEventInterface.h" />
+    <ClInclude Include="src\Interfaces\ObjectModifierInterface.h" />
+    <ClInclude Include="src\Items\EquipSlot.h" />
+    <ClInclude Include="src\Items\InventoryManager.h" />
+    <ClInclude Include="src\Items\ObjectModifier.h" />
+    <ClInclude Include="src\Items\Sword.h" />
+    <ClInclude Include="src\Log\Log.h" />
+    <ClInclude Include="src\Map\MapArea.h" />
+    <ClInclude Include="src\Map\MapLoader.h" />
+    <ClInclude Include="src\Map\MapManager.h" />
+    <ClInclude Include="src\Map\MyMapLoader.h" />
+    <ClInclude Include="src\Utility\Global.h" />
+    <ClInclude Include="src\Utility\IniParser.h" />
+    <ClInclude Include="src\Utility\Utility.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="GUIButton.h" />
-    <ClInclude Include="GUIElement.h" />
-    <ClInclude Include="Utility.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="Container.cpp" />
-    <ClCompile Include="DesignPatternDemo.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="Door.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EquipSlot.cpp" />
-    <ClCompile Include="FileSystem.cpp" />
-    <ClCompile Include="FSM.cpp" />
-    <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GUIManager.cpp" />
-    <ClCompile Include="IniParser.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="InventoryManager.cpp" />
-    <ClCompile Include="MapArea.cpp" />
-    <ClCompile Include="MapManager.cpp" />
-    <ClCompile Include="MapLoader.cpp" />
-    <ClCompile Include="MyDisplayExample.cpp" />
-    <ClCompile Include="MyFileSystem.cpp" />
-    <ClCompile Include="MyGameLogicExample.cpp" />
-    <ClCompile Include="MyGUIManager.cpp" />
-    <ClCompile Include="MyInputExample.cpp" />
-    <ClCompile Include="MyMapLoader.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="ObjectModifier.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="StateCrouching.cpp" />
-    <ClCompile Include="StateDead.cpp" />
-    <ClCompile Include="StateUp.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="GUIButton.cpp" />
-    <ClCompile Include="GUIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="GUI.ini" />
-    <None Include="GuiDatabase.ini" />
-    <None Include="ObjectDatabase.ini" />
-    <None Include="TestMap.ini" />
+    <None Include="src\Data\GUI.ini" />
+    <None Include="src\Data\GuiDatabase.ini" />
+    <None Include="src\Data\ObjectDatabase.ini" />
+    <None Include="src\Data\TestMap.ini" />
+    <None Include="src\Log\LogViewer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\Data\TestMap.txt" />
+    <Text Include="src\Data\TestMap2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DesignPatternDemo.cpp" />
+    <ClCompile Include="src\Display\Display.cpp" />
+    <ClCompile Include="src\Display\MyDisplayExample.cpp" />
+    <ClCompile Include="src\FileSystem\FileSystem.cpp" />
+    <ClCompile Include="src\FileSystem\MyFileSystem.cpp" />
+    <ClCompile Include="src\FSM\FSM.cpp" />
+    <ClCompile Include="src\FSM\State.cpp" />
+    <ClCompile Include="src\FSM\StateCrouching.cpp" />
+    <ClCompile Include="src\FSM\StateDead.cpp" />
+    <ClCompile Include="src\FSM\StateUp.cpp" />
+    <ClCompile Include="src\GameLogic\GameLogic.cpp" />
+    <ClCompile Include="src\GameLogic\MyGameLogicExample.cpp" />
+    <ClCompile Include="src\GameObjects\Armor.cpp" />
+    <ClCompile Include="src\GameObjects\Container.cpp" />
+    <ClCompile Include="src\GameObjects\Door.cpp" />
+    <ClCompile Include="src\GameObjects\Enemy.cpp" />
+    <ClCompile Include="src\GameObjects\GameObject.cpp" />
+    <ClCompile Include="src\GameObjects\Obstacle.cpp" />
+    <ClCompile Include="src\GameObjects\Player.cpp" />
+    <ClCompile Include="src\GameObjects\Tile.cpp" />
+    <ClCompile Include="src\GUI\GUIButton.cpp" />
+    <ClCompile Include="src\GUI\GUIElement.cpp" />
+    <ClCompile Include="src\GUI\GUIManager.cpp" />
+    <ClCompile Include="src\GUI\MyGUIManager.cpp" />
+    <ClCompile Include="src\Input\Input.cpp" />
+    <ClCompile Include="src\Input\MyInputExample.cpp" />
+    <ClCompile Include="src\Items\EquipSlot.cpp" />
+    <ClCompile Include="src\Items\InventoryManager.cpp" />
+    <ClCompile Include="src\Items\ObjectModifier.cpp" />
+    <ClCompile Include="src\Items\Sword.cpp" />
+    <ClCompile Include="src\Map\MapArea.cpp" />
+    <ClCompile Include="src\Map\MapLoader.cpp" />
+    <ClCompile Include="src\Map\MapManager.cpp" />
+    <ClCompile Include="src\Map\MyMapLoader.cpp" />
+    <ClCompile Include="src\Utility\IniParser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="src\Log\Template.xsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
