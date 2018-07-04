@@ -5,7 +5,7 @@
 
 #include "Utility\Global.h"
 
-#include "../../../../2D_Engine/2D_Engine/InputInterface.h"
+#include "InputInterface.h"
 
 struct resultAction
 {

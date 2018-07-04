@@ -2,7 +2,7 @@
 
 #include "Utility\Global.h"
 #include <vector>
-#include "../../../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
+#include "MyObjectDisplayData.h"
 
 class MapAreaInterface
 {

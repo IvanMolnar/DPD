@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Log\Log.h"
+#include "Sparkle.h"
 
 enum class States
 {

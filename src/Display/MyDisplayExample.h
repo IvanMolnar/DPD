@@ -2,7 +2,7 @@
 
 #include "Display.h"
 
-#include "../../../../2D_Engine/2D_Engine/2D_Engine.h"
+#include "2D_Engine.h"
 
 class MyDisplayExample : public Display
 {

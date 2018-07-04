@@ -63,3 +63,44 @@ include_directories(DPD ${PROJECT_SOURCE_DIR}/src)
 target_compile_features(DPD PUBLIC cxx_std_17)
 
 
+set(2DEngine_ROOT ${CMAKE_BINARY_DIR}/2DEngine)
+
+include(ExternalProject)
+
+ExternalProject_Add(2DEngine_external
+                    PREFIX ${2DEngine_ROOT}
+                    GIT_REPOSITORY "https://github.com/IvanMolnar/2D_Engine.git"
+                    GIT_TAG "origin/development"
+                    UPDATE_COMMAND ""
+                    PATCH_COMMAND ""
+                    INSTALL_COMMAND ""
+                    GIT_SHALLOW TRUE
+)
+
+add_dependencies(DPD 2DEngine_external)
+
+include_directories(DPD ${2DEngine_ROOT}/src/2DEngine_external/src)
+
+ADD_CUSTOM_COMMAND(
+    TARGET DPD
+    POST_BUILD
+COMMAND ${CMAKE_COMMAND} -E copy_directory
+\"${2DEngine_ROOT}/src/2DEngine_external/Bin\"
+\"${CMAKE_BINARY_DIR}/Bin\"
+)
+
+set(Sparkle_ROOT ${CMAKE_BINARY_DIR}/Sparkle)
+
+ExternalProject_Add(Sparkle_external
+                    PREFIX ${Sparkle_ROOT}
+                    GIT_REPOSITORY "https://github.com/IvanMolnar/Sparkle.git"
+                    GIT_TAG "origin/development"
+                    UPDATE_COMMAND ""
+                    PATCH_COMMAND ""
+                    INSTALL_COMMAND ""
+                    GIT_SHALLOW TRUE
+)
+
+add_dependencies(DPD Sparkle_external)
+
+include_directories(DPD ${Sparkle_ROOT}/src/Sparkle_external/src)

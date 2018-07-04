@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
+#include "MyObjectDisplayData.h"
 #include "GameObjects\Serializer.h"
 
 enum class GUIElementType

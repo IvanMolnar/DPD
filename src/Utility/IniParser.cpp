@@ -1,5 +1,5 @@
 #include "Utility\IniParser.h"
-#include "Log\Log.h"
+#include "Sparkle.h"
 
 #include <memory>
 #include <iostream>

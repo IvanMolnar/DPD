@@ -7,7 +7,7 @@
 #include "Interfaces\ObjectCommandInterface.h"
 #include "Interfaces\ObjectModifierInterface.h"
 #include "Items\ObjectModifier.h"
-#include "../../../../2D_Engine/2D_Engine/MyObjectDisplayData.h"
+#include "MyObjectDisplayData.h"
 #include "Interfaces\GameLogicObjectInterface.h"
 #include "Items\InventoryManager.h"
 #include "Serializer.h"
