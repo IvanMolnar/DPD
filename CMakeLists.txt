@@ -62,6 +62,13 @@ include_directories(DPD ${PROJECT_SOURCE_DIR}/src)
 
 target_compile_features(DPD PUBLIC cxx_std_17)
 
+set_target_properties(DPD PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/Bin)
+set_target_properties(DPD PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/Bin)
+
+set_target_properties(
+    DPD PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/Bin)
+
 
 set(2DEngine_ROOT ${CMAKE_BINARY_DIR}/2DEngine)
 
@@ -86,6 +93,14 @@ ADD_CUSTOM_COMMAND(
     POST_BUILD
 COMMAND ${CMAKE_COMMAND} -E copy_directory
 \"${2DEngine_ROOT}/src/2DEngine_external/Bin\"
+\"${CMAKE_BINARY_DIR}/Bin\"
+
+COMMAND ${CMAKE_COMMAND} -E copy_directory
+\"${CMAKE_BINARY_DIR}../textures\"
+\"${CMAKE_BINARY_DIR}/Bin/textures\"
+
+COMMAND ${CMAKE_COMMAND} -E copy_directory
+\"${CMAKE_BINARY_DIR}../src/Data\"
 \"${CMAKE_BINARY_DIR}/Bin\"
 )
 
